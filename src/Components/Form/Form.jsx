@@ -6,8 +6,6 @@ import FileField from "../FileField/FileField";
 import { brainFirstOptions } from "../../Data/BrainFirstOptions";
 
 function InputForm() {
-  const [brainFirstOptionOne, setBrainFirstOptionOne] = useState("");
-
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const array = [];
 
@@ -18,6 +16,7 @@ function InputForm() {
     console.log(JSON.stringify(values, 0, 2));
     // console.log(array);
   };
+
   return (
     <>
       <Form
@@ -30,7 +29,7 @@ function InputForm() {
               <QuestionContainer>
                 <label>Full Name</label>
                 <Field
-                  name="profile.fullName"
+                  name="fullName"
                   component="input"
                   type="text"
                   placeholder="Full name"
@@ -91,11 +90,33 @@ function InputForm() {
               <QuestionContainer>
                 <label>Select your top three Brain First Results</label>
                 <br />
-                <Field
-                  name="profile.brainFirst"
-                  component="select"
-                  onChange={(e) => setBrainFirstOptionOne(e.target.value)}
-                >
+                <label>Result 1</label>
+                <Field name="profile.brainFirst.one" component="select">
+                  <option />
+                  {brainFirstOptions.map((option) => {
+                    return (
+                      <option key={option.id} value={option.name}>
+                        {option.name}
+                      </option>
+                    );
+                  })}
+                </Field>
+                <br />
+                <label>Result 2</label>
+                <Field name="profile.brainFirst.two" component="select">
+                  <option />
+                  {brainFirstOptions.map((option) => {
+                    return (
+                      <option key={option.id} value={option.name}>
+                        {option.name}
+                      </option>
+                    );
+                  })}
+                </Field>
+                <br />
+                <label>Result 3</label>
+                <Field name="profile.brainFirst.three" component="select">
+                  <option />
                   {brainFirstOptions.map((option) => {
                     return (
                       <option key={option.id} value={option.name}>
@@ -117,7 +138,7 @@ function InputForm() {
               </QuestionContainer>
             </div>
             {/* Skills/tools */}
-            <div>
+            {/* <div>
               <h1>Skills</h1>
               <div>
                 <label></label>
@@ -127,7 +148,7 @@ function InputForm() {
                   type="checkbox"
                 />
               </div>
-            </div>
+            </div> */}
             <button type="submit">Submit</button>
           </form>
         )}
@@ -139,8 +160,6 @@ function InputForm() {
 export default InputForm;
 
 // Personal Profile Data
-
-// const [brainFirstResult, setBrainFirstResult] = useState(""); // data structure is?
 // const [keywords, setKeyWords] = useState(""); // array
 
 // Skills / Tools
