@@ -1,19 +1,42 @@
 import React, { useState } from "react";
-import InputForm from "../../Components/Form/Form";
-import ProfileSection from "../../Components/FormSections/ProfileSection";
-import SkillsSection from "../../Components/FormSections/SkillsSection";
+import ProfileSection from "../../Components/FormSections/1_ProfileSection";
+import SkillsSection from "../../Components/FormSections/2_SkillsSection";
 import { Form, Field } from "react-final-form";
+import WorkExpSection from "../../Components/FormSections/3_WorkExpSection";
+import EducationSection from "../../Components/FormSections/4_EducationSection";
+import CertificatesSection from "../../Components/FormSections/5_CertificatesSection";
+import PublicationSection from "../../Components/FormSections/6_PublicationSection";
+import LanguageSection from "../../Components/FormSections/7_LanguageSection";
+import HobbiesSection from "../../Components/FormSections/8_HobbiesSection";
+import ProjectsSection from "../../Components/FormSections/9_ProjectsSection";
+import arrayMutators from "final-form-arrays";
 
 function FormPage() {
   const [pgNum, setPgNum] = useState(1);
 
   const selectPage = ({ handleSubmit }) => {
+    // console.log("arrayMutatorsssss", mutators);
     if (pgNum === 1) {
       return <ProfileSection handleSubmit={handleSubmit} />;
     } else if (pgNum === 2) {
       return <SkillsSection handleSubmit={handleSubmit} />;
+    } else if (pgNum === 3) {
+      return <WorkExpSection handleSubmit={handleSubmit} />;
+    } else if (pgNum === 4) {
+      return <EducationSection handleSubmit={handleSubmit} />;
+    } else if (pgNum === 5) {
+      return <CertificatesSection handleSubmit={handleSubmit} />;
+    } else if (pgNum === 6) {
+      return <PublicationSection handleSubmit={handleSubmit} />;
+    } else if (pgNum === 7) {
+      return <LanguageSection handleSubmit={handleSubmit} />;
+    } else if (pgNum === 8) {
+      return <HobbiesSection handleSubmit={handleSubmit} />;
+    } else if (pgNum === 9) {
+      return <ProjectsSection handleSubmit={handleSubmit} />;
     }
   };
+
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const array = [];
 
@@ -24,17 +47,21 @@ function FormPage() {
     console.log(JSON.stringify(values, 0, 2));
     // console.log(array);
   };
+
   return (
     <div>
       <Form
+        mutators={{ ...arrayMutators }}
+        initialValues={{ skills: [{}] }}
         onSubmit={onSubmit}
-        render={({ handleSubmit }) => selectPage({ handleSubmit })}
-      />
-      <p>Page {pgNum} / 3</p>
+        // render={({ handleSubmit }) => selectPage()}
+      >
+        {selectPage}
+      </Form>
+
       <center>
         {pgNum > 1 && (
           <button
-            className="btn btn-primary"
             type="button"
             onClick={() => {
               let pg = pgNum;
@@ -44,9 +71,8 @@ function FormPage() {
             Back
           </button>
         )}
-        {pgNum < 3 && (
+        {pgNum < 9 && (
           <button
-            className="btn btn-primary mx-4"
             type="button"
             onClick={() => {
               let pg = pgNum;
@@ -57,6 +83,7 @@ function FormPage() {
           </button>
         )}
       </center>
+      <p>Page {pgNum} / 9</p>
     </div>
   );
 }

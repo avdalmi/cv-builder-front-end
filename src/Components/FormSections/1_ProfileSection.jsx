@@ -3,12 +3,11 @@ import React from "react";
 import { FormContainer, QuestionContainer } from "../../Styles/Form";
 import { useState } from "react";
 import { Form, Field } from "react-final-form";
-import FileField from "../FileField/FileField";
 import { brainFirstOptions } from "../../Data/BrainFirstOptions";
 
-function ProfileSection({ handleSubmit }) {
+function ProfileSection(formProps) {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={formProps.handleSubmit}>
       {/* personal profile data */}
       <div>
         <h1>Personal Information</h1>
@@ -121,19 +120,6 @@ function ProfileSection({ handleSubmit }) {
           ></Field>
         </QuestionContainer>
       </div>
-      {/* Skills/tools */}
-      {/* <div>
-              <h1>Skills</h1>
-              <div>
-                <label></label>
-                <Field
-                  name="profile.drivinglicense"
-                  component="input"
-                  type="checkbox"
-                />
-              </div>
-            </div> */}
-      {/* <button type="submit">Submit</button> */}
     </form>
   );
 }
