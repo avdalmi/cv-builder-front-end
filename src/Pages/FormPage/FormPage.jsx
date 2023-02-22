@@ -12,9 +12,16 @@ import ProjectsSection from "../../Components/FormSections/9_ProjectsSection";
 import arrayMutators from "final-form-arrays";
 import ButtonMultiple from "../../Components/FormSections/ButtonMultiple";
 import { FieldArray } from "react-final-form-arrays";
+import { MONGO_COLLECTION, MONGO_DATABASE } from "../../config/config";
 
-function FormPage() {
+function FormPage({ mongoContext: { client, user } }) {
   const [pgNum, setPgNum] = useState(1);
+
+  const onSubmit = async (values) => {
+    const collection = client.db(MONGO_DATABASE).collection(MONGO_COLLECTION);
+    const reponse = await collection.insertOne(values);
+    console.log(reponse);
+  };
 
   const selectPage = ({ handleSubmit }) => {
     // console.log("arrayMutatorsssss", mutators);
@@ -37,17 +44,6 @@ function FormPage() {
     } else if (pgNum === 9) {
       return <ProjectsSection handleSubmit={handleSubmit} />;
     }
-  };
-
-  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  const array = [];
-
-  const onSubmit = async (values) => {
-    await sleep(300);
-    // array.push(values);
-    // window.alert(JSON.stringify(values, 0, 2));
-    console.log(JSON.stringify(values, 0, 2));
-    // console.log(array);
   };
 
   return (
