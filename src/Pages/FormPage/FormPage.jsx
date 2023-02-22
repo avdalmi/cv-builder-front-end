@@ -10,6 +10,8 @@ import LanguageSection from "../../Components/FormSections/7_LanguageSection";
 import HobbiesSection from "../../Components/FormSections/8_HobbiesSection";
 import ProjectsSection from "../../Components/FormSections/9_ProjectsSection";
 import arrayMutators from "final-form-arrays";
+import ButtonMultiple from "../../Components/FormSections/ButtonMultiple";
+import { FieldArray } from "react-final-form-arrays";
 
 function FormPage() {
   const [pgNum, setPgNum] = useState(1);
@@ -42,7 +44,7 @@ function FormPage() {
 
   const onSubmit = async (values) => {
     await sleep(300);
-    array.push(values);
+    // array.push(values);
     // window.alert(JSON.stringify(values, 0, 2));
     console.log(JSON.stringify(values, 0, 2));
     // console.log(array);
@@ -51,41 +53,79 @@ function FormPage() {
   return (
     <div>
       <Form
-        mutators={{ ...arrayMutators }}
-        initialValues={{ skills: [{}] }}
         onSubmit={onSubmit}
-        // render={({ handleSubmit }) => selectPage()}
-      >
-        {selectPage}
-      </Form>
+        mutators={{
+          ...arrayMutators,
+        }}
+        initialValues={{
+          skills: [{ name: "", level: "" }],
+        }}
+        render={({
+          handleSubmit,
+          form: {
+            mutators: { push, pop },
+          },
+          pristine,
+          form,
+          submitting,
+          values,
+        }) => (
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>Custom field</label>
+              <Field name="animals" component={ButtonMultiple} />
+            </div>
 
-      <center>
-        {pgNum > 1 && (
-          <button
-            type="button"
-            onClick={() => {
-              let pg = pgNum;
-              setPgNum(pg - 1);
-            }}
-          >
-            Back
-          </button>
+            <div>
+              <Field name="profile" component={ProfileSection} />
+            </div>
+
+            <div>
+              <FieldArray name="skills" component={SkillsSection} />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
         )}
-        {pgNum < 9 && (
-          <button
-            type="button"
-            onClick={() => {
-              let pg = pgNum;
-              setPgNum(pg + 1);
-            }}
-          >
-            Next
-          </button>
-        )}
-      </center>
-      <p>Page {pgNum} / 9</p>
+      />
     </div>
   );
 }
 
 export default FormPage;
+
+// {
+//   /* <Form
+//         mutators={{ ...arrayMutators }}
+//         initialValues={{ skills: [{}] }}
+//         onSubmit={onSubmit}
+//         // render={({ handleSubmit }) => selectPage()}
+//       >
+//         {selectPage}
+//       </Form>
+
+//       <center>
+//         {pgNum > 1 && (
+//           <button
+//             type="button"
+//             onClick={() => {
+//               let pg = pgNum;
+//               setPgNum(pg - 1);
+//             }}
+//           >
+//             Back
+//           </button>
+//         )}
+//         {pgNum < 9 && (
+//           <button
+//             type="button"
+//             onClick={() => {
+//               let pg = pgNum;
+//               setPgNum(pg + 1);
+//             }}
+//           >
+//             Next
+//           </button>
+//         )}
+//       </center>
+//       <p>Page {pgNum} / 9</p> */
+// }

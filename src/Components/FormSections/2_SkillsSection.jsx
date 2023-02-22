@@ -25,40 +25,41 @@ function SkillsSection(formProps) {
   // console.log("formprops", formProps);
   return (
     <>
-      <h1>Skills</h1>
-      <form onSubmit={formProps.handleSubmit}>
-        {(formProps) => (
-          <>
-            <h1>Shifts</h1>
-            <button
-              onClick={() =>
-                formProps.form.mutators.push("shifts", {
-                  startTime: "08:00",
-                  endTime: "16:00",
-                })
-              }
-            >
-              Add shift
-            </button>
-            <FieldArray name="shifts">
-              {(fieldArrayProps) => {
-                console.log(fields);
-                fieldArrayProps.fields.map((name, index) => (
-                  <div key={name}>
-                    <Field name={`${name}.startTime`} component="input" />
-                    <Field name={`${name}.endTime`} component="input" />
-                    <button
-                      onClick={() => fieldArrayProps.fields.remove(index)}
-                    >
-                      &times;
-                    </button>
-                  </div>
-                ));
-              }}
-            </FieldArray>
-          </>
-        )}
-      </form>
+      <div>
+        <button type="button" onClick={() => formProps.fields.push("")}>
+          Add skill
+        </button>
+        <button type="button" onClick={() => formProps.fields.pop("")}>
+          Remove skill
+        </button>
+      </div>
+      <FieldArray name="skills">
+        {({ fields }) =>
+          fields.map((name, index) => (
+            <div key={name}>
+              <label>Skill {index + 1}</label>
+              <Field
+                name={`${name}.skillName`}
+                component="input"
+                placeholder="name"
+                type="text"
+              />
+              <Field
+                name={`${name}.skillLevel`}
+                component="input"
+                placeholder="level"
+                type="text"
+              />
+              <span
+                onClick={() => fields.remove(index)}
+                style={{ cursor: "pointer" }}
+              >
+                ❌
+              </span>
+            </div>
+          ))
+        }
+      </FieldArray>
     </>
   );
 }
@@ -80,3 +81,20 @@ export default SkillsSection;
 //                 />
 //               </div>
 //             </div> */}
+
+// {/* <h1>Skills</h1>
+// {/* <form onSubmit={formProps.handleSubmit}>
+//   {(formProps) => (
+//     <>
+//       <h1>Shifts</h1>
+//       <button
+//         onClick={() =>
+//           formProps.form.mutators.push("shifts", {
+//             startTime: "08:00",
+//             endTime: "16:00",
+//           })
+//         }
+//       >
+//         Add shift
+//       </button> */}
+// <div> */}
