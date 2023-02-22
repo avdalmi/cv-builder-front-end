@@ -19,24 +19,41 @@ function FormPage() {
   const selectPage = ({ handleSubmit }) => {
     // console.log("arrayMutatorsssss", mutators);
     if (pgNum === 1) {
-      return <ProfileSection handleSubmit={handleSubmit} />;
+      return (
+        <div>
+          <Field
+            name="profile"
+            component={ProfileSection}
+            handleSubmit={handleSubmit}
+          />
+        </div>
+      );
     } else if (pgNum === 2) {
-      return <SkillsSection handleSubmit={handleSubmit} />;
-    } else if (pgNum === 3) {
-      return <WorkExpSection handleSubmit={handleSubmit} />;
-    } else if (pgNum === 4) {
-      return <EducationSection handleSubmit={handleSubmit} />;
-    } else if (pgNum === 5) {
-      return <CertificatesSection handleSubmit={handleSubmit} />;
-    } else if (pgNum === 6) {
-      return <PublicationSection handleSubmit={handleSubmit} />;
-    } else if (pgNum === 7) {
-      return <LanguageSection handleSubmit={handleSubmit} />;
-    } else if (pgNum === 8) {
-      return <HobbiesSection handleSubmit={handleSubmit} />;
-    } else if (pgNum === 9) {
-      return <ProjectsSection handleSubmit={handleSubmit} />;
+      return (
+        <div>
+          <FieldArray
+            name="skills"
+            component={SkillsSection}
+            handleSubmit={handleSubmit}
+          />
+        </div>
+      );
     }
+    // } else if (pgNum === 3) {
+    //   return <WorkExpSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 4) {
+    //   return <EducationSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 5) {
+    //   return <CertificatesSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 6) {
+    //   return <PublicationSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 7) {
+    //   return <LanguageSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 8) {
+    //   return <HobbiesSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 9) {
+    //   return <ProjectsSection handleSubmit={handleSubmit} />;
+    // }
   };
 
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -58,7 +75,7 @@ function FormPage() {
           ...arrayMutators,
         }}
         initialValues={{
-          skills: [{ name: "", level: "" }],
+          skills: [{ skillName: "", skillLevel: "" }],
         }}
         render={({
           handleSubmit,
@@ -71,10 +88,20 @@ function FormPage() {
           values,
         }) => (
           <form onSubmit={handleSubmit}>
-            <div>
+            {/* {selectPage({ handleSubmit })} */}
+            {/* {pgNum === 1 ? (
+              <>
+                <Field name="profile" component={ProfileSection} />
+              </>
+            ) : (
+              <>
+                <FieldArray name="skills" component={SkillsSection} />
+              </>
+            )} */}
+            {/* <div>
               <label>Custom field</label>
               <Field name="animals" component={ButtonMultiple} />
-            </div>
+            </div> */}
 
             <div>
               <Field name="profile" component={ProfileSection} />
@@ -83,10 +110,35 @@ function FormPage() {
             <div>
               <FieldArray name="skills" component={SkillsSection} />
             </div>
-            <button type="submit">Submit</button>
+            {/* <button type="submit">Submit</button> */}
           </form>
         )}
       />
+      <center>
+        {pgNum > 1 && (
+          <button
+            type="button"
+            onClick={() => {
+              let pg = pgNum;
+              setPgNum(pg - 1);
+            }}
+          >
+            Back
+          </button>
+        )}
+        {pgNum < 9 && (
+          <button
+            type="button"
+            onClick={() => {
+              let pg = pgNum;
+              setPgNum(pg + 1);
+            }}
+          >
+            Next
+          </button>
+        )}
+      </center>
+      <p>Page {pgNum} / 9</p>
     </div>
   );
 }
