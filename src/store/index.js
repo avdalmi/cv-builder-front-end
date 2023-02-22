@@ -1,10 +1,10 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import somethingReducer from "./some/slice";
+import { configureStore } from "@reduxjs/toolkit";
+import formReducer from "./Form/slice";
 
-// const store = configureStore({
-//   reducer: {
-//     something: somethingReducer,
-//   },
-// });
+const store = configureStore({
+  reducer: {
+    form: formReducer,
+  },
+});
 
-// export default store;
+export default store;

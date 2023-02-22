@@ -1,40 +1,122 @@
 import React, { useState } from "react";
-import InputForm from "../../Components/Form/Form";
-import ProfileSection from "../../Components/FormSections/ProfileSection";
-import SkillsSection from "../../Components/FormSections/SkillsSection";
+import ProfileSection from "../../Components/FormSections/1_ProfileSection";
+import SkillsSection from "../../Components/FormSections/2_SkillsSection";
 import { Form, Field } from "react-final-form";
+import WorkExpSection from "../../Components/FormSections/3_WorkExpSection";
+import EducationSection from "../../Components/FormSections/4_EducationSection";
+import CertificatesSection from "../../Components/FormSections/5_CertificatesSection";
+import PublicationSection from "../../Components/FormSections/6_PublicationSection";
+import LanguageSection from "../../Components/FormSections/7_LanguageSection";
+import HobbiesSection from "../../Components/FormSections/8_HobbiesSection";
+import ProjectsSection from "../../Components/FormSections/9_ProjectsSection";
+import arrayMutators from "final-form-arrays";
+import ButtonMultiple from "../../Components/FormSections/ButtonMultiple";
+import { FieldArray } from "react-final-form-arrays";
 
 function FormPage() {
   const [pgNum, setPgNum] = useState(1);
 
   const selectPage = ({ handleSubmit }) => {
+    // console.log("arrayMutatorsssss", mutators);
     if (pgNum === 1) {
-      return <ProfileSection handleSubmit={handleSubmit} />;
+      return (
+        <div>
+          <Field
+            name="profile"
+            component={ProfileSection}
+            handleSubmit={handleSubmit}
+          />
+        </div>
+      );
     } else if (pgNum === 2) {
-      return <SkillsSection handleSubmit={handleSubmit} />;
+      return (
+        <div>
+          <FieldArray
+            name="skills"
+            component={SkillsSection}
+            handleSubmit={handleSubmit}
+          />
+        </div>
+      );
     }
+    // } else if (pgNum === 3) {
+    //   return <WorkExpSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 4) {
+    //   return <EducationSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 5) {
+    //   return <CertificatesSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 6) {
+    //   return <PublicationSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 7) {
+    //   return <LanguageSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 8) {
+    //   return <HobbiesSection handleSubmit={handleSubmit} />;
+    // } else if (pgNum === 9) {
+    //   return <ProjectsSection handleSubmit={handleSubmit} />;
+    // }
   };
+
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const array = [];
 
   const onSubmit = async (values) => {
     await sleep(300);
-    array.push(values);
+    // array.push(values);
     // window.alert(JSON.stringify(values, 0, 2));
     console.log(JSON.stringify(values, 0, 2));
     // console.log(array);
   };
+
   return (
     <div>
       <Form
         onSubmit={onSubmit}
-        render={({ handleSubmit }) => selectPage({ handleSubmit })}
+        mutators={{
+          ...arrayMutators,
+        }}
+        initialValues={{
+          skills: [{ skillName: "", skillLevel: "" }],
+        }}
+        render={({
+          handleSubmit,
+          form: {
+            mutators: { push, pop },
+          },
+          pristine,
+          form,
+          submitting,
+          values,
+        }) => (
+          <form onSubmit={handleSubmit}>
+            {/* {selectPage({ handleSubmit })} */}
+            {/* {pgNum === 1 ? (
+              <>
+                <Field name="profile" component={ProfileSection} />
+              </>
+            ) : (
+              <>
+                <FieldArray name="skills" component={SkillsSection} />
+              </>
+            )} */}
+            {/* <div>
+              <label>Custom field</label>
+              <Field name="animals" component={ButtonMultiple} />
+            </div> */}
+
+            <div>
+              <Field name="profile" component={ProfileSection} />
+            </div>
+
+            <div>
+              <FieldArray name="skills" component={SkillsSection} />
+            </div>
+            {/* <button type="submit">Submit</button> */}
+          </form>
+        )}
       />
-      <p>Page {pgNum} / 3</p>
       <center>
         {pgNum > 1 && (
           <button
-            className="btn btn-primary"
             type="button"
             onClick={() => {
               let pg = pgNum;
@@ -44,9 +126,8 @@ function FormPage() {
             Back
           </button>
         )}
-        {pgNum < 3 && (
+        {pgNum < 9 && (
           <button
-            className="btn btn-primary mx-4"
             type="button"
             onClick={() => {
               let pg = pgNum;
@@ -57,8 +138,46 @@ function FormPage() {
           </button>
         )}
       </center>
+      <p>Page {pgNum} / 9</p>
     </div>
   );
 }
 
 export default FormPage;
+
+// {
+//   /* <Form
+//         mutators={{ ...arrayMutators }}
+//         initialValues={{ skills: [{}] }}
+//         onSubmit={onSubmit}
+//         // render={({ handleSubmit }) => selectPage()}
+//       >
+//         {selectPage}
+//       </Form>
+
+//       <center>
+//         {pgNum > 1 && (
+//           <button
+//             type="button"
+//             onClick={() => {
+//               let pg = pgNum;
+//               setPgNum(pg - 1);
+//             }}
+//           >
+//             Back
+//           </button>
+//         )}
+//         {pgNum < 9 && (
+//           <button
+//             type="button"
+//             onClick={() => {
+//               let pg = pgNum;
+//               setPgNum(pg + 1);
+//             }}
+//           >
+//             Next
+//           </button>
+//         )}
+//       </center>
+//       <p>Page {pgNum} / 9</p> */
+// }
