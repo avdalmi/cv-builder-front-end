@@ -23,6 +23,11 @@ function FormPage2() {
       email: "",
       file: "",
       drivingLicense: "false",
+      brainFirst: {
+        resultOne: "",
+        resultTwo: "",
+        resultThree: "",
+      },
     },
     // skills: [
     //   {
@@ -76,7 +81,7 @@ function FormPage2() {
           />
         </FormStep> 
                 */}
-        {/* 
+
         <FormStep
           stepName="Address"
           onSubmit={() => console.log("step3 submit")}
@@ -84,7 +89,7 @@ function FormPage2() {
         >
           <TextInputField name="address.street" label="Street" />
           <TextInputField name="address.country" label="Country" />
-        </FormStep> */}
+        </FormStep>
       </MultiStepForm>
     </div>
   );

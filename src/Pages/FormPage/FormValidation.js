@@ -11,8 +11,6 @@ export const profileValidationSchema = yup.object({
       .string()
       .email("please enter a valid email")
       .required("please enter your email"),
-    file: yup.string(),
-    drivingLicense: yup.string().required("A option should be checked."),
   }),
 });
 

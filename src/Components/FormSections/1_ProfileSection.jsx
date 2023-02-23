@@ -1,56 +1,59 @@
 import React from "react";
-
-import { FormContainer, QuestionContainer } from "../../Styles/Form";
-import { useState } from "react";
 import { brainFirstOptions } from "../../Data/BrainFirstOptions";
 import { FormStep } from "../Form/MultiStepForm";
-import { profileValidationSchema } from "../../Pages/FormPage/FormValidation";
-
 import TextInputField from "../Form/InputField";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import { Field, useFormikContext, useField } from "formik";
-import * as yup from "yup";
+import { Field } from "formik";
+import FileUploadField from "../Form/FileUploadField";
+import SelectField from "../Form/SelectField";
 
-function ProfileSection(props) {
-  // console.log("validation schema props", props);
-  const [field, meta] = useField(props);
-
-  // console.log("props", props);
-  // console.log("field", field);
-  console.log("meta", meta);
+function ProfileSection(profileValidationSchema) {
   return (
     <FormStep
       stepName="Personal Information"
       onSubmit={() => console.log("step1 submit")}
-      validationSchema={props}
+      validationSchema={profileValidationSchema}
     >
       <TextInputField name="fullName" label="Full name" />
       <TextInputField name="profile.jobTitle" label="Job title" />
       <TextInputField name="profile.currentLocation" label="Current location" />
       <TextInputField name="profile.email" label="E-mail" />
       {/* <PhoneInputField name="profile.phone" label="Phone number" />  */}
-      <div
-        style={{ margin: "15px", border: "1px solid black", padding: "10px" }}
-      >
-        <label>Select a profile picture</label>
-        <Field
-          name="profile.file"
-          type="file"
-          value={meta.value.profile.file}
-          accept=".jpg, .jpeg, .png"
-        />
-      </div>
+      <FileUploadField name="profile.file" type="file" />
       <FormControl>
-        <FormLabel>Do you have a driving license?</FormLabel>
+        <FormLabel htmlFor="profile.drivingLicense">
+          Do you have a driving license?
+        </FormLabel>
         <Field type="radio" name="profile.drivingLicense" value="true" />
         yes
         <Field type="radio" name="profile.drivingLicense" value="false" />
         no
       </FormControl>{" "}
+      <br />
+      <div>
+        <FormLabel htmlFor="profile.brainFirst">
+          Select your three Brain First Results:
+        </FormLabel>
+        <br />
+        <SelectField
+          name="profile.brainFirst.resultOne"
+          options={brainFirstOptions}
+          helperText=" select your first result "
+        />
+
+        <SelectField
+          name="profile.brainFirst.resultTwo"
+          options={brainFirstOptions}
+          helperText="select your second result"
+        />
+
+        <SelectField
+          name="profile.brainFirst.resultThree"
+          options={brainFirstOptions}
+          helperText=" select your third result "
+        />
+      </div>
     </FormStep>
   );
 }
