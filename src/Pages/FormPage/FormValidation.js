@@ -11,16 +11,19 @@ export const profileValidationSchema = yup.object({
       .string()
       .email("please enter a valid email")
       .required("please enter your email"),
+    introductionText: yup
+      .string()
+      .required("please write a little bit about yourself"),
   }),
 });
 
 export const addressValidationSchema = yup.object({
-  // fullName: yup.string().required("req fname"),
   address: yup.object().shape({
     street: yup.string().required("required"),
     country: yup.string().required("country req"),
   }),
 });
+
 // phone: yup
 //   .string()
 //   .matches(/^[6-9]\d{9}$/, {
@@ -28,6 +31,3 @@ export const addressValidationSchema = yup.object({
 //     excludeEmptyString: false,
 //   })
 //   .required("please enter your phone number"),
-// export const profileValidationSchema = yup.object({
-//   fullName: yup.string().required("please enter your full name"),
-// });

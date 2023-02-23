@@ -54,6 +54,12 @@ function ProfileSection(profileValidationSchema) {
           helperText=" select your third result "
         />
       </div>
+      <TextInputField
+        placeholder="type something..."
+        name="profile.introductionText"
+        multiline
+        label="Write a little about yourself..."
+      />
     </FormStep>
   );
 }

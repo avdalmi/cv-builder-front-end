@@ -28,6 +28,7 @@ function FormPage2() {
         resultTwo: "",
         resultThree: "",
       },
+      introductionText: "",
     },
     // skills: [
     //   {
@@ -35,7 +36,7 @@ function FormPage2() {
     //     level: 0,
     //   },
     // ],
-    address: { street: "", country: "" },
+    // address: { street: "", country: "" },
   };
   return (
     <div>
@@ -82,14 +83,14 @@ function FormPage2() {
         </FormStep> 
                 */}
 
-        <FormStep
+        {/* <FormStep
           stepName="Address"
           onSubmit={() => console.log("step3 submit")}
           validationSchema={addressValidationSchema}
         >
           <TextInputField name="address.street" label="Street" />
           <TextInputField name="address.country" label="Country" />
-        </FormStep>
+        </FormStep> */}
       </MultiStepForm>
     </div>
   );
