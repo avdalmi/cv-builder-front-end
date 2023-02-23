@@ -8,21 +8,19 @@ import { FormStep } from "../Form/MultiStepForm";
 import { profileValidationSchema } from "../../Pages/FormPage/FormValidation";
 
 import TextInputField from "../Form/InputField";
-function ProfileSection() {
+function ProfileSection(formProps) {
   return (
-    <div>
-      {/* <FormStep
-        stepName="Personal Information"
-        onSubmit={() => console.log("profile information submit")}
-        validationSchema={profileValidationSchema}
-      > */}
+    <FormStep
+      stepName="Personal Information"
+      onSubmit={() => console.log("step1 submit")}
+      validationSchema={profileValidationSchema}
+    >
       <TextInputField name="fullName" label="Full name" />
       <TextInputField name="profile.jobTitle" label="Job title" />
       <TextInputField name="profile.currentLocation" label="Current location" />
       <TextInputField name="profile.email" label="E-mail" />
       {/* <PhoneInputField name="profile.phone" label="Phone number" /> */}
-      {/* </FormStep> */}
-    </div>
+    </FormStep>
   );
 }
 
