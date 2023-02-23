@@ -7,6 +7,7 @@ function TextInputField({ label, ...props }) {
   const [field, meta] = useField(props);
   // console.log("props", props);
   // console.log("field", field);
+  // console.log("meta", meta);
 
   return (
     <TextField
@@ -16,6 +17,7 @@ function TextInputField({ label, ...props }) {
       {...props}
       error={meta.touched && Boolean(meta.error)}
       helperText={meta.touched && meta.error}
+      style={{ margin: "10px" }}
     />
   );
 }

@@ -4,42 +4,44 @@ import { Button, TextField } from "@mui/material";
 import * as yup from "yup";
 import TextInputField from "../../Components/Form/InputField";
 import MultiStepForm, { FormStep } from "../../Components/Form/MultiStepForm";
-import { profileValidationSchema } from "./FormValidation";
+import {
+  addressValidationSchema,
+  profileValidationSchema,
+} from "./FormValidation";
 import PhoneInput from "react-phone-input-2";
 import PhoneInputField from "../../Components/Form/PhoneInputField";
 import ProfileSection from "../../Components/FormSections/1_ProfileSection";
 import SkillsSection from "../../Components/FormSections/2_SkillsSection";
+import { object, number, string, boolean, array, ValidationError } from "yup";
 
 function FormPage2() {
-  //   console.log(values.skills);
-  const linksGroup = { linkname: "", linkurl: "" };
   const initialValues = {
+    fullName: "",
     profile: {
       jobTitle: "",
       currentLocation: "",
       email: "",
+      file: "",
+      drivingLicense: "false",
     },
-    fullName: "",
-    links: [linksGroup],
-    //   skills: [
-    //     {
-    //       name: "",
-    //       level: 0,
-    //     },
-    //   ],
-    street: "",
-    country: "",
+    // skills: [
+    //   {
+    //     name: "",
+    //     level: 0,
+    //   },
+    // ],
+    address: { street: "", country: "" },
   };
   return (
     <div>
-      <h1>hello</h1>
+      <h1>Form Page</h1>
       <MultiStepForm
         initialValues={initialValues}
         onSubmit={(values) => {
           console.log(JSON.stringify(values, null, 2));
         }}
       >
-        <ProfileSection />
+        <ProfileSection validationSchema={profileValidationSchema} />
 
         {/* <FormStep
           stepName="Skills"
@@ -74,37 +76,18 @@ function FormPage2() {
           />
         </FormStep> 
                 */}
-
+        {/* 
         <FormStep
           stepName="Address"
           onSubmit={() => console.log("step3 submit")}
-          validationSchema={yup.object({
-            street: yup.string().required("street is required"),
-            country: yup.string().required("country is required"),
-          })}
+          validationSchema={addressValidationSchema}
         >
-          <TextInputField name="street" label="Street" />
-          <TextInputField name="country" label="Country" />
-        </FormStep>
+          <TextInputField name="address.street" label="Street" />
+          <TextInputField name="address.country" label="Country" />
+        </FormStep> */}
       </MultiStepForm>
     </div>
   );
 }
 
 export default FormPage2;
-
-// {/* Form Page 1 - Personal Information */}
-//         {/* <FormStep
-//           stepName="Personal Information"
-//           onSubmit={() => console.log("step1 submit")}
-//           validationSchema={profileValidationSchema}
-//         >
-//           <TextInputField name="fullName" label="Full name" />
-//           <TextInputField name="profile.jobTitle" label="Job title" />
-//           <TextInputField
-//             name="profile.currentLocation"
-//             label="Current location"
-//           />
-//           <TextInputField name="profile.email" label="E-mail" />
-//           {/* <PhoneInputField name="profile.phone" label="Phone number" />
-//         </FormStep> */}

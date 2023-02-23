@@ -6,67 +6,64 @@ import { FormStep } from "../Form/MultiStepForm";
 
 function SkillsSection() {
   return (
-    <></>
-    // <>
-
-    //   <FormStep stepName="Skills" onSubmit={() => console.log("skills submit")}>
-    //     {({ values }) => (
-    //       <FieldArray name="skills">
-    //         {({ insert, remove, push }) => (
-    //           <div>
-    //             {values.skills.length > 0 &&
-    //               values.skills.map((skill, index) => (
-    //                 <div className="row" key={index}>
-    //                   <div className="col">
-    //                     <label htmlFor={`skills.${index}.name`}>Name</label>
-    //                     <Field
-    //                       name={`skills.${index}.name`}
-    //                       placeholder="Jane Doe"
-    //                       type="text"
-    //                     />
-    //                     {/* <ErrorMessage
-    //                   name={`skills.${index}.name`}
-    //                   component="div"
-    //                   className="field-error"
-    //                 /> */}
-    //                   </div>
-    //                   <div className="col">
-    //                     <label htmlFor={`skills.${index}.level`}>level</label>
-    //                     <Field
-    //                       name={`skills.${index}.level`}
-    //                       placeholder="jane@acme.com"
-    //                       type="text"
-    //                     />
-    //                     {/* <ErrorMessage
-    //                   name={`skills.${index}.name`}
-    //                   component="div"
-    //                 /> */}
-    //                   </div>
-    //                   <div className="col">
-    //                     <button
-    //                       type="button"
-    //                       className="secondary"
-    //                       onClick={() => remove(index)}
-    //                     >
-    //                       X
-    //                     </button>
-    //                   </div>
-    //                 </div>
-    //               ))}
-    //             <button
-    //               type="button"
-    //               className="secondary"
-    //               onClick={() => push({ name: "", level: "" })}
-    //             >
-    //               Add Skill
-    //             </button>
-    //           </div>
-    //         )}
-    //       </FieldArray>
-    //     )}
-    //   </FormStep>
-
-    // </>
+    <>
+      <FormStep stepName="Skills" onSubmit={() => console.log("skills submit")}>
+        {({ values }) => (
+          <FieldArray name="skills">
+            {({ insert, remove, push }) => (
+              <div>
+                {values.skills.length > 0 &&
+                  values.skills.map((skill, index) => (
+                    <div className="row" key={index}>
+                      <div className="col">
+                        <label htmlFor={`skills.${index}.name`}>Name</label>
+                        <Field
+                          name={`skills.${index}.name`}
+                          placeholder="Jane Doe"
+                          type="text"
+                        />
+                        {/* <ErrorMessage
+                      name={`skills.${index}.name`}
+                      component="div"
+                      className="field-error"
+                    /> */}
+                      </div>
+                      <div className="col">
+                        <label htmlFor={`skills.${index}.level`}>level</label>
+                        <Field
+                          name={`skills.${index}.level`}
+                          placeholder="jane@acme.com"
+                          type="text"
+                        />
+                        {/* <ErrorMessage
+                      name={`skills.${index}.name`}
+                      component="div"
+                    /> */}
+                      </div>
+                      <div className="col">
+                        <button
+                          type="button"
+                          className="secondary"
+                          onClick={() => remove(index)}
+                        >
+                          X
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                <button
+                  type="button"
+                  className="secondary"
+                  onClick={() => push({ name: "", level: "" })}
+                >
+                  Add Skill
+                </button>
+              </div>
+            )}
+          </FieldArray>
+        )}
+      </FormStep>
+    </>
   );
 }
 
