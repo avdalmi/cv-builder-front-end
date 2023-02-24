@@ -43,57 +43,56 @@ export const workValidationSchema = yup.object({
 export const educationValidationSchema = yup.object({
   education: yup.array(
     yup.object({
-      educationSchoolName: yup.string().required("please enter school name"),
-      educationDegreeTitle: yup
+      eduSchoolName: yup.string().required("please enter school name"),
+      eduDegreeTitle: yup
         .string()
         .required("please enter the name of the degree"),
-      educationLocation: yup
+      eduLocation: yup
         .string()
         .required("please enter location of the college/university"),
-      educationStartDate: yup.date().required("please enter a start date"),
-      educationEndDate: yup
+      eduStartDate: yup.date().required("please enter a start date"),
+      eduEndDate: yup
         .date()
-        .min(
-          yup.ref("educationStartDate"),
-          "end date can't be before start date"
-        )
+        .min(yup.ref("eduStartDate"), "end date can't be before start date")
         .required("please enter a end date or a expected end date"),
-      educationDescription: yup
+      eduDescription: yup
         .string()
         .required("please enter a description of the degree"),
     })
   ),
 });
 
-// {
-//     certificateTitle: "",
-//     certificateInstituteName: "",
-//     certificateIssueDate: "",
-//     certificateExpirationDate: "",
-//     certificateCredentialID: "",
-//     certificateCredentialURL: "",
-//     certificateUpload: "",
-//   },
-
 export const certificatesValidationSchema = yup.object({
   licensesAndCertifications: yup.array(
     yup.object({
-      certificateTitle: yup
+      certTitle: yup
         .string()
-        .required("please enter the title of your certificate"),
-      certificateInstituteName: yup
+        .required("please enter the title of your certification"),
+      certInstituteName: yup
         .string()
         .required("please enter the name of the institute"),
-      certificateIssueDate: yup.date().required("please enter a issue date"),
-      certificateExpirationDate: yup
+      certIssueDate: yup.date().required("please enter a issue date"),
+      certExpirationDate: yup
         .date()
         .min(
-          yup.ref("certificateIssueDate"),
+          yup.ref("certIssueDate"),
           "expiration date can't be before the issue date"
         ),
-      certificateCredentialID: yup.string(),
-      certificateCredentialURL: yup.string(),
-      certificateUpload: yup.string(),
+      certCredentialID: yup.string(),
+      certCredentialURL: yup.string(),
+      certUpload: yup.string(),
+    })
+  ),
+});
+
+export const publicationsValidationSchema = yup.object({
+  publications: yup.array(
+    yup.object({
+      pubTitle: yup.string(),
+      pubPublisher: yup.string(),
+      pubDate: yup.date(),
+      pubURL: yup.string(),
+      pubDescription: yup.string(),
     })
   ),
 });

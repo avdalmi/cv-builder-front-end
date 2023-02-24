@@ -6,6 +6,7 @@ import {
   workValidationSchema,
   educationValidationSchema,
   skillsValidationSchema,
+  publicationsValidationSchema,
 } from "./FormValidation";
 import ProfileSection from "../../Components/FormSections/1_ProfileSection";
 import SkillsSection from "../../Components/FormSections/2_SkillsSection";
@@ -13,8 +14,9 @@ import WorkExpSection from "../../Components/FormSections/3_WorkExpSection";
 import { initialValues } from "./initialValues";
 import EducationSection from "../../Components/FormSections/4_EducationSection";
 import CertificatesSection from "../../Components/FormSections/5_CertificatesSection";
+import PublicationSection from "../../Components/FormSections/6_PublicationSection";
 
-function FormPage2() {
+function FormPage() {
   return (
     <div>
       <h1>Form Page</h1>
@@ -24,7 +26,7 @@ function FormPage2() {
           console.log(JSON.stringify(values, null, 2));
         }}
       >
-        <FormStep
+        {/* <FormStep
           stepName="Personal Information"
           onSubmit={() => console.log("personal information submit")}
           validationSchema={profileValidationSchema}
@@ -61,10 +63,17 @@ function FormPage2() {
           validationSchema={certificatesValidationSchema}
         >
           <CertificatesSection initialValues={initialValues} />
+        </FormStep> */}
+        <FormStep
+          stepName="Publications"
+          onSubmit={() => console.log("certificates submit")}
+          validationSchema={publicationsValidationSchema}
+        >
+          <PublicationSection initialValues={initialValues} />
         </FormStep>
       </MultiStepForm>
     </div>
   );
 }
 
-export default FormPage2;
+export default FormPage;

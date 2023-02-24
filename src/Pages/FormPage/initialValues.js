@@ -32,24 +32,33 @@ export const initialValues = {
   ],
   education: [
     {
-      educationSchoolName: "",
-      educationDegreeTitle: "",
-      educationLocation: "",
-      educationStartDate: "",
-      educationEndDate: "",
-      educationCurrent: "false",
-      educationDescription: "",
+      eduSchoolName: "",
+      eduDegreeTitle: "",
+      eduLocation: "",
+      eduStartDate: "",
+      eduEndDate: "",
+      eduCurrent: "false",
+      eduDescription: "",
     },
   ],
   licensesAndCertifications: [
     {
-      certificateTitle: "",
-      certificateInstituteName: "",
-      certificateIssueDate: "",
-      certificateExpirationDate: "",
-      certificateCredentialID: "",
-      certificateCredentialURL: "",
-      certificateUpload: "",
+      certTitle: "",
+      certInstituteName: "",
+      certIssueDate: "",
+      certExpirationDate: "",
+      certCredentialID: "",
+      certCredentialURL: "",
+      certUpload: "",
+    },
+  ],
+  publications: [
+    {
+      pubTitle: "", //Ex: To Kill a Mockingbird
+      pubPublisher: "", //Ex: Harvard Business Review
+      pubDate: "",
+      pubURL: "",
+      pubDescription: "",
     },
   ],
 };
