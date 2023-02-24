@@ -1,7 +1,7 @@
 import React from "react";
 import { FieldArray, Field } from "formik";
 import { FormStep } from "../Form/MultiStepForm";
-// import TextInputField from "../Form/InputField";
+
 function SkillsSection(props) {
   // console.log(initialValues);
   return (
@@ -15,7 +15,7 @@ function SkillsSection(props) {
             {props.initialValues.skills.map((skill, index) => (
               <div key={index} style={{ display: "flex", margin: "20px" }}>
                 <Field
-                  name={`skills[${index}].name`}
+                  name={`skills[${index}].skillName`}
                   placeholder="skill"
                   style={{ margin: "10px" }}
                 />
@@ -24,7 +24,7 @@ function SkillsSection(props) {
                 <Field
                   type="number"
                   max={5}
-                  name={`skills[${index}].level`}
+                  name={`skills[${index}].skillLevel`}
                   style={{ margin: "10px" }}
                 />
                 <button
@@ -43,8 +43,11 @@ function SkillsSection(props) {
               style={{ margin: "20px" }}
               type="button"
               onClick={() => {
-                arrayHelpers.push({ name: "", level: 0 });
-                props.initialValues.skills.push({ name: "", level: 0 });
+                arrayHelpers.push({ skillName: "", skillLevel: 0 });
+                props.initialValues.skills.push({
+                  skillName: "",
+                  skillLevel: 0,
+                });
               }}
             >
               Add another skill
@@ -61,41 +64,3 @@ export default SkillsSection;
 // ### Programmeertalen | Technieken & Frameworks | Methodes & Tools | Overig
 // - Naam
 // - Score
-
-// {/* <FormStep stepName="Skills" onSubmit={() => console.log("step2 submit")}>
-//       <FieldArray
-//         name="skills"
-//         render={(arrayHelpers) => {
-//           // console.log("helpers", arrayHelpers);
-//           return (
-//             <div>
-//               {props.initialValues.skills.map((skill, index) => (
-//                 <div key={index}>
-//                   <Field name={`skills[${index}].name`} placeholder="skill" />
-//                   <br />
-//                   <Field name={`skills[${index}].level`} />
-//                   <button
-//                     type="button"
-//                     onClick={() => {
-//                       arrayHelpers.remove(index); //removes from the final value
-//                       props.initialValues.skills.splice(index, 1); //removes locally, UI only
-//                     }}
-//                   >
-//                     -
-//                   </button>
-//                 </div>
-//               ))}
-//               <button
-//                 type="button"
-//                 onClick={() => {
-//                   arrayHelpers.push({ name: "", level: 0 });
-//                   props.initialValues.skills.push({ name: "", level: 0 });
-//                 }}
-//               >
-//                 +
-//               </button>
-//             </div>
-//           );
-//         }}
-//       />
-//     </FormStep> */}

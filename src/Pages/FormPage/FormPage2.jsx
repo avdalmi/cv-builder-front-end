@@ -7,12 +7,14 @@ import MultiStepForm, { FormStep } from "../../Components/Form/MultiStepForm";
 import {
   addressValidationSchema,
   profileValidationSchema,
+  workValidationSchema,
 } from "./FormValidation";
 import PhoneInput from "react-phone-input-2";
 import PhoneInputField from "../../Components/Form/PhoneInputField";
 import ProfileSection from "../../Components/FormSections/1_ProfileSection";
 import SkillsSection from "../../Components/FormSections/2_SkillsSection";
 import { object, number, string, boolean, array, ValidationError } from "yup";
+import WorkExpSection from "../../Components/FormSections/3_WorkExpSection";
 
 function FormPage2() {
   const initialValues = {
@@ -32,12 +34,23 @@ function FormPage2() {
     },
     skills: [
       {
-        name: "",
-        level: 0,
+        skillName: "",
+        skillLevel: 0,
       },
     ],
-    street: "",
-    country: "",
+    workExperience: [
+      {
+        workPositionTitle: "",
+        workDescription: "",
+        workLocation: "",
+        workCompanyName: "",
+        workPeriodStart: "",
+        workPeriodEnd: "",
+        workCurrent: "false",
+      },
+    ],
+    // street: "",
+    // country: "",
   };
 
   return (
@@ -52,7 +65,7 @@ function FormPage2() {
         <FormStep
           stepName="Personal Information"
           onSubmit={() => console.log("personal information submit")}
-          //   validationSchema={profileValidationSchema}
+          validationSchema={profileValidationSchema}
         >
           <ProfileSection />
         </FormStep>
@@ -65,13 +78,21 @@ function FormPage2() {
         </FormStep>
 
         <FormStep
+          stepName="Work experience"
+          onSubmit={() => console.log("work experience submit")}
+          validationSchema={workValidationSchema}
+        >
+          <WorkExpSection initialValues={initialValues} />
+        </FormStep>
+
+        {/* <FormStep
           stepName="Address"
           onSubmit={() => console.log("step3 submit")}
-          //   validationSchema={addressValidationSchema}
+          validationSchema={addressValidationSchema}
         >
           <TextInputField name="address.street" label="Street" />
           <TextInputField name="address.country" label="Country" />
-        </FormStep>
+        </FormStep> */}
       </MultiStepForm>
     </div>
   );

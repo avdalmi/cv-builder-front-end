@@ -57,6 +57,7 @@ function ProfileSection(profileValidationSchema) {
         placeholder="type something..."
         name="profile.introductionText"
         multiline
+        rows={5}
         label="Write a little about yourself... *"
       />
     </div>
