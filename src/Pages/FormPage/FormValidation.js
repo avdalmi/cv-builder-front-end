@@ -15,8 +15,43 @@ export const profileValidationSchema = yup.object({
       .string()
       .required("please write a little bit about yourself"),
   }),
+  //   workExperience: yup.array(
+  //     yup.object({
+  //       workPositionTitle: yup.string().required("please enter work job title"),
+  //       workLocation: yup.string().required("please enter work location"),
+  //       workCompanyName: yup.string().required("please enter company"),
+  //       workPeriodStart: yup.date().required("please enter a start date"),
+  //       workPeriodEnd: yup
+  //         .date()
+  //         .min(yup.ref("workPeriodStart"), "end date can't be before start date"),
+  //       workDescription: yup.string().required("please enter a job description"),
+  //     })
+  //   ),
 });
+export const workValidationSchema = yup.object({
+  workExperience: yup.array(
+    yup.object({
+      workPositionTitle: yup.string().required("please enter work job title"),
+      workLocation: yup.string().required("please enter work location"),
+      workCompanyName: yup.string().required("please enter company"),
+      workPeriodStart: yup.date().required("please enter a start date"),
+      workPeriodEnd: yup
+        .date()
+        .min(yup.ref("workPeriodStart"), "end date can't be before start date"),
+      workDescription: yup.string().required("please enter a job description"),
+    })
+  ),
+});
+// workPeriodStart: "",
+//         workPeriodEnd: "",
+//         workCurrent: "false",
+//         workPositionTitle: "",
+//         workDescription: "",
+//         workLocation: "",
+//         workCompanyName: "",
+// export const skillsValidationSchema = yup.object({
 
+// })
 export const addressValidationSchema = yup.object({
   address: yup.object().shape({
     street: yup.string().required("required"),

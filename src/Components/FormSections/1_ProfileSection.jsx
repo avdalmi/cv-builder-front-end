@@ -1,7 +1,7 @@
 import React from "react";
 import { brainFirstOptions } from "../../Data/BrainFirstOptions";
 import { FormStep } from "../Form/MultiStepForm";
-import TextInputField from "../Form/InputField";
+import TextInputField from "../Form/TextInputField";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { Field } from "formik";
@@ -10,15 +10,14 @@ import SelectField from "../Form/SelectField";
 
 function ProfileSection(profileValidationSchema) {
   return (
-    <FormStep
-      stepName="Personal Information"
-      onSubmit={() => console.log("step1 submit")}
-      validationSchema={profileValidationSchema}
-    >
-      <TextInputField name="fullName" label="Full name" />
-      <TextInputField name="profile.jobTitle" label="Job title" />
-      <TextInputField name="profile.currentLocation" label="Current location" />
-      <TextInputField name="profile.email" label="E-mail" />
+    <div>
+      <TextInputField name="fullName" label="Full name *" id="fullName" />
+      <TextInputField name="profile.jobTitle" label="Job title *" />
+      <TextInputField
+        name="profile.currentLocation"
+        label="Current location *"
+      />
+      <TextInputField name="profile.email" label="E-mail *" />
       {/* <PhoneInputField name="profile.phone" label="Phone number" />  */}
       <FileUploadField name="profile.file" type="file" />
       <FormControl>
@@ -58,9 +57,10 @@ function ProfileSection(profileValidationSchema) {
         placeholder="type something..."
         name="profile.introductionText"
         multiline
-        label="Write a little about yourself..."
+        rows={5}
+        label="Write a little about yourself... *"
       />
-    </FormStep>
+    </div>
   );
 }
 

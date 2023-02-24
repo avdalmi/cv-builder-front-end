@@ -5,10 +5,7 @@ import React from "react";
 
 function SelectField({ ...props }) {
   const [field, meta] = useField(props);
-  //   console.log(props);
-  //   //   console.log(brainFirstOptions);
-  //   const { brainFirstOptions, name, type } = props;
-  //   console.log("options", brainFirstOptions, "type", type);
+
   return (
     <TextField
       select
@@ -28,15 +25,6 @@ function SelectField({ ...props }) {
         );
       })}
     </TextField>
-    // <Select value={props.options}>
-    //   {props.options.map((item) => {
-    //     return (
-    //       <MenuItem key={item.id} value={item.name}>
-    //         {item.name}
-    //       </MenuItem>
-    //     );
-    //   })}
-    // </Select>
   );
 }
 

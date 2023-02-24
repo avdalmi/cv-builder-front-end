@@ -2,6 +2,7 @@ import { Form, Formik } from "formik";
 import React, { useState } from "react";
 import FormNavigation from "./FormNavigation";
 import { Stepper, Step, StepLabel } from "@mui/material";
+import { validationSchema } from "../../Pages/FormPage/FormValidation";
 
 function MultiStepForm({ children, initialValues, onSubmit }) {
   const [stepNum, setStepNum] = useState(0);
@@ -46,6 +47,7 @@ function MultiStepForm({ children, initialValues, onSubmit }) {
         initialValues={snapshot}
         onSubmit={handleSubmit}
         validationSchema={step.props.validationSchema}
+        // validationSchema={validationSchema}
       >
         {(formik) => (
           <Form>
