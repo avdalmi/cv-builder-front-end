@@ -1,17 +1,17 @@
+import TextInputField from "./TextInputField";
 import React from "react";
 import { Field, useField } from "formik";
 
 function FileUploadField({ ...props }) {
   const [field, meta] = useField(props);
-  //   console.log("meta valye", meta.value);
+
   return (
-    <div style={{ margin: "15px", border: "1px solid black", padding: "10px" }}>
-      <label>Select a profile picture</label>
-      <Field
+    <div>
+      <TextInputField
         {...field}
         {...props}
         value={meta.value}
-        accept=".jpg, .jpeg, .png"
+        accept=".jpg, .jpeg, .png .pdf"
       />
     </div>
   );

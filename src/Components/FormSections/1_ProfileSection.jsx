@@ -1,6 +1,5 @@
 import React from "react";
 import { brainFirstOptions } from "../../Data/BrainFirstOptions";
-import { FormStep } from "../Form/MultiStepForm";
 import TextInputField from "../Form/TextInputField";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
@@ -11,15 +10,32 @@ import SelectField from "../Form/SelectField";
 function ProfileSection(profileValidationSchema) {
   return (
     <div>
-      <TextInputField name="fullName" label="Full name *" id="fullName" />
-      <TextInputField name="profile.jobTitle" label="Job title *" />
+      <TextInputField
+        name="fullName"
+        label="Full name *"
+        id="fullName"
+        placeholder="Ex: John Doe"
+      />
+      <TextInputField
+        name="profile.jobTitle"
+        label="Job title *"
+        placeholder="Ex: Software Developer"
+      />
       <TextInputField
         name="profile.currentLocation"
         label="Current location *"
+        placeholder="Ex: Amsterdam, The Netherlands"
       />
-      <TextInputField name="profile.email" label="E-mail *" />
+      <TextInputField
+        name="profile.email"
+        label="E-mail *"
+        placeholder="Ex: john.doe@gmail.com"
+      />
       {/* <PhoneInputField name="profile.phone" label="Phone number" />  */}
-      <FileUploadField name="profile.file" type="file" />
+      <div>
+        <FormLabel>Select a profile picture</FormLabel>
+        <FileUploadField name="profile.file" type="file" />
+      </div>
       <FormControl>
         <FormLabel htmlFor="profile.drivingLicense">
           Do you have a driving license?
@@ -58,60 +74,10 @@ function ProfileSection(profileValidationSchema) {
         name="profile.introductionText"
         multiline
         rows={5}
-        label="Write a little about yourself... *"
+        label="Write a little bit about yourself... *"
       />
     </div>
   );
 }
 
 export default ProfileSection;
-
-//       <QuestionContainer>
-//         <label>Select your top three Brain First Results</label>
-//         <br />
-//         <label>Result 1</label>
-//         <Field name="profile.brainFirst.one" component="select">
-//           <option />
-//           {brainFirstOptions.map((option) => {
-//             return (
-//               <option key={option.id} value={option.name}>
-//                 {option.name}
-//               </option>
-//             );
-//           })}
-//         </Field>
-//         <br />
-//         <label>Result 2</label>
-//         <Field name="profile.brainFirst.two" component="select">
-//           <option />
-//           {brainFirstOptions.map((option) => {
-//             return (
-//               <option key={option.id} value={option.name}>
-//                 {option.name}
-//               </option>
-//             );
-//           })}
-//         </Field>
-//         <br />
-//         <label>Result 3</label>
-//         <Field name="profile.brainFirst.three" component="select">
-//           <option />
-//           {brainFirstOptions.map((option) => {
-//             return (
-//               <option key={option.id} value={option.name}>
-//                 {option.name}
-//               </option>
-//             );
-//           })}
-//         </Field>
-//       </QuestionContainer>
-
-//       <QuestionContainer>
-//         <label>Write a short introduction</label>
-//         <br />
-//         <Field
-//           name="profile.introduction"
-//           component="textarea"
-//           placeholder="introduction text"
-//         ></Field>
-//       </QuestionContainer>

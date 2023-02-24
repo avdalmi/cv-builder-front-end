@@ -1,58 +1,20 @@
-import { Formik, FieldArray, Field, ErrorMessage, Form } from "formik";
 import React from "react";
-import { Button, TextField } from "@mui/material";
-import * as yup from "yup";
-import TextInputField from "../../Components/Form/TextInputField";
 import MultiStepForm, { FormStep } from "../../Components/Form/MultiStepForm";
 import {
-  addressValidationSchema,
   profileValidationSchema,
+  certificatesValidationSchema,
   workValidationSchema,
+  educationValidationSchema,
+  skillsValidationSchema,
 } from "./FormValidation";
-import PhoneInput from "react-phone-input-2";
-import PhoneInputField from "../../Components/Form/PhoneInputField";
 import ProfileSection from "../../Components/FormSections/1_ProfileSection";
 import SkillsSection from "../../Components/FormSections/2_SkillsSection";
-import { object, number, string, boolean, array, ValidationError } from "yup";
 import WorkExpSection from "../../Components/FormSections/3_WorkExpSection";
+import { initialValues } from "./initialValues";
+import EducationSection from "../../Components/FormSections/4_EducationSection";
+import CertificatesSection from "../../Components/FormSections/5_CertificatesSection";
 
 function FormPage2() {
-  const initialValues = {
-    fullName: "",
-    profile: {
-      jobTitle: "",
-      currentLocation: "",
-      email: "",
-      file: "",
-      drivingLicense: "false",
-      brainFirst: {
-        resultOne: "",
-        resultTwo: "",
-        resultThree: "",
-      },
-      introductionText: "",
-    },
-    skills: [
-      {
-        skillName: "",
-        skillLevel: 0,
-      },
-    ],
-    workExperience: [
-      {
-        workPositionTitle: "",
-        workDescription: "",
-        workLocation: "",
-        workCompanyName: "",
-        workPeriodStart: "",
-        workPeriodEnd: "",
-        workCurrent: "false",
-      },
-    ],
-    // street: "",
-    // country: "",
-  };
-
   return (
     <div>
       <h1>Form Page</h1>
@@ -73,6 +35,7 @@ function FormPage2() {
         <FormStep
           stepName="Skills"
           onSubmit={() => console.log("skills submit")}
+          validationSchema={skillsValidationSchema}
         >
           <SkillsSection initialValues={initialValues} />
         </FormStep>
@@ -85,14 +48,20 @@ function FormPage2() {
           <WorkExpSection initialValues={initialValues} />
         </FormStep>
 
-        {/* <FormStep
-          stepName="Address"
-          onSubmit={() => console.log("step3 submit")}
-          validationSchema={addressValidationSchema}
+        <FormStep
+          stepName="Education"
+          onSubmit={() => console.log("education submit")}
+          validationSchema={educationValidationSchema}
         >
-          <TextInputField name="address.street" label="Street" />
-          <TextInputField name="address.country" label="Country" />
-        </FormStep> */}
+          <EducationSection initialValues={initialValues} />
+        </FormStep>
+        <FormStep
+          stepName="Licenses and Certifications"
+          onSubmit={() => console.log("certificates submit")}
+          validationSchema={certificatesValidationSchema}
+        >
+          <CertificatesSection initialValues={initialValues} />
+        </FormStep>
       </MultiStepForm>
     </div>
   );

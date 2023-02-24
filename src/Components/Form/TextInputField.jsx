@@ -11,13 +11,14 @@ function TextInputField({ label, ...props }) {
 
   return (
     <TextField
+      variant="standard"
       fullWidth
       label={label}
       {...field}
       {...props}
       error={meta.touched && Boolean(meta.error)}
       helperText={meta.touched && meta.error}
-      style={{ margin: "10px" }}
+      value={meta.value}
     />
   );
 }
