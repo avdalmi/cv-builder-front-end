@@ -1,14 +1,14 @@
 import React from "react";
-
-import { FormContainer, QuestionContainer } from "../../Styles/Form";
-import { useState } from "react";
-import { Form, Field } from "react-final-form";
 import { brainFirstOptions } from "../../Data/BrainFirstOptions";
 import { FormStep } from "../Form/MultiStepForm";
-import { profileValidationSchema } from "../../Pages/FormPage/FormValidation";
-
 import TextInputField from "../Form/InputField";
-function ProfileSection(formProps) {
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import { Field } from "formik";
+import FileUploadField from "../Form/FileUploadField";
+import SelectField from "../Form/SelectField";
+
+function ProfileSection(profileValidationSchema) {
   return (
     <FormStep
       stepName="Personal Information"
@@ -19,72 +19,52 @@ function ProfileSection(formProps) {
       <TextInputField name="profile.jobTitle" label="Job title" />
       <TextInputField name="profile.currentLocation" label="Current location" />
       <TextInputField name="profile.email" label="E-mail" />
-      {/* <PhoneInputField name="profile.phone" label="Phone number" /> */}
+      {/* <PhoneInputField name="profile.phone" label="Phone number" />  */}
+      <FileUploadField name="profile.file" type="file" />
+      <FormControl>
+        <FormLabel htmlFor="profile.drivingLicense">
+          Do you have a driving license?
+        </FormLabel>
+        <Field type="radio" name="profile.drivingLicense" value="true" />
+        yes
+        <Field type="radio" name="profile.drivingLicense" value="false" />
+        no
+      </FormControl>{" "}
+      <br />
+      <div>
+        <FormLabel htmlFor="profile.brainFirst">
+          Select your three Brain First Results:
+        </FormLabel>
+        <br />
+        <SelectField
+          name="profile.brainFirst.resultOne"
+          options={brainFirstOptions}
+          helperText=" select your first result "
+        />
+
+        <SelectField
+          name="profile.brainFirst.resultTwo"
+          options={brainFirstOptions}
+          helperText="select your second result"
+        />
+
+        <SelectField
+          name="profile.brainFirst.resultThree"
+          options={brainFirstOptions}
+          helperText=" select your third result "
+        />
+      </div>
+      <TextInputField
+        placeholder="type something..."
+        name="profile.introductionText"
+        multiline
+        label="Write a little about yourself..."
+      />
     </FormStep>
   );
 }
 
 export default ProfileSection;
-
-// <h1>Personal Information</h1>
-//       <QuestionContainer>
-//         <label>Full Name</label>
-//         <Field
-//           name="fullName"
-//           component="input"
-//           type="text"
-//           placeholder="Full name"
-//         />
-//       </QuestionContainer>
-
-//       <QuestionContainer>
-//         <label>Job title</label>
-//         <Field
-//           name="profile.jobTitle"
-//           component="input"
-//           type="text"
-//           placeholder="Job title"
-//         />
-//       </QuestionContainer>
-
-//       <QuestionContainer>
-//         <label>Current location</label>
-//         <Field
-//           name="profile.currentLocation"
-//           component="input"
-//           type="text"
-//           placeholder="Current location"
-//         />
-//       </QuestionContainer>
-
-//       <QuestionContainer>
-//         <label>E-mail</label>
-//         <Field
-//           name="profile.email"
-//           component="input"
-//           type="text"
-//           placeholder="email"
-//         />
-//       </QuestionContainer>
-
-//       {/* <QuestionContainer>
-//               <label>Profile picture</label>
-//               <Field
-//                 name="profile.picture"
-//                 component="input"
-//                 type="text"
-//                 placeholder=""
-//               />
-//             </QuestionContainer> */}
-//       {/* <FileField name="files" /> */}
-//       <QuestionContainer>
-//         <label>Do you have a driving license? (check box for yes)</label>
-//         <Field
-//           name="profile.drivinglicense"
-//           component="input"
-//           type="checkbox"
-//         />
-//       </QuestionContainer>
 
 //       <QuestionContainer>
 //         <label>Select your top three Brain First Results</label>

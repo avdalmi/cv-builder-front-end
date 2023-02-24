@@ -12,7 +12,7 @@ function MultiStepForm({ children, initialValues, onSubmit }) {
   const [snapshot, setSnapShot] = useState(initialValues);
 
   const step = steps[stepNum];
-
+  // console.log("step", step);
   const totalSteps = steps.length;
 
   const isLastStep = stepNum === totalSteps - 1;
@@ -45,15 +45,16 @@ function MultiStepForm({ children, initialValues, onSubmit }) {
       <Formik
         initialValues={snapshot}
         onSubmit={handleSubmit}
-        // validationSchema={step.props.validationSchema}
+        validationSchema={step.props.validationSchema}
       >
         {(formik) => (
           <Form>
             <Stepper activeStep={stepNum}>
               {steps.map((currentStep) => {
                 const label = currentStep.props.stepName;
+                // console.log("albel", currentStep);
                 return (
-                  <Step key={label}>
+                  <Step key={currentStep.key}>
                     <StepLabel>{label}</StepLabel>
                   </Step>
                 );

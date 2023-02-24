@@ -4,9 +4,9 @@ import PhoneInput from "react-phone-input-2";
 
 function PhoneInputField({ label, ...props }) {
   const [field, meta, helpers] = useField(props.name);
-  console.log("field", field);
-  console.log("props", props);
-  console.log("helpers", helpers);
+  //   console.log("field", field);
+  //   console.log("props", props);
+  //   console.log("helpers", helpers);
   return (
     <PhoneInput
       label={label}
