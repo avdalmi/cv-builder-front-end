@@ -30,14 +30,18 @@ function FormPage2() {
       },
       introductionText: "",
     },
-    // skills: [
-    //   {
-    //     name: "",
-    //     level: 0,
-    //   },
-    // ],
-    // address: { street: "", country: "" },
+    fullName: "",
+    links: [linksGroup],
+    skills: [
+      {
+        name: "",
+        level: 0,
+      },
+    ],
+    street: "",
+    country: "",
   };
+
   return (
     <div>
       <h1>Form Page</h1>
@@ -49,39 +53,49 @@ function FormPage2() {
       >
         <ProfileSection validationSchema={profileValidationSchema} />
 
-        {/* <FormStep
+        <FormStep
           stepName="Skills"
           onSubmit={() => console.log("step2 submit")}
         >
           <FieldArray
-            name="friends"
-            render={(arrayHelpers) => (
-              <div>
-                {values.links.map((friend, index) => (
-                  <div key={index}>
-                    
-                    <Field name={`friends[${index}].name`} />
-                    <Field name={`friends.${index}.age`} />
-
-                    <button
-                      type="button"
-                      onClick={() => arrayHelpers.remove(index)}
-                    >
-                      -
-                    </button>
-                  </div>
-                ))}
-                <button
-                  type="button"
-                  onClick={() => arrayHelpers.push({ name: "", age: "" })}
-                >
-                  +
-                </button>
-              </div>
-            )}
+            name="skills"
+            render={(arrayHelpers) => {
+              // console.log("helpers", arrayHelpers);
+              return (
+                <div>
+                  {initialValues.skills.map((skill, index) => (
+                    <div key={index}>
+                      <Field
+                        name={`skills[${index}].name`}
+                        placeholder="skill"
+                      />
+                      <br />
+                      <Field name={`skills[${index}].level`} />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          arrayHelpers.remove(index); //removes from the final value
+                          initialValues.skills.splice(index, 1); //removes locally, UI only
+                        }}
+                      >
+                        -
+                      </button>
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      arrayHelpers.push({ name: "", level: 0 });
+                      initialValues.skills.push({ name: "", level: 0 });
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
+              );
+            }}
           />
-        </FormStep> 
-                */}
+        </FormStep>
 
         {/* <FormStep
           stepName="Address"
