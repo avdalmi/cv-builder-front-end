@@ -1,6 +1,5 @@
 import React from "react";
 import { brainFirstOptions } from "../../Data/BrainFirstOptions";
-import { FormStep } from "../Form/MultiStepForm";
 import TextInputField from "../Form/TextInputField";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
@@ -65,53 +64,3 @@ function ProfileSection(profileValidationSchema) {
 }
 
 export default ProfileSection;
-
-//       <QuestionContainer>
-//         <label>Select your top three Brain First Results</label>
-//         <br />
-//         <label>Result 1</label>
-//         <Field name="profile.brainFirst.one" component="select">
-//           <option />
-//           {brainFirstOptions.map((option) => {
-//             return (
-//               <option key={option.id} value={option.name}>
-//                 {option.name}
-//               </option>
-//             );
-//           })}
-//         </Field>
-//         <br />
-//         <label>Result 2</label>
-//         <Field name="profile.brainFirst.two" component="select">
-//           <option />
-//           {brainFirstOptions.map((option) => {
-//             return (
-//               <option key={option.id} value={option.name}>
-//                 {option.name}
-//               </option>
-//             );
-//           })}
-//         </Field>
-//         <br />
-//         <label>Result 3</label>
-//         <Field name="profile.brainFirst.three" component="select">
-//           <option />
-//           {brainFirstOptions.map((option) => {
-//             return (
-//               <option key={option.id} value={option.name}>
-//                 {option.name}
-//               </option>
-//             );
-//           })}
-//         </Field>
-//       </QuestionContainer>
-
-//       <QuestionContainer>
-//         <label>Write a short introduction</label>
-//         <br />
-//         <Field
-//           name="profile.introduction"
-//           component="textarea"
-//           placeholder="introduction text"
-//         ></Field>
-//       </QuestionContainer>

@@ -1,6 +1,5 @@
 import React from "react";
 import { FieldArray, Field } from "formik";
-import { FormStep } from "../Form/MultiStepForm";
 
 function SkillsSection(props) {
   // console.log(initialValues);

@@ -19,13 +19,6 @@ function WorkExpSection(props) {
               borderRadius: "15px",
             }}
           >
-            {/* workPeriodStart: "",
-        workPeriodEnd: "",
-        workCurrent: "false",
-        workPositionTitle: "",
-        workDescription: "",
-        workLocation: "",
-        workCompanyName: "", */}
             <h4>Add your work experience</h4>
             {props.initialValues.workExperience.map((skill, index) => (
               <div key={index} style={{ margin: "20px" }}>
