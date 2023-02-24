@@ -10,15 +10,32 @@ import SelectField from "../Form/SelectField";
 function ProfileSection(profileValidationSchema) {
   return (
     <div>
-      <TextInputField name="fullName" label="Full name *" id="fullName" />
-      <TextInputField name="profile.jobTitle" label="Job title *" />
+      <TextInputField
+        name="fullName"
+        label="Full name *"
+        id="fullName"
+        placeholder="Ex: John Doe"
+      />
+      <TextInputField
+        name="profile.jobTitle"
+        label="Job title *"
+        placeholder="Ex: Software Developer"
+      />
       <TextInputField
         name="profile.currentLocation"
         label="Current location *"
+        placeholder="Ex: Amsterdam, The Netherlands"
       />
-      <TextInputField name="profile.email" label="E-mail *" />
+      <TextInputField
+        name="profile.email"
+        label="E-mail *"
+        placeholder="Ex: john.doe@gmail.com"
+      />
       {/* <PhoneInputField name="profile.phone" label="Phone number" />  */}
-      <FileUploadField name="profile.file" type="file" />
+      <div>
+        <FormLabel>Select a profile picture</FormLabel>
+        <FileUploadField name="profile.file" type="file" />
+      </div>
       <FormControl>
         <FormLabel htmlFor="profile.drivingLicense">
           Do you have a driving license?
@@ -57,7 +74,7 @@ function ProfileSection(profileValidationSchema) {
         name="profile.introductionText"
         multiline
         rows={5}
-        label="Write a little about yourself... *"
+        label="Write a little bit about yourself... *"
       />
     </div>
   );

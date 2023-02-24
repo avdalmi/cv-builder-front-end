@@ -24,10 +24,37 @@ export const initialValues = {
       workPositionTitle: "",
       workCompanyName: "",
       workLocation: "",
-      workPeriodStart: "",
-      workPeriodEnd: "",
+      workStartDate: "",
+      workEndDate: "",
       workCurrent: "false",
       workDescription: "",
     },
   ],
+  education: [
+    {
+      educationSchoolName: "",
+      educationDegreeTitle: "",
+      educationLocation: "",
+      educationStartDate: "",
+      educationEndDate: "",
+      educationCurrent: "false",
+      educationDescription: "",
+    },
+  ],
+  licensesAndCertifications: [
+    {
+      certificateTitle: "",
+      certificateInstituteName: "",
+      certificateIssueDate: "",
+      certificateExpirationDate: "",
+      certificateCredentialID: "",
+      certificateCredentialURL: "",
+      certificateUpload: "",
+    },
+  ],
 };
+
+// - Periode
+// - Instituut
+// - Opleidingsnaam
+// - Cijfer?
