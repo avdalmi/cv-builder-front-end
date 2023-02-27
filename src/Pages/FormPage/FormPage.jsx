@@ -15,6 +15,7 @@ import { initialValues } from "./initialValues";
 import EducationSection from "../../Components/FormSections/4_EducationSection";
 import CertificatesSection from "../../Components/FormSections/5_CertificatesSection";
 import PublicationSection from "../../Components/FormSections/6_PublicationSection";
+import LanguageSection from "../../Components/FormSections/7_LanguageSection";
 
 function FormPage() {
   return (
@@ -63,13 +64,20 @@ function FormPage() {
           validationSchema={certificatesValidationSchema}
         >
           <CertificatesSection initialValues={initialValues} />
-        </FormStep> */}
+        </FormStep>
         <FormStep
           stepName="Publications"
           onSubmit={() => console.log("certificates submit")}
           validationSchema={publicationsValidationSchema}
         >
           <PublicationSection initialValues={initialValues} />
+        </FormStep> */}
+        <FormStep
+          stepName="Languages"
+          onSubmit={() => console.log("languages submit")}
+          // validationSchema={publicationsValidationSchema}
+        >
+          <LanguageSection initialValues={initialValues} />
         </FormStep>
       </MultiStepForm>
     </div>

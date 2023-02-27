@@ -61,6 +61,12 @@ export const initialValues = {
       pubDescription: "",
     },
   ],
+  languages: [
+    {
+      languageName: "",
+      languageLevel: "",
+    },
+  ],
 };
 
 // - Periode

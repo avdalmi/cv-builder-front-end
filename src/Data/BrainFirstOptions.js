@@ -1,7 +1,7 @@
 export const brainFirstOptions = [
   {
     id: 1,
-    nameEN: "Capacity",
+    name: "Capacity",
     nameNL: "Capaciteit",
     descriptionNL:
       "De hoeveelheid informatie die je tegelijkertijd in gedachten kunt houden, terughalen, toepassen en combineren. Een goede score hierop draagt bij aan creativiteit, proactief gedrag en een goed probleemoplossend vermogen.",
@@ -10,7 +10,7 @@ export const brainFirstOptions = [
   },
   {
     id: 2,
-    nameEN: "Processing speed",
+    name: "Processing speed",
     nameNL: "Denksnelheid",
     descriptionNL:
       "De mate waarin je snel beslissingen kunt nemen in een omgeving met veel informatie Een hoge score hierop draagt bij aan besluitvaardigheid, handelingssnelheid en resultaatgerichtheid.",
@@ -19,7 +19,7 @@ export const brainFirstOptions = [
   },
   {
     id: 3,
-    nameEN: "Grit",
+    name: "Grit",
     nameNL: "Volharding",
     descriptionNL:
       "Een hoge score hierop draagt bij aan stressbestendigheid, weerbaarheid en doorzettingsvermogen. In de dagelijkse praktijk zal je waarschijnlijk je hoofd koel kunnen houden in stressvolle situaties en zelfs bij toenemende complexiteit of tijdsdruk goed kunnen blijven functioneren.",
@@ -28,7 +28,7 @@ export const brainFirstOptions = [
   },
   {
     id: 4,
-    nameEN: "Blocking",
+    name: "Blocking",
     nameNL: "Afsluiten",
     descriptionNL:
       "Een goede score hierop draagt bij aan het vermogen om je te kunnen afsluiten voor de omgeving en onverstoorbaar te zijn. In de dagelijkse praktijk kan je waarschijnlijk je werk goed doen in drukke werkomgevingen zoals een kantoortuin, een café of in de trein.",
@@ -37,7 +37,7 @@ export const brainFirstOptions = [
   },
   {
     id: 5,
-    nameEN: "Dividing",
+    name: "Dividing",
     nameNL: "Verdelen",
     descriptionNL:
       ". Een hoge score hierop draagt bij aan het kunnen richten en verdelen van aandacht. In de dagelijkse praktijk ben je waarschijnlijk in staat om je aandacht efficiënt te verdelen over meerdere taken en mensen, kun je relatief makkelijk schakelen tussen verschillende taken en richt je je aandacht snel op dat wat belangrijk is.",
@@ -46,7 +46,7 @@ export const brainFirstOptions = [
   },
   {
     id: 6,
-    nameEN: "Anticipating",
+    name: "Anticipating",
     nameNL: "Anticiperen",
     descriptionNL:
       "Een hoge score hierop draagt bij aan het vermogen om planmatig te werken, vooruit te denken en doelgericht te handelen. In de dagelijkse praktijk zal je waarschijnlijk in staat zijn om twee stappen vooruit te denken en kunnen inschatten hoe je moet handelen in verschillende situaties.",
@@ -55,7 +55,7 @@ export const brainFirstOptions = [
   },
   {
     id: 7,
-    nameEN: "Eye for detail",
+    name: "Eye for detail",
     nameNL: "Oog voor detail",
     descriptionNL:
       " Een goede score hierop draagt bij aan het vermogen om te kunnen inzoomen op details, goed te kunnen onderscheiden en precies te werken. In de dagelijkse praktijk heb je waarschijnlijk bovengemiddeld oog voor detail, kun je goed afgewogen beslissingen nemen en kun je collega's goed helpen bij kwaliteitscontroles",
@@ -64,7 +64,7 @@ export const brainFirstOptions = [
   },
   {
     id: 8,
-    nameEN: "Prioritizing",
+    name: "Prioritizing",
     nameNL: "Prioriteren",
     descriptionNL:
       "Een goede score hierop draagt bij aan het vermogen om overzicht te houden en te kunnen prioriteren. In de dagelijkse praktijk ben je waarschijnlijk in staat om relatief snel tot de kern te komen, de rode draad vast te houden, en doelgericht te werken.",
@@ -73,7 +73,7 @@ export const brainFirstOptions = [
   },
   {
     id: 9,
-    nameEN: "Consistency",
+    name: "Consistency",
     nameNL: "Consistentie",
     descriptionNL:
       "Een hoge score hierop draagt bij aan nauwkeurigheid en het vermogen om foutloos te kunnen handelen. In de dagelijkse praktijk zal je waarschijnlijk in de regel weinig fouten maken en ben je over het algemeen in staat om stabiele kwaliteit te leveren.",
@@ -82,7 +82,7 @@ export const brainFirstOptions = [
   },
   {
     id: 10,
-    nameEN: "Action speed",
+    name: "Action speed",
     nameNL: "Actiesnelheid",
     descriptionNL:
       "Een hoge score hierop draagt bij aan het vermogen om snel te kunnen handelen en beslissen en aan het werktempo. In de dagelijkse praktijk zul je waarschijnlijk snel kunnen handelen op de automatische piloot en kun je relatief snel simpele beslissingen nemen.",
@@ -91,7 +91,7 @@ export const brainFirstOptions = [
   },
   {
     id: 11,
-    nameEN: "Precision",
+    name: "Precision",
     nameNL: "Precisie",
     descriptionNL:
       "Een hoge score hierop draagt bij aan nauwkeurigheid en effectiviteit. In de dagelijkse praktijk zul je waarschijnlijk in staat zijn om veel taken tegelijkertijd te coördineren en tot een goed einde te brengen. Daarnaast kun je waarschijnlijk foutloos blijven werken wanneer verschillende taken zich aan je opbrengen.",
@@ -100,7 +100,7 @@ export const brainFirstOptions = [
   },
   {
     id: 12,
-    nameEN: "Self-control",
+    name: "Self-control",
     nameNL: "Zelfcontrole",
     descriptionNL:
       "Een hoge score hierop draagt bij aan geduld kunnen bewaren, beheerst handelen en zelfregulatie. In de dagelijkse praktijk zul je jezelf waarschijnlijk regelmatig kunnen behoeden om onnodige fouten te maken en ben je in de regel in staat om op het allerlaatste moment niet of anders te handelen.",
@@ -109,7 +109,7 @@ export const brainFirstOptions = [
   },
   {
     id: 13,
-    nameEN: "Switching",
+    name: "Switching",
     nameNL: "Schakelen",
     descriptionNL:
       "Het gemak waarmee je tussen taken kunt wisselen. Een hoge score hierop is een belangrijke bouwsteen voor gedragseigenschappen als wendbaarheid en improvisatievermogen. In de dagelijkse praktijk zal je waarschijnlijk makkelijk kunnen schakelen tussen taken, stabiel blijven presteren als je vaak tussen werkzaamheden wisselt, en verlies je weinig tijd tijdens het opstarten van taken.",
@@ -118,7 +118,7 @@ export const brainFirstOptions = [
   },
   {
     id: 14,
-    nameEN: "Directing",
+    name: "Directing",
     nameNL: "Regisseren",
     descriptionNL:
       "Een hoge score hierop draagt bij aan het kunnen reflecteren en prioriteren. In de dagelijkse praktijk kun je waarschijnlijk goed inschatten welk gedrag passend is in een gegeven situatie. Ook heb je jezelf goed onder controle en kun je je eigen acties bijsturen indien je dat wenst.",
@@ -127,7 +127,7 @@ export const brainFirstOptions = [
   },
   {
     id: 15,
-    nameEN: "Letting go",
+    name: "Letting go",
     nameNL: "Loslaten",
     descriptionNL:
       "A high score on this ability contributes to mental resiliency, composure and efficacy. In daily practice, you are likely to simply let go of an undesirable problem, remark or situation and you do not easily get frustrated, when things do not work out as planned.",
@@ -136,7 +136,7 @@ export const brainFirstOptions = [
   },
   {
     id: 16,
-    nameEN: "Concentrating",
+    name: "Concentrating",
     nameNL: "Concentreren",
     descriptionNL:
       "De mate waarin je je gedachten bij een taak kunt houden, zelfs als het repetitief of saai wordt. Een hoge score hierop draagt bij aan kunnen focussen, doorzettingsvermogen en constant presteren.",

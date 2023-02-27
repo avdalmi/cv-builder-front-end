@@ -4,9 +4,16 @@ import React from "react";
 
 function SelectField({ ...props }) {
   const [field, meta] = useField(props);
-
+  // console.log("props", props);
   return (
-    <TextField select label="select" defaultValue="" {...field} {...props}>
+    <TextField
+      style={{ width: 550 }}
+      select
+      //   label="select"
+      defaultValue=""
+      {...field}
+      {...props}
+    >
       {props.options.map((item) => {
         return (
           <MenuItem key={item.id} value={item.name}>
