@@ -13,7 +13,7 @@ function LanguageSection(props) {
         // console.log("helpers", arrayHelpers);
         return (
           <div>
-            <h4>Add your relevant languagws</h4>
+            <h4>Add your relevant languages</h4>
             {props.initialValues.languages.map((language, index) => (
               <div key={index} style={{ display: "flex" }}>
                 <TextInputField

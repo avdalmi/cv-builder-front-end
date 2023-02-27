@@ -4,9 +4,8 @@ export const profileValidationSchema = yup.object({
   fullName: yup.string().required("please enter your full name"),
   profile: yup.object().shape({
     jobTitle: yup.string().required("please enter your job title"),
-    currentLocation: yup
-      .string()
-      .required("please enter your current location"),
+    currentCity: yup.string().required("please enter your current city"),
+    currentCountry: yup.string().required("please enter your current country"),
     email: yup
       .string()
       .email("please enter a valid email")
@@ -96,6 +95,56 @@ export const publicationsValidationSchema = yup.object({
     })
   ),
 });
+
+export const languagesValidationSchema = yup.object({
+  languages: yup.array(
+    yup.object({
+      languageName: yup.string(),
+      languageLevel: yup.string(),
+    })
+  ),
+});
+
+export const hobbiesValidationSchema = yup.object({
+  hobbies: yup.array(
+    yup.object({
+      hobby: yup.string(),
+    })
+  ),
+});
+
+export const projectsValidationSchema = yup.object({
+  projects: yup.array(
+    yup.object({
+      projectTitle: yup.string(),
+      projectDescription: yup.string(),
+      projectCity: yup.string(),
+      projectCountry: yup.string(),
+      projectDate: yup.string(),
+      projectLink: yup.string(),
+      projectSkills: yup.array(
+        yup.object({
+          projectSkill: yup.string(),
+        })
+      ),
+    })
+  ),
+});
+// projects: [
+//   {
+//     projectTitle: "",
+//     projectDescription: "",
+//     projectCity: "",
+//     projectCountry: "",
+//     projectDate: "",
+//     projectLink: "",
+//     projectSkills: [
+//       {
+//         projectSkill: "",
+//       },
+//     ],
+//   },
+// ],
 // phone: yup
 //   .string()
 //   .matches(/^[6-9]\d{9}$/, {

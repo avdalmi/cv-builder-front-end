@@ -104,7 +104,7 @@ function EducationSection(props) {
                   eduCurrent: "false",
                   eduDescription: "",
                 });
-                props.initialValues.workExperience.push({
+                props.initialValues.eduation.push({
                   eduSchoolName: "",
                   eduDegreeTitle: "",
                   eduLocation: "",

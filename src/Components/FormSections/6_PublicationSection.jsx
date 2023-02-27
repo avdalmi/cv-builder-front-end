@@ -9,18 +9,8 @@ function PublicationSection(props) {
     <FieldArray
       name="publications"
       render={(arrayHelpers) => {
-        // console.log("helpers", arrayHelpers);
         return (
           <div>
-            {/* publications: [
-    {
-      pubTitle: "", //Ex: To Kill a Mockingbird
-      pubPublisher: "", //Ex: Harvard Business Review
-      pubDate: "",
-      pubURL: "",
-      pubDescription: "",
-    },
-  ], */}
             <h4>Add your publications</h4>
             {props.initialValues.publications.map((pub, index) => (
               <div key={index} style={{ margin: "20px" }}>
@@ -99,6 +89,3 @@ function PublicationSection(props) {
 }
 
 export default PublicationSection;
-// - Titel
-// - Auteurs
-// - Tekst

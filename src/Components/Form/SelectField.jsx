@@ -4,12 +4,11 @@ import React from "react";
 
 function SelectField({ ...props }) {
   const [field, meta] = useField(props);
-  // console.log("props", props);
+
   return (
     <TextField
       style={{ width: 550 }}
       select
-      //   label="select"
       defaultValue=""
       {...field}
       {...props}

@@ -62,7 +62,3 @@ function SkillsSection(props) {
 }
 
 export default SkillsSection;
-// ## Vaardigheden
-// ### Programmeertalen | Technieken & Frameworks | Methodes & Tools | Overig
-// - Naam
-// - Score

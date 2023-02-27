@@ -5,12 +5,10 @@ import FileUploadField from "../Form/FileUploadField";
 import { Button, FormLabel } from "@mui/material";
 
 function CertificatesSection(props) {
-  // console.log("props", props);
   return (
     <FieldArray
       name="licensesAndCertifications"
       render={(arrayHelpers) => {
-        // console.log("helpers", arrayHelpers);
         return (
           <div>
             <h4>Add your licenses and certifications</h4>
@@ -38,7 +36,6 @@ function CertificatesSection(props) {
                 <TextInputField
                   name={`licensesAndCertifications[${index}].certIssueDate`}
                   type="date"
-                  // FormLabel="start date"
                 />
                 <FormLabel>Expiration date</FormLabel>
                 <TextInputField

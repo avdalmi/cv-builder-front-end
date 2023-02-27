@@ -7,6 +7,9 @@ import {
   educationValidationSchema,
   skillsValidationSchema,
   publicationsValidationSchema,
+  languagesValidationSchema,
+  hobbiesValidationSchema,
+  projectsValidationSchema,
 } from "./FormValidation";
 import ProfileSection from "../../Components/FormSections/1_ProfileSection";
 import SkillsSection from "../../Components/FormSections/2_SkillsSection";
@@ -16,6 +19,8 @@ import EducationSection from "../../Components/FormSections/4_EducationSection";
 import CertificatesSection from "../../Components/FormSections/5_CertificatesSection";
 import PublicationSection from "../../Components/FormSections/6_PublicationSection";
 import LanguageSection from "../../Components/FormSections/7_LanguageSection";
+import HobbiesSection from "../../Components/FormSections/8_HobbiesSection";
+import ProjectsSection from "../../Components/FormSections/9_ProjectsSection";
 
 function FormPage() {
   return (
@@ -33,7 +38,7 @@ function FormPage() {
           validationSchema={profileValidationSchema}
         >
           <ProfileSection />
-        </FormStep>
+        </FormStep> */}
 
         <FormStep
           stepName="Skills"
@@ -43,7 +48,7 @@ function FormPage() {
           <SkillsSection initialValues={initialValues} />
         </FormStep>
 
-        <FormStep
+        {/* <FormStep
           stepName="Work experience"
           onSubmit={() => console.log("work experience submit")}
           validationSchema={workValidationSchema}
@@ -71,13 +76,28 @@ function FormPage() {
           validationSchema={publicationsValidationSchema}
         >
           <PublicationSection initialValues={initialValues} />
-        </FormStep> */}
+        </FormStep>
         <FormStep
           stepName="Languages"
           onSubmit={() => console.log("languages submit")}
-          // validationSchema={publicationsValidationSchema}
+          validationSchema={languagesValidationSchema}
         >
           <LanguageSection initialValues={initialValues} />
+        </FormStep>
+
+        <FormStep
+          stepName="Hobbies"
+          onSubmit={() => console.log("hobbies submit")}
+          validationSchema={hobbiesValidationSchema}
+        >
+          <HobbiesSection initialValues={initialValues} />
+        </FormStep> */}
+        <FormStep
+          stepName="Projects"
+          onSubmit={() => console.log("projects submit")}
+          validationSchema={projectsValidationSchema}
+        >
+          <ProjectsSection initialValues={initialValues} />
         </FormStep>
       </MultiStepForm>
     </div>

@@ -6,6 +6,7 @@ import FormLabel from "@mui/material/FormLabel";
 import { Field } from "formik";
 import FileUploadField from "../Form/FileUploadField";
 import SelectField from "../Form/SelectField";
+import CountrySelect from "../Form/CountrySelect";
 
 function ProfileSection(profileValidationSchema) {
   return (
@@ -22,9 +23,19 @@ function ProfileSection(profileValidationSchema) {
         placeholder="Ex: Software Developer"
       />
       <TextInputField
-        name="profile.currentLocation"
+        name="profile.currentCity"
+        label="Current city*"
+        placeholder="Ex: Amsterdam"
+      />
+      {/* <TextInputField
+        name="profile.currentCountry"
         label="Current location *"
         placeholder="Ex: Amsterdam, The Netherlands"
+      /> */}
+      <CountrySelect
+        name={`profile.projectCountry`}
+        label="Country"
+        component="select"
       />
       <TextInputField
         name="profile.email"

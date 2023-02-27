@@ -2,7 +2,8 @@ export const initialValues = {
   fullName: "",
   profile: {
     jobTitle: "",
-    currentLocation: "",
+    currentCity: "",
+    currentCountry: "",
     email: "",
     file: "",
     drivingLicense: "false",
@@ -67,9 +68,32 @@ export const initialValues = {
       languageLevel: "",
     },
   ],
+  hobbies: [
+    {
+      hobby: "",
+    },
+  ],
+  projects: [
+    {
+      projectTitle: "",
+      projectDescription: "",
+      projectCity: "",
+      projectCountry: "",
+      projectDate: "",
+      projectLinks: [
+        {
+          projectLink: "",
+        },
+      ],
+      projectSkills: [
+        {
+          projectSkill: "",
+        },
+      ],
+    },
+  ],
 };
 
-// - Periode
-// - Instituut
-// - Opleidingsnaam
-// - Cijfer?
+// - Links to github etc.
+// description
+// title
