@@ -60,8 +60,8 @@ export const initialValues = {
   ],
   publications: [
     {
-      pubTitle: "", //Ex: To Kill a Mockingbird
-      pubPublisher: "", //Ex: Harvard Business Review
+      pubTitle: "",
+      pubPublisher: "",
       pubDate: "",
       pubURL: "",
       pubDescription: "",

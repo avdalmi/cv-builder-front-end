@@ -2,9 +2,11 @@ import React from "react";
 import TextInputField from "../Form/TextInputField";
 import FileUploadField from "../Form/FileUploadField";
 import { Button, FormLabel } from "@mui/material";
-import { FieldArray } from "formik";
+import { FieldArray, useField } from "formik";
 
-function PublicationSection(props) {
+function PublicationSection({ ...props }) {
+  const [meta] = useField(props);
+  console.log("meta", meta);
   return (
     <FieldArray
       name="publications"
@@ -42,6 +44,7 @@ function PublicationSection(props) {
                   rows={3}
                   inputProps={{ maxLength: 300 }}
                 />
+                <p>{meta.value[index].pubDescription.length} / 300</p>
                 <Button
                   type="button"
                   variant="outlined"

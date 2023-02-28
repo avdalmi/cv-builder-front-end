@@ -20,7 +20,8 @@ export const profileValidationSchema = yup.object({
       .required("please enter your email"),
     introductionText: yup
       .string()
-      .required("please write a little bit about yourself"),
+      .required("please write a little bit about yourself")
+      .max(300, "Must be under 300 characters"),
   }),
 });
 

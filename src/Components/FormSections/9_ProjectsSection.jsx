@@ -14,7 +14,7 @@ import CountrySelect from "../Form/CountrySelect";
 
 function ProjectsSection({ ...props }) {
   const { values } = useFormikContext();
-
+  const [meta] = useField(props);
   return (
     <FieldArray
       name="projects"
@@ -31,13 +31,18 @@ function ProjectsSection({ ...props }) {
                   label="Project title"
                 />
 
-                <TextInputField
-                  name={`projects[${index}].projectDescription`}
-                  placeholder="Type something... "
-                  multiline
-                  rows={5}
-                  label="Project description"
-                />
+                <div>
+                  <TextInputField
+                    name={`projects[${index}].projectDescription`}
+                    placeholder="Type something... "
+                    multiline
+                    rows={5}
+                    label="Project description"
+                    inputProps={{ maxLength: 300 }}
+                  />
+                  <p>{meta.value[index].projectDescription.length} / 300</p>
+                </div>
+
                 <TextInputField
                   name={`projects[${index}].projectCity`}
                   placeholder="Ex: Amsterdam"
@@ -50,12 +55,14 @@ function ProjectsSection({ ...props }) {
                   // component="select"
                   defaultValue=""
                 />
-                <br />
-                <FormLabel>Completion date *</FormLabel>
-                <TextInputField
-                  name={`projects[${index}].projectDate`}
-                  type="date"
-                />
+
+                <div>
+                  <FormLabel>Completion date *</FormLabel>
+                  <TextInputField
+                    name={`projects[${index}].projectDate`}
+                    type="date"
+                  />
+                </div>
 
                 <div>
                   <FieldArray

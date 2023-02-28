@@ -1,12 +1,14 @@
 import React from "react";
-import { FieldArray, Field } from "formik";
+import { FieldArray, Field, useField } from "formik";
 import TextInputField from "../Form/TextInputField";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { InputLabel, FormHelperText } from "@mui/material";
 import CountrySelect from "../Form/CountrySelect";
 
-function EducationSection(props) {
+function EducationSection({ ...props }) {
+  const [meta] = useField(props);
+
   return (
     <FieldArray
       name="education"
@@ -69,6 +71,7 @@ function EducationSection(props) {
                   label="Write a little bit about what you learned... max 300 characters*"
                   inputProps={{ maxLength: 300 }}
                 />
+                <p>{meta.value[index].eduDescription.length} / 300</p>
                 <button
                   type="button"
                   style={{ margin: "10px" }}

@@ -5,11 +5,8 @@ import { FormControl, FormLabel, Button } from "@mui/material";
 import CountrySelect from "../Form/CountrySelect";
 
 function WorkExpSection({ ...props }) {
-  // console.log("props", props);
-  // const [field, meta] = useField(props);
+  const [meta] = useField(props);
 
-  // console.log("field", field);
-  // console.log("meta", meta);
   return (
     <FieldArray
       name="workExperience"
@@ -84,6 +81,7 @@ function WorkExpSection({ ...props }) {
                     label="Write a little bit about what you did and what you have achieved... max 300 characters *"
                     inputProps={{ maxLength: 300 }}
                   />
+                  <p>{meta.value[index].workDescription.length} / 300</p>
                   <Button
                     type="button"
                     variant="outlined"

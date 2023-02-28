@@ -1,16 +1,16 @@
 import React from "react";
 import { brainFirstOptions } from "../../Data/BrainFirstOptions";
 import TextInputField from "../Form/TextInputField";
-import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import { Field } from "formik";
 import FileUploadField from "../Form/FileUploadField";
 import SelectField from "../Form/SelectField";
 import CountrySelect from "../Form/CountrySelect";
-import { FormControlLabel, Radio } from "@mui/material";
 import RadioButtonGroup from "../Form/RadioGroup";
+import { useField } from "formik";
 
-function ProfileSection(profileValidationSchema) {
+function ProfileSection({ ...props }) {
+  const [meta] = useField(props);
+
   return (
     <div>
       <TextInputField
@@ -91,7 +91,9 @@ function ProfileSection(profileValidationSchema) {
         multiline
         rows={5}
         label="Write a little bit about yourself... *"
+        inputProps={{ maxLength: 300 }}
       />
+      <p>{meta.value.introductionText.length} / 300</p>
     </div>
   );
 }
