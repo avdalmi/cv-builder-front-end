@@ -40,13 +40,13 @@ function FormPage() {
           <ProfileSection name="profile" initialValues={initialValues} />
         </FormStep> */}
 
-        {/* <FormStep
+        <FormStep
           stepName="Skills"
           onSubmit={() => console.log("skills submit")}
           validationSchema={skillsValidationSchema}
         >
-          <SkillsSection initialValues={initialValues} />
-        </FormStep> */}
+          <SkillsSection initialValues={initialValues} name="skills" />
+        </FormStep>
 
         {/* <FormStep
           stepName="Work experience"
@@ -99,13 +99,13 @@ function FormPage() {
           <HobbiesSection initialValues={initialValues} />
         </FormStep> */}
 
-        <FormStep
+        {/* <FormStep
           stepName="Projects"
           onSubmit={() => console.log("projects submit")}
           validationSchema={projectsValidationSchema}
         >
           <ProjectsSection initialValues={initialValues} name="projects" />
-        </FormStep>
+        </FormStep> */}
       </MultiStepForm>
     </div>
   );
