@@ -79,7 +79,7 @@ function FormPage({ mongoContext: { client, user } }) {
           <CertificatesSection initialValues={initialValues} />
         </FormStep> */}
 
-        {/* <FormStep
+        <FormStep
           stepName="Publications"
           onSubmit={() => console.log("certificates submit")}
           validationSchema={publicationsValidationSchema}
@@ -88,7 +88,7 @@ function FormPage({ mongoContext: { client, user } }) {
             initialValues={initialValues}
             name="publications"
           />
-        </FormStep> */}
+        </FormStep>
 
         {/* <FormStep
           stepName="Languages"
@@ -109,13 +109,13 @@ function FormPage({ mongoContext: { client, user } }) {
           />
         </FormStep> */}
 
-        <FormStep
+        {/* <FormStep
           stepName="Projects"
           onSubmit={() => console.log("projects submit")}
           // validationSchema={projectsValidationSchema}
         >
           <ProjectsSection initialValues={initialValues} name="projects" />
-        </FormStep>
+        </FormStep> */}
       </MultiStepForm>
     </div>
   );

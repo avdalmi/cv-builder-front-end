@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FieldArray, Field, useField, useFormikContext } from "formik";
 import { Button, FormLabel } from "@mui/material";
 import TextInputField from "../Form/TextInputField";
@@ -8,6 +8,7 @@ import LinkField from "../Form/LinkField";
 function ProjectsSection({ ...props }) {
   const { values } = useFormikContext();
   const [meta] = useField(props);
+
   return (
     <FieldArray
       name="projects"

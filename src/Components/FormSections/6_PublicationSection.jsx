@@ -3,6 +3,8 @@ import TextInputField from "../Form/TextInputField";
 import FileUploadField from "../Form/FileUploadField";
 import { Button, FormLabel } from "@mui/material";
 import { FieldArray, useField } from "formik";
+import LinkField from "../Form/LinkField";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function PublicationSection({ ...props }) {
   const [meta] = useField(props);
@@ -30,10 +32,11 @@ function PublicationSection({ ...props }) {
                 <TextInputField
                   name={`publications[${index}].pubDate`}
                   type="date"
-                  // FormLabel="start date"
                 />
-                <TextInputField
+
+                <LinkField
                   name={`publications[${index}].pubURL`}
+                  placeholder="Ex: www.published.com/article-name"
                   label="Publication URL"
                 />
                 <TextInputField
@@ -48,6 +51,7 @@ function PublicationSection({ ...props }) {
                   type="button"
                   variant="outlined"
                   color="error"
+                  startIcon={<DeleteIcon />}
                   onClick={() => {
                     arrayHelpers.remove(index);
                     props.initialValues.publications.splice(index, 1);
