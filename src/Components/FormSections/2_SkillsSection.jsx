@@ -1,15 +1,16 @@
-import React from "react";
-import { FieldArray, Field } from "formik";
+import React, { useState } from "react";
+import { FieldArray, Field, useField } from "formik";
 import TextInputField from "../Form/TextInputField";
-import { Button } from "@mui/material";
+import { Button, FormControl, Rating } from "@mui/material";
+import StarRating from "../Form/StarRating";
 
-function SkillsSection(props) {
-  // console.log(initialValues);
+function SkillsSection({ ...props }) {
+  const [field, meta] = useField(props);
+
   return (
     <FieldArray
       name="skills"
       render={(arrayHelpers) => {
-        // console.log("helpers", arrayHelpers);
         return (
           <div>
             <h4>Add your relevant skills</h4>
@@ -20,13 +21,29 @@ function SkillsSection(props) {
                   placeholder="Ex: React"
                   label="Skill"
                 />
-
-                <TextInputField
+                <Field name={`skills[${index}].skillLevel`} as={StarRating} />
+                {/* <Field
+                  style={{ width: 200 }}
                   type="number"
                   max={5}
                   min={0}
                   name={`skills[${index}].skillLevel`}
-                />
+                /> */}
+                {/* <FormControl>
+                  <Field
+                    as={
+                      <Rating
+                        name={`skills[${index}].skillLevel`}
+                        controlled="true"
+                        precision={0.5}
+                        value={value}
+                        onChange={(e, newValue) => {
+                          setValue(newValue);
+                        }}
+                      />
+                    }
+                  />
+                </FormControl> */}
 
                 <Button
                   type="button"

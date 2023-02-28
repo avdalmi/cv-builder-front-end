@@ -29,6 +29,7 @@ export const skillsValidationSchema = yup.object({
   skills: yup.array(
     yup.object({
       skillName: yup.string().required("please enter a skill name"),
+      // skillLevel: yup.string(),
     })
   ),
 });
