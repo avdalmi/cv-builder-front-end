@@ -44,7 +44,7 @@ export const initialValues = {
       eduCountry: "",
       eduStartDate: "",
       eduEndDate: "",
-      eduCurrent: "false",
+      eduFile: "",
       eduDescription: "",
     },
   ],

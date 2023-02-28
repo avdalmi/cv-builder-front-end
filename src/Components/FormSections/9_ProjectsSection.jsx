@@ -3,6 +3,7 @@ import { FieldArray, Field, useField, useFormikContext } from "formik";
 import { Button, FormLabel } from "@mui/material";
 import TextInputField from "../Form/TextInputField";
 import CountrySelect from "../Form/CountrySelect";
+import LinkField from "../Form/LinkField";
 
 function ProjectsSection({ ...props }) {
   const { values } = useFormikContext();
@@ -66,12 +67,11 @@ function ProjectsSection({ ...props }) {
                           {props.initialValues.projects[index].projectLinks.map(
                             (link, index2) => (
                               <div key={index2}>
-                                <TextInputField
+                                <LinkField
                                   name={`projects[${index}].projectLinks[${index2}].projectLink]`}
                                   placeholder="Ex: github.com/username/projectname"
                                   label="Project link *"
                                 />
-
                                 <Button
                                   type="button"
                                   variant="outlined"
@@ -119,28 +119,6 @@ function ProjectsSection({ ...props }) {
                             index
                           ].projectSkills.map((skill, index2) => (
                             <div key={index2}>
-                              {/* <FormControl fullWidth>
-                                <InputLabel id="select-skill">Skill</InputLabel>
-                              <TextField
-                                // labelId="select-skill"
-                                component="select"
-                                name={`projects[${index}].projectSkills[${index2}].projectSkill`}
-                                defaultValue=""
-                              >
-                                {values &&
-                                  values.skills.map((item, index3) => {
-                                    // console.log("item", item);
-                                    return (
-                                      <MenuItem
-                                        key={index3}
-                                        value={item.skillName}
-                                      >
-                                        {item.skillName}
-                                      </MenuItem>
-                                    );
-                                  })}
-                              </TextField>
-                              </FormControl> */}
                               <Field
                                 component="select"
                                 name={`projects.[${index}].projectSkills.[${index2}].projectSkill`}

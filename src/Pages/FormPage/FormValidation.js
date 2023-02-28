@@ -68,6 +68,7 @@ export const educationValidationSchema = yup.object({
         .date()
         .min(yup.ref("eduStartDate"), "end date can't be before start date")
         .required("please enter a end date or a expected end date"),
+      eduFile: yup.string(),
       eduDescription: yup
         .string()
         .required("please enter a description of the degree"),

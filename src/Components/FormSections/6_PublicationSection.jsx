@@ -62,22 +62,18 @@ function PublicationSection({ ...props }) {
               type="button"
               onClick={() => {
                 arrayHelpers.push({
-                  certInstituteName: "",
-                  certTitle: "",
-                  certIssueDate: "",
-                  certExpirationDate: "",
-                  certCredentialID: "",
-                  certCredentialURL: "",
-                  certUpload: "",
+                  pubTitle: "",
+                  pubPublisher: "",
+                  pubDate: "",
+                  pubURL: "",
+                  pubDescription: "",
                 });
                 props.initialValues.publications.push({
-                  certTitle: "",
-                  certInstituteName: "",
-                  certIssueDate: "",
-                  certExpirationDate: "",
-                  certCredentialID: "",
-                  certCredentialURL: "",
-                  certUpload: "",
+                  pubTitle: "",
+                  pubPublisher: "",
+                  pubDate: "",
+                  pubURL: "",
+                  pubDescription: "",
                 });
               }}
             >
