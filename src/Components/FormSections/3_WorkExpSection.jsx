@@ -5,24 +5,29 @@ import { FormControl, FormLabel, Button } from "@mui/material";
 import CountrySelect from "../Form/CountrySelect";
 
 function WorkExpSection({ ...props }) {
-  const [meta] = useField(props);
-
+  const [meta, field] = useField(props);
+  // console.log("meta", meta);
+  // console.log("field", field);
   return (
     <FieldArray
       name="workExperience"
       render={(arrayHelpers) => {
         // console.log("helpers", arrayHelpers);
         return (
-          <div>
+          <div style={{ width: 500, margin: "0 auto" }}>
             <h4>Add your work experience</h4>
             {props.initialValues.workExperience.map((work, index) => {
-              // const currentWork = field.value.workExperience.workCurrent;
               return (
                 <div key={index} style={{ margin: "20px" }}>
                   <TextInputField
                     name={`workExperience[${index}].workPositionTitle`}
+                    // name={`${meta.value}[${index}].workPositionTitle`}
+
+                    // name={`${field.value}[${index}].workPositionTitle`}
+                    // name={`${field.value[index]}.workPositionTitle`}
                     label="Job title *"
                     placeholder="Ex: Full Stack Developer"
+                    // defaultValue=""
                   />
                   <TextInputField
                     name={`workExperience[${index}].workCompanyName`}
@@ -30,49 +35,66 @@ function WorkExpSection({ ...props }) {
                     placeholder="Ex: Building Heroes"
                   />
                   <TextInputField
+                    // name={`meta.value[${index}].workCity`}
                     name={`workExperience[${index}].workCity`}
                     label="City *"
                     placeholder="Ex: Amsterdam"
                   />
-                  <CountrySelect
+                  {/* <CountrySelect
                     name={`workExperience[${index}].workCountry`}
                     label="Country *"
                     defaultValue=""
-                  />
-                  <FormLabel>Start date *</FormLabel>
+                  /> */}
+                  {/* <FormLabel>Start date *</FormLabel>
                   <TextInputField
                     name={`workExperience[${index}].workStartDate`}
                     type="date"
                   />
+                  <br />
+                  <br />
                   <FormControl>
                     <FormLabel htmlFor={`workExperience[${index}].workCurrent`}>
-                      do you currently work here?
+                      Do you currently work here?
                     </FormLabel>
-                    <Field
-                      type="radio"
-                      name={`workExperience[${index}].workCurrent`}
-                      value="true"
-                    />
-                    yes
-                    <Field
-                      type="radio"
-                      name={`workExperience[${index}].workCurrent`}
-                      value="false"
-                    />
-                    no
+                    <div
+                      style={{
+                        display: "flex",
+                        // backgroundColor: "pink",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <label>
+                        <Field
+                          type="radio"
+                          name={`workExperience[${index}].workCurrent`}
+                          value="true"
+                        />
+                        yes
+                      </label>
+                      <label>
+                        <Field
+                          type="radio"
+                          name={`workExperience[${index}].workCurrent`}
+                          value="false"
+                        />
+                        no
+                      </label>
+                    </div>
+                    <br />
                   </FormControl>{" "}
-                  {/* {currentWork !== "false" ? (
-                    <h1>show end date</h1>
+                  {meta.value[index].workCurrent === "false" ? (
+                    <div>
+                      <FormLabel>End date</FormLabel>
+                      <TextInputField
+                        name={`workExperience[${index}].workEndDate`}
+                        type="date"
+                      />
+                    </div>
                   ) : (
-                    <h1>hide enddate</h1>
-                  )} */}
+                    <div value="false"></div>
+                  )}
                   <br />
                   <br />
-                  <FormLabel>End date</FormLabel>
-                  <TextInputField
-                    name={`workExperience[${index}].workEndDate`}
-                    type="date"
-                  />
                   <TextInputField
                     placeholder="type something..."
                     name={`workExperience[${index}].workDescription`}
@@ -81,7 +103,7 @@ function WorkExpSection({ ...props }) {
                     label="Write a little bit about what you did and what you have achieved... max 300 characters *"
                     inputProps={{ maxLength: 300 }}
                   />
-                  <p>{meta.value[index].workDescription.length} / 300</p>
+                  <p>{meta.value[index].workDescription.length} / 300</p> */}
                   <Button
                     type="button"
                     variant="outlined"

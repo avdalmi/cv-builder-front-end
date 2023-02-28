@@ -10,7 +10,7 @@ function CertificatesSection(props) {
       name="licensesAndCertifications"
       render={(arrayHelpers) => {
         return (
-          <div>
+          <div style={{ width: 500, margin: "0 auto" }}>
             <h4>Add your licenses and certifications</h4>
             {props.initialValues.licensesAndCertifications.map((edu, index) => (
               <div key={index} style={{ margin: "20px" }}>

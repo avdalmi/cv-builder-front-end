@@ -12,7 +12,7 @@ function ProfileSection({ ...props }) {
   const [meta] = useField(props);
 
   return (
-    <div>
+    <div style={{ width: 500, margin: "0 auto" }}>
       <TextInputField
         name="fullName"
         label="Full name *"
@@ -34,11 +34,6 @@ function ProfileSection({ ...props }) {
         label="Country *"
         component="select"
       />
-      {/* <TextInputField
-        name="profile.email"
-        label="E-mail *"
-        placeholder="Ex: john.doe@gmail.com"
-      /> */}
 
       <div>
         <FormLabel>Select a profile picture</FormLabel>
@@ -91,9 +86,9 @@ function ProfileSection({ ...props }) {
         multiline
         rows={5}
         label="Write a little bit about yourself... *"
-        inputProps={{ maxLength: 300 }}
+        inputProps={{ maxLength: 500 }}
       />
-      <p>{meta.value.introductionText.length} / 300</p>
+      <p>{meta.value.introductionText.length} / 500</p>
     </div>
   );
 }

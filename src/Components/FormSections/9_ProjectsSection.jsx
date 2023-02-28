@@ -1,14 +1,6 @@
 import React from "react";
 import { FieldArray, Field, useField, useFormikContext } from "formik";
-import {
-  Button,
-  FormControl,
-  FormLabel,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Button, FormLabel } from "@mui/material";
 import TextInputField from "../Form/TextInputField";
 import CountrySelect from "../Form/CountrySelect";
 
@@ -20,7 +12,7 @@ function ProjectsSection({ ...props }) {
       name="projects"
       render={(arrayHelpers) => {
         return (
-          <div>
+          <div style={{ width: 500, margin: "0 auto" }}>
             <h4>Add your relevant projects</h4>
 
             {props.initialValues.projects.map((project, index) => (
@@ -28,7 +20,7 @@ function ProjectsSection({ ...props }) {
                 <TextInputField
                   name={`projects[${index}].projectTitle`}
                   placeholder="Ex: Project X"
-                  label="Project title"
+                  label="Project title *"
                 />
 
                 <div>
@@ -37,7 +29,7 @@ function ProjectsSection({ ...props }) {
                     placeholder="Type something... "
                     multiline
                     rows={5}
-                    label="Project description"
+                    label="Project description *"
                     inputProps={{ maxLength: 300 }}
                   />
                   <p>{meta.value[index].projectDescription.length} / 300</p>
@@ -46,12 +38,12 @@ function ProjectsSection({ ...props }) {
                 <TextInputField
                   name={`projects[${index}].projectCity`}
                   placeholder="Ex: Amsterdam"
-                  label="City"
+                  label="City *"
                 />
 
                 <CountrySelect
                   name={`projects[${index}].projectCountry`}
-                  label="Country"
+                  label="Country *"
                   // component="select"
                   defaultValue=""
                 />
@@ -77,7 +69,7 @@ function ProjectsSection({ ...props }) {
                                 <TextInputField
                                   name={`projects[${index}].projectLinks[${index2}].projectLink]`}
                                   placeholder="Ex: github.com/username/projectname"
-                                  label="Project link"
+                                  label="Project link *"
                                 />
 
                                 <Button

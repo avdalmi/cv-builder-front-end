@@ -1,8 +1,7 @@
 import React from "react";
 import { FieldArray, Field } from "formik";
 import TextInputField from "../Form/TextInputField";
-import { Button, FormLabel, MenuItem, TextField } from "@mui/material";
-import SelectField from "../Form/SelectField";
+import { Button } from "@mui/material";
 import { languageLevelOptions } from "../../Data/LanguageLevelOptions";
 
 function LanguageSection(props) {
@@ -10,9 +9,8 @@ function LanguageSection(props) {
     <FieldArray
       name="languages"
       render={(arrayHelpers) => {
-        // console.log("helpers", arrayHelpers);
         return (
-          <div>
+          <div style={{ width: 500, margin: "0 auto" }}>
             <h4>Add your relevant languages</h4>
             {props.initialValues.languages.map((language, index) => (
               <div key={index} style={{ display: "flex" }}>
