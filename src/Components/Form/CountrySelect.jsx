@@ -39,20 +39,5 @@ function CountrySelect({ label, ...props }) {
     </FormControl>
   );
 }
-// {
-//   /* <Field style={{ width: 550, height: 50 }} {...field} {...props}>
-// <MenuItem value="" disabled>
-//   select country
-// </option>
-// {countries &&
-//   countries.map((country, index) => {
-//     //   console.log("country", country.name.common);
-//     return (
-//       <option key={country.name.common} value={country.name.common}>
-//         {country.name.common}
-//       </option>
-//     );
-//   })}
-// </Field> */
-// }
+
 export default CountrySelect;

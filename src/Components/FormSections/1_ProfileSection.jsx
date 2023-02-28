@@ -34,18 +34,34 @@ function ProfileSection(profileValidationSchema) {
         label="Country *"
         component="select"
       />
-      <TextInputField
+      {/* <TextInputField
         name="profile.email"
         label="E-mail *"
         placeholder="Ex: john.doe@gmail.com"
-      />
-      {/* <PhoneInputField name="profile.phone" label="Phone number" />  */}
+      /> */}
+
       <div>
         <FormLabel>Select a profile picture</FormLabel>
         <FileUploadField name="profile.file" type="file" />
       </div>
       <br />
       <RadioButtonGroup name="profile.drivingLicense" label="driving license" />
+
+      <TextInputField
+        name={`profile.githubLink`}
+        placeholder="Ex: github.com/username"
+        label="GitHub link *"
+      />
+      <TextInputField
+        name={`profile.linkedInLink`}
+        placeholder="Ex: linkedin.com/username"
+        label="LinkedIn link *"
+      />
+      <TextInputField
+        name={`profile.portfolioLink`}
+        placeholder="Ex: www.portfolio.com"
+        label="Portfolio link *"
+      />
       <div>
         <FormLabel htmlFor="profile.brainFirst">
           Select your three Brain First Results:

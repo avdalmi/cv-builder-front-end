@@ -5,7 +5,15 @@ export const profileValidationSchema = yup.object({
   profile: yup.object().shape({
     jobTitle: yup.string().required("please enter your job title"),
     currentCity: yup.string().required("please enter your current city"),
-    currentCountry: yup.string().required("please enter your current country"),
+    currentCountry: yup.string().required("please select your current country"),
+    linkedInLink: yup.string().required("please enter your LinkedIn link"),
+    githubLink: yup.string().required("please enter your GitHub link"),
+    portfolioLink: yup.string(),
+    brainFirst: yup.object({
+      resultOne: yup.string(),
+      resultTwo: yup.string(),
+      resultThree: yup.string(),
+    }),
     email: yup
       .string()
       .email("please enter a valid email")

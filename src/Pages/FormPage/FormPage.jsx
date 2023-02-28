@@ -35,7 +35,7 @@ function FormPage() {
         <FormStep
           stepName="Personal Information"
           onSubmit={() => console.log("personal information submit")}
-          // validationSchema={profileValidationSchema}
+          validationSchema={profileValidationSchema}
         >
           <ProfileSection />
         </FormStep>

@@ -4,9 +4,12 @@ export const initialValues = {
     jobTitle: "",
     currentCity: "",
     currentCountry: "",
-    email: "",
+    email: "brian@buildingitheroes.nl",
     file: "",
     drivingLicense: "false",
+    githubLink: "",
+    linkedInLink: "",
+    portfolioLink: "",
     brainFirst: {
       resultOne: "",
       resultTwo: "",
