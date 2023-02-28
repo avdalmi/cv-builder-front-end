@@ -31,7 +31,7 @@ export const initialValues = {
       workCountry: "",
       workStartDate: "",
       workEndDate: "",
-      workCurrent: "false",
+      workCurrent: "true",
       workDescription: "",
     },
   ],

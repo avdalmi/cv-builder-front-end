@@ -6,13 +6,12 @@ import { FieldArray, useField } from "formik";
 
 function PublicationSection({ ...props }) {
   const [meta] = useField(props);
-  console.log("meta", meta);
   return (
     <FieldArray
       name="publications"
       render={(arrayHelpers) => {
         return (
-          <div>
+          <div style={{ width: 500, margin: "0 auto" }}>
             <h4>Add your publications</h4>
             {props.initialValues.publications.map((pub, index) => (
               <div key={index} style={{ margin: "20px" }}>

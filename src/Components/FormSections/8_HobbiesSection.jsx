@@ -9,8 +9,8 @@ function HobbiesSection(props) {
       name="hobbies"
       render={(arrayHelpers) => {
         return (
-          <div>
-            <h4>Add your relevant languagws</h4>
+          <div style={{ width: 500, margin: "0 auto" }}>
+            <h4>Add your hobbies</h4>
             {props.initialValues.hobbies.map((hob, index) => (
               <div key={index} style={{ display: "flex" }}>
                 <TextInputField

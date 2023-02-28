@@ -21,7 +21,7 @@ export const profileValidationSchema = yup.object({
     introductionText: yup
       .string()
       .required("please write a little bit about yourself")
-      .max(300, "Must be under 300 characters"),
+      .max(500, "Must be under 500 characters"),
   }),
 });
 
@@ -29,7 +29,7 @@ export const skillsValidationSchema = yup.object({
   skills: yup.array(
     yup.object({
       skillName: yup.string().required("please enter a skill name"),
-      // skillLevel: yup.string(),
+      skillLevel: yup.number().required("please select skill level"),
     })
   ),
 });
@@ -113,8 +113,10 @@ export const publicationsValidationSchema = yup.object({
 export const languagesValidationSchema = yup.object({
   languages: yup.array(
     yup.object({
-      languageName: yup.string(),
-      languageLevel: yup.string(),
+      languageName: yup.string().required("please enter a language"),
+      languageLevel: yup
+        .string()
+        .required("please enter you level of proficiency"),
     })
   ),
 });

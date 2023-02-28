@@ -1,27 +1,18 @@
 import React from "react";
-import { FieldArray, Field, useField } from "formik";
+import { FieldArray, useField } from "formik";
 import TextInputField from "../Form/TextInputField";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import { InputLabel, FormHelperText } from "@mui/material";
+import { InputLabel, Button } from "@mui/material";
 import CountrySelect from "../Form/CountrySelect";
 
 function EducationSection({ ...props }) {
   const [meta] = useField(props);
-
+  // console.log("props", props);
   return (
     <FieldArray
       name="education"
       render={(arrayHelpers) => {
-        // console.log("helpers", arrayHelpers);
         return (
-          <div
-            style={{
-              border: "1px solid grey",
-              margin: "10px",
-              borderRadius: "15px",
-            }}
-          >
+          <div style={{ width: 500, margin: "0 auto" }}>
             <h4>Add your education</h4>
             {props.initialValues.education.map((edu, index) => (
               <div key={index} style={{ margin: "20px" }}>
@@ -46,13 +37,13 @@ function EducationSection({ ...props }) {
                 <CountrySelect
                   name={`education[${index}].eduCountry`}
                   label="Country *"
-                  defaultValue=""
+                  // defaultValue=""
                 />
                 <InputLabel>start date *</InputLabel>
                 <TextInputField
                   name={`education[${index}].eduStartDate`}
                   type="date"
-                  // InputLabel="start date"
+                  InputLabel="start date"
                   style={{ margin: "10px" }}
                 />
                 <InputLabel>end date (or expected) *</InputLabel>
@@ -72,7 +63,7 @@ function EducationSection({ ...props }) {
                   inputProps={{ maxLength: 300 }}
                 />
                 <p>{meta.value[index].eduDescription.length} / 300</p>
-                <button
+                <Button
                   type="button"
                   style={{ margin: "10px" }}
                   onClick={() => {
@@ -81,10 +72,10 @@ function EducationSection({ ...props }) {
                   }}
                 >
                   remove education
-                </button>
+                </Button>
               </div>
             ))}
-            <button
+            <Button
               style={{ margin: "20px" }}
               type="button"
               onClick={() => {
@@ -97,7 +88,7 @@ function EducationSection({ ...props }) {
                   eduCurrent: "false",
                   eduDescription: "",
                 });
-                props.initialValues.eduation.push({
+                props.initialValues.education.push({
                   eduSchoolName: "",
                   eduDegreeTitle: "",
                   eduLocation: "",
@@ -109,7 +100,7 @@ function EducationSection({ ...props }) {
               }}
             >
               Add another education
-            </button>
+            </Button>
           </div>
         );
       }}
