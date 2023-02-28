@@ -1,13 +1,16 @@
 import React from "react";
 import { brainFirstOptions } from "../../Data/BrainFirstOptions";
 import TextInputField from "../Form/TextInputField";
-import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import { Field } from "formik";
 import FileUploadField from "../Form/FileUploadField";
 import SelectField from "../Form/SelectField";
+import CountrySelect from "../Form/CountrySelect";
+import RadioButtonGroup from "../Form/RadioGroup";
+import { useField } from "formik";
 
-function ProfileSection(profileValidationSchema) {
+function ProfileSection({ ...props }) {
+  const [meta] = useField(props);
+
   return (
     <div>
       <TextInputField
@@ -22,30 +25,43 @@ function ProfileSection(profileValidationSchema) {
         placeholder="Ex: Software Developer"
       />
       <TextInputField
-        name="profile.currentLocation"
-        label="Current location *"
-        placeholder="Ex: Amsterdam, The Netherlands"
+        name="profile.currentCity"
+        label="Current city*"
+        placeholder="Ex: Amsterdam"
       />
-      <TextInputField
+      <CountrySelect
+        name={`profile.currentCountry`}
+        label="Country *"
+        component="select"
+      />
+      {/* <TextInputField
         name="profile.email"
         label="E-mail *"
         placeholder="Ex: john.doe@gmail.com"
-      />
-      {/* <PhoneInputField name="profile.phone" label="Phone number" />  */}
+      /> */}
+
       <div>
         <FormLabel>Select a profile picture</FormLabel>
         <FileUploadField name="profile.file" type="file" />
       </div>
-      <FormControl>
-        <FormLabel htmlFor="profile.drivingLicense">
-          Do you have a driving license?
-        </FormLabel>
-        <Field type="radio" name="profile.drivingLicense" value="true" />
-        yes
-        <Field type="radio" name="profile.drivingLicense" value="false" />
-        no
-      </FormControl>{" "}
       <br />
+      <RadioButtonGroup name="profile.drivingLicense" label="driving license" />
+
+      <TextInputField
+        name={`profile.githubLink`}
+        placeholder="Ex: github.com/username"
+        label="GitHub link *"
+      />
+      <TextInputField
+        name={`profile.linkedInLink`}
+        placeholder="Ex: linkedin.com/username"
+        label="LinkedIn link *"
+      />
+      <TextInputField
+        name={`profile.portfolioLink`}
+        placeholder="Ex: www.portfolio.com"
+        label="Portfolio link *"
+      />
       <div>
         <FormLabel htmlFor="profile.brainFirst">
           Select your three Brain First Results:
@@ -75,7 +91,9 @@ function ProfileSection(profileValidationSchema) {
         multiline
         rows={5}
         label="Write a little bit about yourself... *"
+        inputProps={{ maxLength: 300 }}
       />
+      <p>{meta.value.introductionText.length} / 300</p>
     </div>
   );
 }

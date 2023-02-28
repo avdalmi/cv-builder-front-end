@@ -2,13 +2,11 @@ import React from "react";
 import { FieldArray, Field, useField } from "formik";
 import TextInputField from "../Form/TextInputField";
 import { FormControl, FormLabel, Button } from "@mui/material";
+import CountrySelect from "../Form/CountrySelect";
 
 function WorkExpSection({ ...props }) {
-  // console.log("props", props);
-  // const [field, meta] = useField(props);
+  const [meta] = useField(props);
 
-  // console.log("field", field);
-  // console.log("meta", meta);
   return (
     <FieldArray
       name="workExperience"
@@ -32,9 +30,14 @@ function WorkExpSection({ ...props }) {
                     placeholder="Ex: Building Heroes"
                   />
                   <TextInputField
-                    name={`workExperience[${index}].workLocation`}
-                    label="Location *"
-                    placeholder="Ex: Amsterdam, The Netherlands"
+                    name={`workExperience[${index}].workCity`}
+                    label="City *"
+                    placeholder="Ex: Amsterdam"
+                  />
+                  <CountrySelect
+                    name={`workExperience[${index}].workCountry`}
+                    label="Country *"
+                    defaultValue=""
                   />
                   <FormLabel>Start date *</FormLabel>
                   <TextInputField
@@ -78,6 +81,7 @@ function WorkExpSection({ ...props }) {
                     label="Write a little bit about what you did and what you have achieved... max 300 characters *"
                     inputProps={{ maxLength: 300 }}
                   />
+                  <p>{meta.value[index].workDescription.length} / 300</p>
                   <Button
                     type="button"
                     variant="outlined"

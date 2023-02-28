@@ -5,49 +5,46 @@ import FileUploadField from "../Form/FileUploadField";
 import { Button, FormLabel } from "@mui/material";
 
 function CertificatesSection(props) {
-  // console.log("props", props);
   return (
     <FieldArray
       name="licensesAndCertifications"
       render={(arrayHelpers) => {
-        // console.log("helpers", arrayHelpers);
         return (
           <div>
             <h4>Add your licenses and certifications</h4>
             {props.initialValues.licensesAndCertifications.map((edu, index) => (
               <div key={index} style={{ margin: "20px" }}>
                 <TextInputField
-                  name={`licensesAndCertifications[${index}].certificateInstituteName`}
+                  name={`licensesAndCertifications[${index}].certInstituteName`}
                   placeholder="Ex: Techmongers"
                   label="Issuing organisation *"
                 />
                 <TextInputField
-                  name={`licensesAndCertifications[${index}].certificateTitle`}
+                  name={`licensesAndCertifications[${index}].certTitle`}
                   placeholder="Ex: JavaScript Full Stack Developer"
                   label="Title *"
                 />
                 <TextInputField
-                  name={`licensesAndCertifications[${index}].certificateCredentialID`}
-                  label="Certificate credential ID"
+                  name={`licensesAndCertifications[${index}].certCredentialID`}
+                  label="Certification credential ID"
                 />
                 <TextInputField
-                  name={`licensesAndCertifications[${index}].certificateCredentialURL`}
-                  label="Certificate credential URL"
+                  name={`licensesAndCertifications[${index}].certCredentialURL`}
+                  label="Certification credential URL"
                 />
                 <FormLabel>Issue date *</FormLabel>
                 <TextInputField
-                  name={`licensesAndCertifications[${index}].certificateIssueDate`}
+                  name={`licensesAndCertifications[${index}].certIssueDate`}
                   type="date"
-                  // FormLabel="start date"
                 />
                 <FormLabel>Expiration date</FormLabel>
                 <TextInputField
-                  name={`licensesAndCertifications[${index}].certificateExpirationDate`}
+                  name={`licensesAndCertifications[${index}].certExpirationDate`}
                   placeholder="Expiration date"
                   type="date"
                 />
                 <FileUploadField
-                  name={`licensesAndCertifications[${index}].certificateUpload`}
+                  name={`licensesAndCertifications[${index}].certUpload`}
                   type="file"
                 />
                 <Button
@@ -62,7 +59,7 @@ function CertificatesSection(props) {
                     );
                   }}
                 >
-                  remove license or certificate
+                  remove license or certification
                 </Button>
               </div>
             ))}
@@ -71,22 +68,22 @@ function CertificatesSection(props) {
               type="button"
               onClick={() => {
                 arrayHelpers.push({
-                  certificateInstituteName: "",
-                  certificateTitle: "",
-                  certificateIssueDate: "",
-                  certificateExpirationDate: "",
-                  certificateCredentialID: "",
-                  certificateCredentialURL: "",
-                  certificateUpload: "",
+                  certInstituteName: "",
+                  certTitle: "",
+                  certIssueDate: "",
+                  certExpirationDate: "",
+                  certCredentialID: "",
+                  certCredentialURL: "",
+                  certUpload: "",
                 });
                 props.initialValues.licensesAndCertifications.push({
-                  certificateTitle: "",
-                  certificateInstituteName: "",
-                  certificateIssueDate: "",
-                  certificateExpirationDate: "",
-                  certificateCredentialID: "",
-                  certificateCredentialURL: "",
-                  certificateUpload: "",
+                  certTitle: "",
+                  certInstituteName: "",
+                  certIssueDate: "",
+                  certExpirationDate: "",
+                  certCredentialID: "",
+                  certCredentialURL: "",
+                  certUpload: "",
                 });
               }}
             >

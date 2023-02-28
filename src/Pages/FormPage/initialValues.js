@@ -2,10 +2,14 @@ export const initialValues = {
   fullName: "",
   profile: {
     jobTitle: "",
-    currentLocation: "",
-    email: "",
+    currentCity: "",
+    currentCountry: "",
+    email: "brian@buildingitheroes.nl",
     file: "",
     drivingLicense: "false",
+    githubLink: "",
+    linkedInLink: "",
+    portfolioLink: "",
     brainFirst: {
       resultOne: "",
       resultTwo: "",
@@ -23,7 +27,8 @@ export const initialValues = {
     {
       workPositionTitle: "",
       workCompanyName: "",
-      workLocation: "",
+      workCity: "",
+      workCountry: "",
       workStartDate: "",
       workEndDate: "",
       workCurrent: "false",
@@ -32,29 +37,64 @@ export const initialValues = {
   ],
   education: [
     {
-      educationSchoolName: "",
-      educationDegreeTitle: "",
-      educationLocation: "",
-      educationStartDate: "",
-      educationEndDate: "",
-      educationCurrent: "false",
-      educationDescription: "",
+      eduSchoolName: "",
+      eduDegreeTitle: "",
+      eduCity: "",
+      eduCountry: "",
+      eduStartDate: "",
+      eduEndDate: "",
+      eduCurrent: "false",
+      eduDescription: "",
     },
   ],
   licensesAndCertifications: [
     {
-      certificateTitle: "",
-      certificateInstituteName: "",
-      certificateIssueDate: "",
-      certificateExpirationDate: "",
-      certificateCredentialID: "",
-      certificateCredentialURL: "",
-      certificateUpload: "",
+      certTitle: "",
+      certInstituteName: "",
+      certIssueDate: "",
+      certExpirationDate: "",
+      certCredentialID: "",
+      certCredentialURL: "",
+      certUpload: "",
+    },
+  ],
+  publications: [
+    {
+      pubTitle: "",
+      pubPublisher: "",
+      pubDate: "",
+      pubURL: "",
+      pubDescription: "",
+    },
+  ],
+  languages: [
+    {
+      languageName: "",
+      languageLevel: "",
+    },
+  ],
+  hobbies: [
+    {
+      hobby: "",
+    },
+  ],
+  projects: [
+    {
+      projectTitle: "",
+      projectDescription: "",
+      projectCity: "",
+      projectCountry: "",
+      projectDate: "",
+      projectLinks: [
+        {
+          projectLink: "",
+        },
+      ],
+      projectSkills: [
+        {
+          projectSkill: "",
+        },
+      ],
     },
   ],
 };
-
-// - Periode
-// - Instituut
-// - Opleidingsnaam
-// - Cijfer?

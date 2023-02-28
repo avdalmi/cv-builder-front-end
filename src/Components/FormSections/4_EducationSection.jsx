@@ -1,11 +1,14 @@
 import React from "react";
-import { FieldArray, Field } from "formik";
+import { FieldArray, Field, useField } from "formik";
 import TextInputField from "../Form/TextInputField";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { InputLabel, FormHelperText } from "@mui/material";
+import CountrySelect from "../Form/CountrySelect";
 
-function EducationSection(props) {
+function EducationSection({ ...props }) {
+  const [meta] = useField(props);
+
   return (
     <FieldArray
       name="education"
@@ -23,62 +26,52 @@ function EducationSection(props) {
             {props.initialValues.education.map((edu, index) => (
               <div key={index} style={{ margin: "20px" }}>
                 <TextInputField
-                  name={`education[${index}].educationSchoolName`}
+                  name={`education[${index}].eduSchoolName`}
                   placeholder="Ex: University of Amsterdam"
                   style={{ margin: "10px" }}
                   label="College/University name *"
                 />
                 <TextInputField
-                  name={`education[${index}].educationDegreeTitle`}
+                  name={`education[${index}].eduDegreeTitle`}
                   placeholder="Ex: Bachelor's"
                   style={{ margin: "10px" }}
                   label="Degree"
                 />
                 <TextInputField
-                  name={`education[${index}].educationLocation`}
+                  name={`education[${index}].eduCity`}
                   placeholder="Ex: Amsterdam"
-                  label="Location *"
+                  label="City *"
                   style={{ margin: "10px" }}
+                />
+                <CountrySelect
+                  name={`education[${index}].eduCountry`}
+                  label="Country *"
+                  defaultValue=""
                 />
                 <InputLabel>start date *</InputLabel>
                 <TextInputField
-                  name={`education[${index}].educationStartDate`}
+                  name={`education[${index}].eduStartDate`}
                   type="date"
                   // InputLabel="start date"
                   style={{ margin: "10px" }}
                 />
                 <InputLabel>end date (or expected) *</InputLabel>
                 <TextInputField
-                  name={`education[${index}].educationEndDate`}
+                  name={`education[${index}].eduEndDate`}
                   placeholder="End date *"
                   type="date"
                   style={{ margin: "10px" }}
                 />
-                {/* <FormControl>
-                  <FormLabel htmlFor={`education[${index}].educationCurrent`}>
-                    do you currently study here?
-                  </FormLabel>
-                  <Field
-                    type="radio"
-                    name={`education[${index}].educationCurrent`}
-                    value="true"
-                  />
-                  yes
-                  <Field
-                    type="radio"
-                    name={`education[${index}].educationCurrent`}
-                    value="false"
-                  />
-                  no
-                </FormControl>{" "} */}
+
                 <TextInputField
                   placeholder="type something..."
-                  name={`education[${index}].educationDescription`}
+                  name={`education[${index}].eduDescription`}
                   multiline
                   rows={3}
                   label="Write a little bit about what you learned... max 300 characters*"
                   inputProps={{ maxLength: 300 }}
                 />
+                <p>{meta.value[index].eduDescription.length} / 300</p>
                 <button
                   type="button"
                   style={{ margin: "10px" }}
@@ -96,22 +89,22 @@ function EducationSection(props) {
               type="button"
               onClick={() => {
                 arrayHelpers.push({
-                  educationSchoolName: "",
-                  educationDegreeTitle: "",
-                  educationLocation: "",
-                  educationStartDate: "",
-                  educationEndDate: "",
-                  educationCurrent: "false",
-                  educationDescription: "",
+                  eduSchoolName: "",
+                  eduDegreeTitle: "",
+                  eduLocation: "",
+                  eduStartDate: "",
+                  eduEndDate: "",
+                  eduCurrent: "false",
+                  eduDescription: "",
                 });
-                props.initialValues.workExperience.push({
-                  educationSchoolName: "",
-                  educationDegreeTitle: "",
-                  educationLocation: "",
-                  educationStartDate: "",
-                  educationEndDate: "",
-                  educationCurrent: "false",
-                  educationDescription: "",
+                props.initialValues.eduation.push({
+                  eduSchoolName: "",
+                  eduDegreeTitle: "",
+                  eduLocation: "",
+                  eduStartDate: "",
+                  eduEndDate: "",
+                  eduCurrent: "false",
+                  eduDescription: "",
                 });
               }}
             >
