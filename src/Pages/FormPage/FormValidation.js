@@ -9,7 +9,7 @@ export const profileValidationSchema = yup.object({
     linkedInLink: yup.string().required("please enter your LinkedIn link"),
     githubLink: yup.string().required("please enter your GitHub link"),
     portfolioLink: yup.string(),
-    brainFirst: yup.object({
+    brainsFirst: yup.object({
       resultOne: yup.string(),
       resultTwo: yup.string(),
       resultThree: yup.string(),
@@ -68,6 +68,7 @@ export const educationValidationSchema = yup.object({
         .date()
         .min(yup.ref("eduStartDate"), "end date can't be before start date")
         .required("please enter a end date or a expected end date"),
+      eduFile: yup.string(),
       eduDescription: yup
         .string()
         .required("please enter a description of the degree"),
@@ -150,21 +151,7 @@ export const projectsValidationSchema = yup.object({
     })
   ),
 });
-// projects: [
-//   {
-//     projectTitle: "",
-//     projectDescription: "",
-//     projectCity: "",
-//     projectCountry: "",
-//     projectDate: "",
-//     projectLink: "",
-//     projectSkills: [
-//       {
-//         projectSkill: "",
-//       },
-//     ],
-//   },
-// ],
+
 // phone: yup
 //   .string()
 //   .matches(/^[6-9]\d{9}$/, {

@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  TextField,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Select,
-} from "@mui/material";
-import { useField, Field } from "formik";
+import { MenuItem, FormControl, InputLabel, Select } from "@mui/material";
+import { useField } from "formik";
 import axios from "axios";
 
 function CountrySelect({ label, ...props }) {
@@ -22,19 +16,23 @@ function CountrySelect({ label, ...props }) {
     getCountries();
   }, []);
 
+  const displayCountryOptions = () => {
+    const countryNameArray = [];
+    countries.map((country) => countryNameArray.push(country.name.common));
+    return countryNameArray.sort().map((countryName) => {
+      return (
+        <MenuItem key={countryName} value={countryName}>
+          {countryName}
+        </MenuItem>
+      );
+    });
+  };
+
   return (
-    <FormControl fullWidth>
-      <InputLabel>Country *</InputLabel>
+    <FormControl fullWidth variant="standard">
+      <InputLabel>{label}</InputLabel>
       <Select {...field} {...props} style={{ textAlign: "left" }}>
-        {countries &&
-          countries.map((country, index) => {
-            // console.log("country", country.name.common);
-            return (
-              <MenuItem key={country.name.common} value={country.name.common}>
-                {country.name.common}
-              </MenuItem>
-            );
-          })}
+        {countries && displayCountryOptions()}
       </Select>
     </FormControl>
   );

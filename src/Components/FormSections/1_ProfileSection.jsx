@@ -6,11 +6,27 @@ import FileUploadField from "../Form/FileUploadField";
 import SelectField from "../Form/SelectField";
 import CountrySelect from "../Form/CountrySelect";
 import RadioButtonGroup from "../Form/RadioGroup";
-import { useField } from "formik";
+import { Field, useField } from "formik";
+import { Link, Visibility, VisibilityOff } from "@mui/icons-material";
+import {
+  FormControl,
+  IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+} from "@mui/material";
+import LinkField from "../Form/LinkField";
 
 function ProfileSection({ ...props }) {
   const [meta] = useField(props);
 
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   return (
     <div style={{ width: 500, margin: "0 auto" }}>
       <TextInputField
@@ -29,55 +45,74 @@ function ProfileSection({ ...props }) {
         label="Current city*"
         placeholder="Ex: Amsterdam"
       />
+      <br />
+      <br />
       <CountrySelect
         name={`profile.currentCountry`}
         label="Country *"
         component="select"
       />
 
-      <div>
-        <FormLabel>Select a profile picture</FormLabel>
-        <FileUploadField name="profile.file" type="file" />
-      </div>
+      <Field
+        name={`profile.file`}
+        as={FileUploadField}
+        label="Select a profile picture"
+        filetype="image"
+      />
+
       <br />
       <RadioButtonGroup name="profile.drivingLicense" label="driving license" />
-
-      <TextInputField
+      <br />
+      {/* <TextInputField
+        name={`profile.githubLink`}
+        placeholder="Ex: github.com/username"
+        label="GitHub link *"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Link />
+            </InputAdornment>
+          ),
+        }}
+      /> */}
+      <LinkField
         name={`profile.githubLink`}
         placeholder="Ex: github.com/username"
         label="GitHub link *"
       />
-      <TextInputField
+
+      <LinkField
         name={`profile.linkedInLink`}
         placeholder="Ex: linkedin.com/username"
         label="LinkedIn link *"
       />
-      <TextInputField
+      <LinkField
         name={`profile.portfolioLink`}
         placeholder="Ex: www.portfolio.com"
-        label="Portfolio link *"
+        label="Portfolio link"
       />
       <div>
-        <FormLabel htmlFor="profile.brainFirst">
-          Select your three Brain First Results:
+        <FormLabel htmlFor="profile.brainsFirst">
+          Select your three BrainsFirst Results:
         </FormLabel>
         <br />
         <SelectField
-          name="profile.brainFirst.resultOne"
+          name="profile.brainsFirst.resultOne"
           options={brainFirstOptions}
-          helperText=" select your first result "
+          disabledtext="select your first result"
         />
 
         <SelectField
-          name="profile.brainFirst.resultTwo"
+          name="profile.brainsFirst.resultTwo"
           options={brainFirstOptions}
-          helperText="select your second result"
+          disabledtext="select your second result"
         />
 
         <SelectField
-          name="profile.brainFirst.resultThree"
+          name="profile.brainsFirst.resultThree"
           options={brainFirstOptions}
-          helperText=" select your third result "
+          label="result"
+          disabledtext="select your third result"
         />
       </div>
       <TextInputField

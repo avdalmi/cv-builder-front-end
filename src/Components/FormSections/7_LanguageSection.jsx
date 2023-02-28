@@ -3,6 +3,7 @@ import { FieldArray, Field } from "formik";
 import TextInputField from "../Form/TextInputField";
 import { Button } from "@mui/material";
 import { languageLevelOptions } from "../../Data/LanguageLevelOptions";
+import SelectField from "../Form/SelectField";
 
 function LanguageSection(props) {
   return (
@@ -19,23 +20,12 @@ function LanguageSection(props) {
                   placeholder="Ex: English"
                   label="Language"
                 />
-
-                <Field
-                  component="select"
+                <SelectField
                   name={`languages.${index}.languageLevel`}
-                >
-                  {languageLevelOptions.map((item, index) => {
-                    return (
-                      <option
-                        style={{ width: 400 }}
-                        key={item.id}
-                        value={item.name}
-                      >
-                        {item.name}
-                      </option>
-                    );
-                  })}
-                </Field>
+                  options={languageLevelOptions}
+                  label="Language Level"
+                  disabledtext="Select language level"
+                />
 
                 <Button
                   type="button"

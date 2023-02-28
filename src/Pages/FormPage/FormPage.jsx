@@ -21,8 +21,15 @@ import PublicationSection from "../../Components/FormSections/6_PublicationSecti
 import LanguageSection from "../../Components/FormSections/7_LanguageSection";
 import HobbiesSection from "../../Components/FormSections/8_HobbiesSection";
 import ProjectsSection from "../../Components/FormSections/9_ProjectsSection";
+import { MONGO_COLLECTION, MONGO_DATABASE } from "../../config/config";
 
-function FormPage() {
+function FormPage({ mongoContext: { client, user } }) {
+  const onSubmit = async (values) => {
+    const collection = client.db(MONGO_DATABASE).collection(MONGO_COLLECTION);
+    const reponse = await collection.insertOne(values);
+    console.log(reponse);
+  };
+
   return (
     <div>
       <h1>Form Page</h1>
@@ -32,45 +39,45 @@ function FormPage() {
           console.log(JSON.stringify(values, null, 2));
         }}
       >
-        <FormStep
+        {/* <FormStep
           stepName="Personal Information"
           onSubmit={() => console.log("personal information submit")}
-          validationSchema={profileValidationSchema}
+          // validationSchema={profileValidationSchema}
         >
           <ProfileSection name="profile" initialValues={initialValues} />
-        </FormStep>
+        </FormStep> */}
 
-        <FormStep
+        {/* <FormStep
           stepName="Skills"
           onSubmit={() => console.log("skills submit")}
           validationSchema={skillsValidationSchema}
         >
           <SkillsSection initialValues={initialValues} name="skills" />
-        </FormStep>
+        </FormStep> */}
 
         {/* <FormStep
           stepName="Work experience"
           onSubmit={() => console.log("work experience submit")}
-          // validationSchema={workValidationSchema}
+          validationSchema={workValidationSchema}
         >
           <WorkExpSection initialValues={initialValues} name="workExperience" />
         </FormStep> */}
 
-        <FormStep
+        {/* <FormStep
           stepName="Education"
           onSubmit={() => console.log("education submit")}
-          validationSchema={educationValidationSchema}
+          // validationSchema={educationValidationSchema}
         >
           <EducationSection initialValues={initialValues} name="education" />
-        </FormStep>
+        </FormStep> */}
 
-        <FormStep
+        {/* <FormStep
           stepName="Licenses and Certifications"
           onSubmit={() => console.log("certificates submit")}
           validationSchema={certificatesValidationSchema}
         >
           <CertificatesSection initialValues={initialValues} />
-        </FormStep>
+        </FormStep> */}
 
         <FormStep
           stepName="Publications"
@@ -83,15 +90,15 @@ function FormPage() {
           />
         </FormStep>
 
-        <FormStep
+        {/* <FormStep
           stepName="Languages"
           onSubmit={() => console.log("languages submit")}
           validationSchema={languagesValidationSchema}
         >
           <LanguageSection initialValues={initialValues} />
-        </FormStep>
+        </FormStep> */}
 
-        <FormStep
+        {/* <FormStep
           stepName="Hobbies"
           onSubmit={() => console.log("hobbies submit")}
           validationSchema={hobbiesValidationSchema}
@@ -100,15 +107,15 @@ function FormPage() {
             initialValues={initialValues}
             style={{ width: 500, margin: "0 auto" }}
           />
-        </FormStep>
+        </FormStep> */}
 
-        <FormStep
+        {/* <FormStep
           stepName="Projects"
           onSubmit={() => console.log("projects submit")}
-          validationSchema={projectsValidationSchema}
+          // validationSchema={projectsValidationSchema}
         >
           <ProjectsSection initialValues={initialValues} name="projects" />
-        </FormStep>
+        </FormStep> */}
       </MultiStepForm>
     </div>
   );
