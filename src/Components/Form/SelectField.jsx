@@ -7,7 +7,7 @@ function SelectField({ ...props }) {
 
   return (
     <TextField
-      style={{ width: 550 }}
+      style={{ width: 500 }}
       select
       defaultValue=""
       {...field}

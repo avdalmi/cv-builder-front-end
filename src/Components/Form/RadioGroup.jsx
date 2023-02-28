@@ -14,8 +14,8 @@ function RadioButtonGroup({ label, ...props }) {
     <FormControl>
       <FormLabel id="demo-radio-buttons-group-label">Driving License</FormLabel>
       <RadioGroup defaultValue="" {...field} {...props}>
-        <FormControlLabel value="true" control={<Radio />} label="yes" />
-        <FormControlLabel value="false" control={<Radio />} label="no" />
+        <FormControlLabel value={true} control={<Radio />} label="yes" />
+        <FormControlLabel value={false} control={<Radio />} label="no" />
       </RadioGroup>
     </FormControl>
   );

@@ -21,8 +21,15 @@ import PublicationSection from "../../Components/FormSections/6_PublicationSecti
 import LanguageSection from "../../Components/FormSections/7_LanguageSection";
 import HobbiesSection from "../../Components/FormSections/8_HobbiesSection";
 import ProjectsSection from "../../Components/FormSections/9_ProjectsSection";
+import { MONGO_COLLECTION, MONGO_DATABASE } from "../../config/config";
 
-function FormPage() {
+function FormPage({ mongoContext: { client, user } }) {
+  const onSubmit = async (values) => {
+    const collection = client.db(MONGO_DATABASE).collection(MONGO_COLLECTION);
+    const reponse = await collection.insertOne(values);
+    console.log(reponse);
+  };
+
   return (
     <div>
       <h1>Form Page</h1>

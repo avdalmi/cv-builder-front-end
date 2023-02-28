@@ -16,7 +16,7 @@ function CountrySelect({ label, ...props }) {
   const getCountries = async () => {
     const response = await axios.get("https://restcountries.com/v3.1/all");
     setCountries(response.data);
-  };
+  }; // maybe sort here
 
   useEffect(() => {
     getCountries();

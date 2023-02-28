@@ -1,4 +1,5 @@
 export const initialValues = {
+  // email: "", - add
   fullName: "",
   profile: {
     jobTitle: "",
@@ -6,11 +7,11 @@ export const initialValues = {
     currentCountry: "",
     email: "brian@buildingitheroes.nl",
     file: "",
-    drivingLicense: "false",
+    drivingLicense: true,
     githubLink: "",
     linkedInLink: "",
     portfolioLink: "",
-    brainFirst: {
+    brainsFirst: {
       resultOne: "",
       resultTwo: "",
       resultThree: "",

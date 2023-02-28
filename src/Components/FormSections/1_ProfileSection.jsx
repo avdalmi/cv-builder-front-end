@@ -55,27 +55,27 @@ function ProfileSection({ ...props }) {
       <TextInputField
         name={`profile.portfolioLink`}
         placeholder="Ex: www.portfolio.com"
-        label="Portfolio link *"
+        label="Portfolio link"
       />
       <div>
-        <FormLabel htmlFor="profile.brainFirst">
-          Select your three Brain First Results:
+        <FormLabel htmlFor="profile.brainsFirst">
+          Select your three BrainsFirst Results:
         </FormLabel>
         <br />
         <SelectField
-          name="profile.brainFirst.resultOne"
+          name="profile.brainsFirst.resultOne"
           options={brainFirstOptions}
           helperText=" select your first result "
         />
 
         <SelectField
-          name="profile.brainFirst.resultTwo"
+          name="profile.brainsFirst.resultTwo"
           options={brainFirstOptions}
           helperText="select your second result"
         />
 
         <SelectField
-          name="profile.brainFirst.resultThree"
+          name="profile.brainsFirst.resultThree"
           options={brainFirstOptions}
           helperText=" select your third result "
         />

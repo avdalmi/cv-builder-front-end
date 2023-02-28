@@ -9,7 +9,7 @@ export const profileValidationSchema = yup.object({
     linkedInLink: yup.string().required("please enter your LinkedIn link"),
     githubLink: yup.string().required("please enter your GitHub link"),
     portfolioLink: yup.string(),
-    brainFirst: yup.object({
+    brainsFirst: yup.object({
       resultOne: yup.string(),
       resultTwo: yup.string(),
       resultThree: yup.string(),
@@ -150,21 +150,7 @@ export const projectsValidationSchema = yup.object({
     })
   ),
 });
-// projects: [
-//   {
-//     projectTitle: "",
-//     projectDescription: "",
-//     projectCity: "",
-//     projectCountry: "",
-//     projectDate: "",
-//     projectLink: "",
-//     projectSkills: [
-//       {
-//         projectSkill: "",
-//       },
-//     ],
-//   },
-// ],
+
 // phone: yup
 //   .string()
 //   .matches(/^[6-9]\d{9}$/, {
