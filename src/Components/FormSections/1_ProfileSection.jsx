@@ -7,6 +7,8 @@ import { Field } from "formik";
 import FileUploadField from "../Form/FileUploadField";
 import SelectField from "../Form/SelectField";
 import CountrySelect from "../Form/CountrySelect";
+import { FormControlLabel, Radio } from "@mui/material";
+import RadioButtonGroup from "../Form/RadioGroup";
 
 function ProfileSection(profileValidationSchema) {
   return (
@@ -27,14 +29,9 @@ function ProfileSection(profileValidationSchema) {
         label="Current city*"
         placeholder="Ex: Amsterdam"
       />
-      {/* <TextInputField
-        name="profile.currentCountry"
-        label="Current location *"
-        placeholder="Ex: Amsterdam, The Netherlands"
-      /> */}
       <CountrySelect
-        name={`profile.projectCountry`}
-        label="Country"
+        name={`profile.currentCountry`}
+        label="Country *"
         component="select"
       />
       <TextInputField
@@ -47,16 +44,8 @@ function ProfileSection(profileValidationSchema) {
         <FormLabel>Select a profile picture</FormLabel>
         <FileUploadField name="profile.file" type="file" />
       </div>
-      <FormControl>
-        <FormLabel htmlFor="profile.drivingLicense">
-          Do you have a driving license?
-        </FormLabel>
-        <Field type="radio" name="profile.drivingLicense" value="true" />
-        yes
-        <Field type="radio" name="profile.drivingLicense" value="false" />
-        no
-      </FormControl>{" "}
       <br />
+      <RadioButtonGroup name="profile.drivingLicense" label="driving license" />
       <div>
         <FormLabel htmlFor="profile.brainFirst">
           Select your three Brain First Results:

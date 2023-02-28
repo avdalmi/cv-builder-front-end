@@ -24,8 +24,8 @@ function CountrySelect({ label, ...props }) {
 
   return (
     <FormControl fullWidth>
-      <InputLabel>Country</InputLabel>
-      <Select {...field} {...props}>
+      <InputLabel>Country *</InputLabel>
+      <Select {...field} {...props} style={{ textAlign: "left" }}>
         {countries &&
           countries.map((country, index) => {
             // console.log("country", country.name.common);

@@ -24,7 +24,8 @@ export const initialValues = {
     {
       workPositionTitle: "",
       workCompanyName: "",
-      workLocation: "",
+      workCity: "",
+      workCountry: "",
       workStartDate: "",
       workEndDate: "",
       workCurrent: "false",
@@ -35,7 +36,8 @@ export const initialValues = {
     {
       eduSchoolName: "",
       eduDegreeTitle: "",
-      eduLocation: "",
+      eduCity: "",
+      eduCountry: "",
       eduStartDate: "",
       eduEndDate: "",
       eduCurrent: "false",
@@ -93,7 +95,3 @@ export const initialValues = {
     },
   ],
 };
-
-// - Links to github etc.
-// description
-// title

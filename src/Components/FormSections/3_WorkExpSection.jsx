@@ -2,6 +2,7 @@ import React from "react";
 import { FieldArray, Field, useField } from "formik";
 import TextInputField from "../Form/TextInputField";
 import { FormControl, FormLabel, Button } from "@mui/material";
+import CountrySelect from "../Form/CountrySelect";
 
 function WorkExpSection({ ...props }) {
   // console.log("props", props);
@@ -32,9 +33,14 @@ function WorkExpSection({ ...props }) {
                     placeholder="Ex: Building Heroes"
                   />
                   <TextInputField
-                    name={`workExperience[${index}].workLocation`}
-                    label="Location *"
-                    placeholder="Ex: Amsterdam, The Netherlands"
+                    name={`workExperience[${index}].workCity`}
+                    label="City *"
+                    placeholder="Ex: Amsterdam"
+                  />
+                  <CountrySelect
+                    name={`workExperience[${index}].workCountry`}
+                    label="Country *"
+                    defaultValue=""
                   />
                   <FormLabel>Start date *</FormLabel>
                   <TextInputField

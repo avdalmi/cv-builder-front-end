@@ -4,6 +4,7 @@ import TextInputField from "../Form/TextInputField";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { InputLabel, FormHelperText } from "@mui/material";
+import CountrySelect from "../Form/CountrySelect";
 
 function EducationSection(props) {
   return (
@@ -35,10 +36,15 @@ function EducationSection(props) {
                   label="Degree"
                 />
                 <TextInputField
-                  name={`education[${index}].eduLocation`}
+                  name={`education[${index}].eduCity`}
                   placeholder="Ex: Amsterdam"
-                  label="Location *"
+                  label="City *"
                   style={{ margin: "10px" }}
+                />
+                <CountrySelect
+                  name={`education[${index}].eduCountry`}
+                  label="Country *"
+                  defaultValue=""
                 />
                 <InputLabel>start date *</InputLabel>
                 <TextInputField
@@ -54,23 +60,7 @@ function EducationSection(props) {
                   type="date"
                   style={{ margin: "10px" }}
                 />
-                {/* <FormControl>
-                  <FormLabel htmlFor={`education[${index}].educationCurrent`}>
-                    do you currently study here?
-                  </FormLabel>
-                  <Field
-                    type="radio"
-                    name={`education[${index}].educationCurrent`}
-                    value="true"
-                  />
-                  yes
-                  <Field
-                    type="radio"
-                    name={`education[${index}].educationCurrent`}
-                    value="false"
-                  />
-                  no
-                </FormControl>{" "} */}
+
                 <TextInputField
                   placeholder="type something..."
                   name={`education[${index}].eduDescription`}

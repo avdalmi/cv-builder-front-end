@@ -28,7 +28,8 @@ export const workValidationSchema = yup.object({
   workExperience: yup.array(
     yup.object({
       workPositionTitle: yup.string().required("please enter your job title"),
-      workLocation: yup.string().required("please enter the location"),
+      workCity: yup.string().required("please enter the city"),
+      workCountry: yup.string().required("please enter the country"),
       workCompanyName: yup.string().required("please enter company name"),
       workStartDate: yup.date().required("please enter a start date"),
       workEndDate: yup
@@ -46,9 +47,12 @@ export const educationValidationSchema = yup.object({
       eduDegreeTitle: yup
         .string()
         .required("please enter the name of the degree"),
-      eduLocation: yup
+      eduCity: yup
         .string()
-        .required("please enter location of the college/university"),
+        .required("please enter city of the college/university"),
+      eduCountry: yup
+        .string()
+        .required("please enter the country of the college/university"),
       eduStartDate: yup.date().required("please enter a start date"),
       eduEndDate: yup
         .date()
@@ -116,15 +120,19 @@ export const hobbiesValidationSchema = yup.object({
 export const projectsValidationSchema = yup.object({
   projects: yup.array(
     yup.object({
-      projectTitle: yup.string(),
-      projectDescription: yup.string(),
-      projectCity: yup.string(),
-      projectCountry: yup.string(),
-      projectDate: yup.string(),
-      projectLink: yup.string(),
+      projectTitle: yup.string().required("please enter project title"),
+      projectDescription: yup
+        .string()
+        .required("please enter a project description"),
+      projectCity: yup.string().required("please enter the city"),
+      projectCountry: yup.string().required("please enter the country"),
+      projectDate: yup.string().required("please enter the project date"),
+      projectLink: yup.string().required("please enter a link to the project"),
       projectSkills: yup.array(
         yup.object({
-          projectSkill: yup.string(),
+          projectSkill: yup
+            .string()
+            .required("please select the skills used in this project"),
         })
       ),
     })

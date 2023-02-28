@@ -32,21 +32,21 @@ function FormPage() {
           console.log(JSON.stringify(values, null, 2));
         }}
       >
-        {/* <FormStep
+        <FormStep
           stepName="Personal Information"
           onSubmit={() => console.log("personal information submit")}
-          validationSchema={profileValidationSchema}
+          // validationSchema={profileValidationSchema}
         >
           <ProfileSection />
-        </FormStep> */}
+        </FormStep>
 
-        <FormStep
+        {/* <FormStep
           stepName="Skills"
           onSubmit={() => console.log("skills submit")}
           validationSchema={skillsValidationSchema}
         >
           <SkillsSection initialValues={initialValues} />
-        </FormStep>
+        </FormStep> */}
 
         {/* <FormStep
           stepName="Work experience"
@@ -83,22 +83,22 @@ function FormPage() {
           validationSchema={languagesValidationSchema}
         >
           <LanguageSection initialValues={initialValues} />
-        </FormStep>
+        </FormStep> */}
 
-        <FormStep
+        {/* <FormStep
           stepName="Hobbies"
           onSubmit={() => console.log("hobbies submit")}
           validationSchema={hobbiesValidationSchema}
         >
           <HobbiesSection initialValues={initialValues} />
         </FormStep> */}
-        <FormStep
+        {/* <FormStep
           stepName="Projects"
           onSubmit={() => console.log("projects submit")}
           validationSchema={projectsValidationSchema}
         >
           <ProjectsSection initialValues={initialValues} />
-        </FormStep>
+        </FormStep> */}
       </MultiStepForm>
     </div>
   );
