@@ -1,5 +1,6 @@
 import {
   FormControl,
+  FormHelperText,
   Input,
   InputAdornment,
   InputLabel,
@@ -13,7 +14,6 @@ function LinkField({ label, ...props }) {
   const [field, meta] = useField(props);
   return (
     <FormControl fullWidth variant="standard">
-      {/* <InputLabel>{label}</InputLabel> */}
       <TextField
         {...props}
         {...field}
@@ -29,33 +29,11 @@ function LinkField({ label, ...props }) {
           ),
         }}
       />
+      {meta.touched && Boolean(meta.error) ? (
+        <FormHelperText error>{meta.error}</FormHelperText>
+      ) : null}
     </FormControl>
   );
 }
 
-// {/* <FormControl fullWidth variant="standard">
-//       {meta.touched && Boolean(meta.error) ? (
-//         <InputLabel error>{label}</InputLabel>
-//       ) : (
-//         <InputLabel>{label}</InputLabel>
-//       )}
-//       <Select
-//         error={meta.touched && Boolean(meta.error)}
-//         value={meta.value}
-//         {...field}
-//         {...props}
-//         style={{ textAlign: "left" }}
-//       >
-//         {sortCountries &&
-//           sortCountries.map((countryName) => (
-//             <MenuItem key={countryName} value={countryName}>
-//               {countryName}
-//             </MenuItem>
-//           ))}
-//       </Select>
-//       {meta.touched && Boolean(meta.error) ? (
-//         <FormHelperText error>{meta.error}</FormHelperText>
-//       ) : null}
-//       {/* <FormHelperText>{meta.error}</FormHelperText> */}
-//     </FormControl> */}
 export default LinkField;
