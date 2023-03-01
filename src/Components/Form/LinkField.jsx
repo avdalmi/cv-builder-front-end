@@ -13,14 +13,16 @@ import { useField } from "formik";
 function LinkField({ label, ...props }) {
   const [field, meta] = useField(props);
   return (
-    <FormControl fullWidth variant="standard">
+    <FormControl fullWidth>
       <TextField
+        variant="standard"
         {...props}
         {...field}
         type="text"
         label={label}
         error={meta.touched && Boolean(meta.error)}
         value={meta.value}
+        helperText={meta.touched && meta.error}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
@@ -29,9 +31,6 @@ function LinkField({ label, ...props }) {
           ),
         }}
       />
-      {meta.touched && Boolean(meta.error) ? (
-        <FormHelperText error>{meta.error}</FormHelperText>
-      ) : null}
     </FormControl>
   );
 }

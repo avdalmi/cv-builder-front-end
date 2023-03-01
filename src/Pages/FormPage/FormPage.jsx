@@ -29,13 +29,7 @@ function FormPage({ mongoContext: { client, user } }) {
     const reponse = await collection.insertOne(values);
     console.log(reponse);
   };
-  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  const validate = (values) =>
-    sleep(300).then(() => {
-      return {
-        zip: "This field is required",
-      };
-    });
+
   return (
     <div>
       <h1>Form Page</h1>
@@ -50,11 +44,7 @@ function FormPage({ mongoContext: { client, user } }) {
           onSubmit={() => console.log("personal information submit")}
           validationSchema={profileValidationSchema}
         >
-          <ProfileSection
-            name="profile"
-            initialValues={initialValues}
-            validate={validate}
-          />
+          <ProfileSection name="profile" initialValues={initialValues} />
         </FormStep>
 
         {/* <FormStep

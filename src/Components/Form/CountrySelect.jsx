@@ -65,13 +65,3 @@ function CountrySelect({ label, ...props }) {
 }
 
 export default CountrySelect;
-//  {
-//    <FormControl fullWidth variant="standard">
-//    <InputLabel>{label}</InputLabel>
-//    <Select  error={meta.touched && Boolean(meta.error)}
-//       helperText={meta.touched && meta.error}
-//       value={meta.value}{...field} {...props} style={{ textAlign: "left" }}>
-//      {countries && displayCountryOptions()}
-//    </Select>
-//  </FormControl>
-//  }

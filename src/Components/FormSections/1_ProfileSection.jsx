@@ -49,45 +49,20 @@ function ProfileSection({ ...props }) {
       />
       <br />
       <br />
-      <CountrySelect
-        name={`profile.currentCountry`}
-        label="Country *"
-        // component="select"
-        // value={field.value.currentCountry}
-      />
-
-      <Field
-        name={`profile.file`}
-        as={FileUploadField}
-        label="Select a profile picture"
-        filetype="image"
-      />
+      <CountrySelect name={`profile.currentCountry`} label="Country *" />
 
       <br />
       <RadioButtonGroup
         name="profile.drivingLicense.hasDrivingLicense"
         label="driving license"
       />
-      {field.value.drivingLicense.hasDrivingLicense ? (
-        <SelectField
-          name={"profile.drivingLicense.drivingLicenseType"}
-          options={drivingLicenseOptions}
-          disabledtext="Select the license type"
-          // onChange={(e, selected) =>
-          //   formikProps.setFieldValue(
-          //     "profile.drivingLicense.drivingLicenseType",
-          //     selected.value
-          //   )
-          // }
-        />
-      ) : null}
+
       <br />
 
       <LinkField
         name={`profile.githubLink`}
         placeholder="Ex: github.com/username"
         label="GitHub link *"
-        // validate={`${isRequired("This field is required")}`}
       />
 
       <LinkField
@@ -108,20 +83,20 @@ function ProfileSection({ ...props }) {
         <SelectField
           name="profile.brainsFirst.resultOne"
           options={brainFirstOptions}
-          disabledtext="select your first result"
+          label="select your first result"
         />
 
         <SelectField
           name="profile.brainsFirst.resultTwo"
           options={brainFirstOptions}
-          disabledtext="select your second result"
+          label="select your second result"
         />
 
         <SelectField
           name="profile.brainsFirst.resultThree"
           options={brainFirstOptions}
-          label="result"
-          disabledtext="select your third result"
+          // label="result"
+          label="select your third result"
         />
       </div>
       <TextInputField
