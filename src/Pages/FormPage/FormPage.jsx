@@ -29,7 +29,13 @@ function FormPage({ mongoContext: { client, user } }) {
     const reponse = await collection.insertOne(values);
     console.log(reponse);
   };
-
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const validate = (values) =>
+    sleep(300).then(() => {
+      return {
+        zip: "This field is required",
+      };
+    });
   return (
     <div>
       <h1>Form Page</h1>
@@ -39,13 +45,17 @@ function FormPage({ mongoContext: { client, user } }) {
           console.log(JSON.stringify(values, null, 2));
         }}
       >
-        {/* <FormStep
+        <FormStep
           stepName="Personal Information"
           onSubmit={() => console.log("personal information submit")}
-          // validationSchema={profileValidationSchema}
+          validationSchema={profileValidationSchema}
         >
-          <ProfileSection name="profile" initialValues={initialValues} />
-        </FormStep> */}
+          <ProfileSection
+            name="profile"
+            initialValues={initialValues}
+            validate={validate}
+          />
+        </FormStep>
 
         {/* <FormStep
           stepName="Skills"
@@ -79,7 +89,7 @@ function FormPage({ mongoContext: { client, user } }) {
           <CertificatesSection initialValues={initialValues} />
         </FormStep> */}
 
-        <FormStep
+        {/* <FormStep
           stepName="Publications"
           onSubmit={() => console.log("certificates submit")}
           validationSchema={publicationsValidationSchema}
@@ -88,7 +98,7 @@ function FormPage({ mongoContext: { client, user } }) {
             initialValues={initialValues}
             name="publications"
           />
-        </FormStep>
+        </FormStep> */}
 
         {/* <FormStep
           stepName="Languages"

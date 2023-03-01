@@ -1,5 +1,34 @@
 import * as yup from "yup";
+import axios from "axios";
 
+// const countryNameArray = [];
+const countries = ["Chad", "Isle of Man", "Azerbaijan"];
+// const getCountries = async () => {
+//   const response = await axios.get("https://restcountries.com/v3.1/all");
+//   // const countryNameArray = [];
+//   // const mapping = response.data.map((country) =>
+//   //   countryNameArray.push(country.name.common)
+//   // );
+//   // console.log("country array", countryNameArray);
+//   return response.data;
+//   // console.log(response.data);
+// };
+
+// const mapping = async () => {
+//   const countryNameArray = [];
+//   const mapvalue = await getCountries();
+//   // console.log("mapvalue", mapvalue);
+//   await mapvalue.map((country) => countryNameArray.push(country.name.common));
+//   console.log(countryNameArray);
+// };
+// // console.log(getCountries());
+
+// // getCountries();
+// // console.log(countryNameArray);
+// // console.log(getCountries());
+// mapping();
+// // console.log(countryNameArray);
+// console.log(mapping());
 export const profileValidationSchema = yup.object({
   fullName: yup.string().required("please enter your full name"),
   profile: yup.object().shape({
@@ -9,6 +38,15 @@ export const profileValidationSchema = yup.object({
     linkedInLink: yup.string().required("please enter your LinkedIn link"),
     githubLink: yup.string().required("please enter your GitHub link"),
     portfolioLink: yup.string(),
+    drivingLicense: yup.object({
+      hasDrivingLicense: yup.boolean(),
+      drivingLicenseType: yup
+        .string()
+        .when("drivingLicense.hasDrivingLicense", {
+          is: true,
+          then: yup.string().required("please select the license type"),
+        }),
+    }),
     brainsFirst: yup.object({
       resultOne: yup.string(),
       resultTwo: yup.string(),

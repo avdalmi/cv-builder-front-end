@@ -11,8 +11,8 @@ function SelectField({ ...props }) {
   const [field, meta] = useField(props);
 
   return (
-    <FormControl fullWidth>
-      <InputLabel variant="standard">{props.disabledtext}</InputLabel>
+    <FormControl fullWidth variant="standard">
+      <InputLabel>{props.disabledtext}</InputLabel>
       <Select {...field} {...props} style={{ textAlign: "left" }}>
         {props.options.map((item, index) => {
           return (

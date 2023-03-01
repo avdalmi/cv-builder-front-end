@@ -6,7 +6,7 @@ import FileUploadField from "../Form/FileUploadField";
 import SelectField from "../Form/SelectField";
 import CountrySelect from "../Form/CountrySelect";
 import RadioButtonGroup from "../Form/RadioGroup";
-import { Field, useField } from "formik";
+import { Field, useField, useFormik } from "formik";
 import { Link, Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   FormControl,
@@ -16,17 +16,19 @@ import {
   InputLabel,
 } from "@mui/material";
 import LinkField from "../Form/LinkField";
+import { drivingLicenseOptions } from "../../Data/DrivingLicenseOptions";
 
 function ProfileSection({ ...props }) {
-  const [meta] = useField(props);
+  const [meta, field] = useField(props);
+  // console.log("meta: ", meta.value.drivingLicense);
+  // console.log("props", props);
+  const validate = props.validate;
+  // const formikProps = useFormik({
+  //   props,
+  // });
 
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  // console.log("formikprosp", formikProps);
+  const isRequired = (message) => (value) => !!value ? undefined : message;
   return (
     <div style={{ width: 500, margin: "0 auto" }}>
       <TextInputField
@@ -50,7 +52,8 @@ function ProfileSection({ ...props }) {
       <CountrySelect
         name={`profile.currentCountry`}
         label="Country *"
-        component="select"
+        // component="select"
+        // value={field.value.currentCountry}
       />
 
       <Field
@@ -61,24 +64,30 @@ function ProfileSection({ ...props }) {
       />
 
       <br />
-      <RadioButtonGroup name="profile.drivingLicense" label="driving license" />
+      <RadioButtonGroup
+        name="profile.drivingLicense.hasDrivingLicense"
+        label="driving license"
+      />
+      {field.value.drivingLicense.hasDrivingLicense ? (
+        <SelectField
+          name={"profile.drivingLicense.drivingLicenseType"}
+          options={drivingLicenseOptions}
+          disabledtext="Select the license type"
+          // onChange={(e, selected) =>
+          //   formikProps.setFieldValue(
+          //     "profile.drivingLicense.drivingLicenseType",
+          //     selected.value
+          //   )
+          // }
+        />
+      ) : null}
       <br />
-      {/* <TextInputField
-        name={`profile.githubLink`}
-        placeholder="Ex: github.com/username"
-        label="GitHub link *"
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <Link />
-            </InputAdornment>
-          ),
-        }}
-      /> */}
+
       <LinkField
         name={`profile.githubLink`}
         placeholder="Ex: github.com/username"
         label="GitHub link *"
+        // validate={`${isRequired("This field is required")}`}
       />
 
       <LinkField
