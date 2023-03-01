@@ -44,7 +44,15 @@ function MultiStepForm({ children, initialValues, onSubmit }) {
         onSubmit={handleSubmit}
         validationSchema={step.props.validationSchema}
       >
-        {(formik) => (
+        {({
+          formik,
+          // values,
+          // errors,
+          // touched,
+          // handleChange,
+          // handleBlur,
+          // handleSubmit,
+        }) => (
           <Form>
             <Stepper activeStep={stepNum}>
               {steps.map((currentStep) => {
