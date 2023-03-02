@@ -6,14 +6,31 @@ import {
   FormControl,
   InputLabel,
   Select,
+  FormHelperText,
 } from "@mui/material";
-function SelectField({ ...props }) {
+
+function SelectField({ label, disabled, required, ...props }) {
   const [field, meta] = useField(props);
 
   return (
-    <FormControl fullWidth variant="standard">
-      <InputLabel>{props.disabledtext}</InputLabel>
-      <Select {...field} {...props} style={{ textAlign: "left" }}>
+    <FormControl
+      fullWidth
+      variant="standard"
+      disabled={disabled}
+      required={required}
+    >
+      {meta.touched && Boolean(meta.error) ? (
+        <InputLabel error>{label}</InputLabel>
+      ) : (
+        <InputLabel>{label}</InputLabel>
+      )}
+      <Select
+        {...field}
+        {...props}
+        style={{ textAlign: "left" }}
+        error={meta.touched && Boolean(meta.error)}
+        value={meta.value}
+      >
         {props.options.map((item, index) => {
           return (
             <MenuItem key={item.id} value={item.name}>
@@ -22,22 +39,10 @@ function SelectField({ ...props }) {
           );
         })}
       </Select>
+      {meta.touched && Boolean(meta.error) ? (
+        <FormHelperText error>{meta.error}</FormHelperText>
+      ) : null}
     </FormControl>
-    // <TextField
-    //   style={{ width: 500 }}
-    //   select
-    //   defaultValue=""
-    //   {...field}
-    //   {...props}
-    // >
-    //   {props.options.map((item) => {
-    //     return (
-    //       <MenuItem key={item.id} value={item.name}>
-    //         {item.name}
-    //       </MenuItem>
-    //     );
-    //   })}
-    // </TextField>
   );
 }
 

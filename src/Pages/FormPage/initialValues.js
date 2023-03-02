@@ -1,14 +1,3 @@
-// const displayCountryOptions = () => {
-//   const countryNameArray = [];
-//   countries.map((country) => countryNameArray.push(country.name.common));
-//   return countryNameArray.sort().map((countryName) => {
-//     return (
-//       <MenuItem key={countryName} value={countryName}>
-//         {countryName}
-//       </MenuItem>
-//     );
-//   });
-// };
 export const initialValues = {
   // email: "", - add
   fullName: "",
@@ -18,9 +7,8 @@ export const initialValues = {
     currentCountry: "",
     email: "brian@buildingitheroes.nl",
     file: "",
-    // drivingLicense: "false",
     drivingLicense: {
-      hasDrivingLicense: false,
+      hasDrivingLicense: "false",
       drivingLicenseType: "",
     },
     githubLink: "",

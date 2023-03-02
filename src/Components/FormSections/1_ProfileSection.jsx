@@ -7,28 +7,11 @@ import SelectField from "../Form/SelectField";
 import CountrySelect from "../Form/CountrySelect";
 import RadioButtonGroup from "../Form/RadioGroup";
 import { Field, useField, useFormik } from "formik";
-import { Link, Visibility, VisibilityOff } from "@mui/icons-material";
-import {
-  FormControl,
-  IconButton,
-  Input,
-  InputAdornment,
-  InputLabel,
-} from "@mui/material";
 import LinkField from "../Form/LinkField";
-import { drivingLicenseOptions } from "../../Data/DrivingLicenseOptions";
 
 function ProfileSection({ ...props }) {
   const [meta, field] = useField(props);
-  // console.log("meta: ", meta.value.drivingLicense);
-  // console.log("props", props);
-  const validate = props.validate;
-  // const formikProps = useFormik({
-  //   props,
-  // });
 
-  // console.log("formikprosp", formikProps);
-  const isRequired = (message) => (value) => !!value ? undefined : message;
   return (
     <div style={{ width: 500, margin: "0 auto" }}>
       <TextInputField
@@ -49,12 +32,7 @@ function ProfileSection({ ...props }) {
       />
       <br />
       <br />
-      <CountrySelect
-        name={`profile.currentCountry`}
-        label="Country *"
-        // component="select"
-        // value={field.value.currentCountry}
-      />
+      <CountrySelect name={`profile.currentCountry`} label="Country *" />
 
       <Field
         name={`profile.file`}
@@ -68,26 +46,13 @@ function ProfileSection({ ...props }) {
         name="profile.drivingLicense.hasDrivingLicense"
         label="driving license"
       />
-      {field.value.drivingLicense.hasDrivingLicense ? (
-        <SelectField
-          name={"profile.drivingLicense.drivingLicenseType"}
-          options={drivingLicenseOptions}
-          disabledtext="Select the license type"
-          // onChange={(e, selected) =>
-          //   formikProps.setFieldValue(
-          //     "profile.drivingLicense.drivingLicenseType",
-          //     selected.value
-          //   )
-          // }
-        />
-      ) : null}
+
       <br />
 
       <LinkField
         name={`profile.githubLink`}
         placeholder="Ex: github.com/username"
         label="GitHub link *"
-        // validate={`${isRequired("This field is required")}`}
       />
 
       <LinkField
@@ -108,20 +73,19 @@ function ProfileSection({ ...props }) {
         <SelectField
           name="profile.brainsFirst.resultOne"
           options={brainFirstOptions}
-          disabledtext="select your first result"
+          label="select your first result"
         />
 
         <SelectField
           name="profile.brainsFirst.resultTwo"
           options={brainFirstOptions}
-          disabledtext="select your second result"
+          label="select your second result"
         />
 
         <SelectField
           name="profile.brainsFirst.resultThree"
           options={brainFirstOptions}
-          label="result"
-          disabledtext="select your third result"
+          label="select your third result"
         />
       </div>
       <TextInputField

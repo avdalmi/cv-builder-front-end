@@ -1,34 +1,6 @@
+import { useFormikContext } from "formik";
 import * as yup from "yup";
-import axios from "axios";
 
-// const countryNameArray = [];
-const countries = ["Chad", "Isle of Man", "Azerbaijan"];
-// const getCountries = async () => {
-//   const response = await axios.get("https://restcountries.com/v3.1/all");
-//   // const countryNameArray = [];
-//   // const mapping = response.data.map((country) =>
-//   //   countryNameArray.push(country.name.common)
-//   // );
-//   // console.log("country array", countryNameArray);
-//   return response.data;
-//   // console.log(response.data);
-// };
-
-// const mapping = async () => {
-//   const countryNameArray = [];
-//   const mapvalue = await getCountries();
-//   // console.log("mapvalue", mapvalue);
-//   await mapvalue.map((country) => countryNameArray.push(country.name.common));
-//   console.log(countryNameArray);
-// };
-// // console.log(getCountries());
-
-// // getCountries();
-// // console.log(countryNameArray);
-// // console.log(getCountries());
-// mapping();
-// // console.log(countryNameArray);
-// console.log(mapping());
 export const profileValidationSchema = yup.object({
   fullName: yup.string().required("please enter your full name"),
   profile: yup.object().shape({
@@ -39,23 +11,25 @@ export const profileValidationSchema = yup.object({
     githubLink: yup.string().required("please enter your GitHub link"),
     portfolioLink: yup.string(),
     drivingLicense: yup.object({
-      hasDrivingLicense: yup.boolean(),
-      drivingLicenseType: yup
-        .string()
-        .when("drivingLicense.hasDrivingLicense", {
-          is: true,
-          then: yup.string().required("please select the license type"),
-        }),
+      hasDrivingLicense: yup.string().required("hello"),
+      drivingLicenseType: yup.string(),
+      // .required("please select the license type"),
+      // .allow(" "),
+      // .when("profile.drivingLicense.hasDrivingLicense", {
+      //   is: "true",
+      //   then: yup.string().required("please select the license type"),
+      // otherwise: yup.string(),
+      // }),
     }),
     brainsFirst: yup.object({
       resultOne: yup.string(),
       resultTwo: yup.string(),
       resultThree: yup.string(),
     }),
-    email: yup
-      .string()
-      .email("please enter a valid email")
-      .required("please enter your email"),
+    // email: yup
+    //   .string()
+    //   .email("please enter a valid email")
+    //   .required("please enter your email"),
     introductionText: yup
       .string()
       .required("please write a little bit about yourself")
@@ -67,7 +41,7 @@ export const skillsValidationSchema = yup.object({
   skills: yup.array(
     yup.object({
       skillName: yup.string().required("please enter a skill name"),
-      skillLevel: yup.number().required("please select skill level"),
+      skillLevel: yup.number().min(0.5).required("please select skill level"),
     })
   ),
 });
