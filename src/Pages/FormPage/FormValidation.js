@@ -135,11 +135,12 @@ export const languagesValidationSchema = yup.object({
 });
 
 export const hobbiesValidationSchema = yup.object({
-  hobbies: yup.array(
-    yup.object({
-      hobby: yup.string(),
-    })
-  ),
+  hobbies: yup.array().of(yup.string()),
+  // // hobbies: yup.array(
+  // //   yup.object({
+  // //     hobby: yup.string(),
+  // //   })
+  // // ),
 });
 
 export const projectsValidationSchema = yup.object({
@@ -155,9 +156,8 @@ export const projectsValidationSchema = yup.object({
       projectLink: yup.string().required("please enter a link to the project"),
       projectSkills: yup.array(
         yup.object({
-          projectSkill: yup
-            .string()
-            .required("please select the skills used in this project"),
+          projectSkill: yup.string(),
+          // .required("please select the skills used in this project"),
         })
       ),
     })

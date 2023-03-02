@@ -1,9 +1,9 @@
 import React from "react";
-import TextInputField from "../Form/TextInputField";
-import FileUploadField from "../Form/FileUploadField";
+import TextInputField from "../Form/TextInputField/TextInputField";
+import FileUploadField from "../Form/FileUploadField/FileUploadField";
 import { Button, FormLabel, styled, TextField } from "@mui/material";
 import { FieldArray, useField } from "formik";
-import LinkField from "../Form/LinkField";
+import LinkField from "../Form/LinkField/LinkField";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 function PublicationSection({ ...props }) {

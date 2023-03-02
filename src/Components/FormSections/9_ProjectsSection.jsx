@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FieldArray, Field, useField, useFormikContext } from "formik";
 import { Button, FormLabel } from "@mui/material";
-import TextInputField from "../Form/TextInputField";
-import CountrySelect from "../Form/CountrySelect";
-import LinkField from "../Form/LinkField";
+import TextInputField from "../Form/TextInputField/TextInputField";
+import CountrySelect from "../Form/CountrySelect/CountrySelect";
+import LinkField from "../Form/LinkField/LinkField";
+import DeleteButton from "../Form/DeleteButton/DeleteButton";
 
 function ProjectsSection({ ...props }) {
   const { values } = useFormikContext();
@@ -24,18 +25,6 @@ function ProjectsSection({ ...props }) {
                   placeholder="Ex: Project X"
                   label="Project title *"
                 />
-
-                <div>
-                  <TextInputField
-                    name={`projects[${index}].projectDescription`}
-                    placeholder="Type something... "
-                    multiline
-                    rows={5}
-                    label="Project description *"
-                    inputProps={{ maxLength: 300 }}
-                  />
-                  <p>{meta.value[index].projectDescription.length} / 300</p>
-                </div>
 
                 <TextInputField
                   name={`projects[${index}].projectCity`}
@@ -67,13 +56,24 @@ function ProjectsSection({ ...props }) {
                           <p>Add links to your project</p>
                           {props.initialValues.projects[index].projectLinks.map(
                             (link, index2) => (
-                              <div key={index2}>
+                              <div key={index2} style={{ display: "flex" }}>
                                 <LinkField
                                   name={`projects[${index}].projectLinks[${index2}].projectLink]`}
                                   placeholder="Ex: github.com/username/projectname"
                                   label="Project link *"
                                 />
-                                <Button
+                                {index2 >= 1 && (
+                                  <DeleteButton
+                                    deleteitem={true}
+                                    onClick={() => {
+                                      arrayHelpers.remove(index2);
+                                      props.initialValues.projects[
+                                        index
+                                      ].projectLinks.splice(index2, 1);
+                                    }}
+                                  />
+                                )}
+                                {/* <Button
                                   type="button"
                                   variant="outlined"
                                   color="error"
@@ -85,7 +85,7 @@ function ProjectsSection({ ...props }) {
                                   }}
                                 >
                                   remove link
-                                </Button>
+                                </Button> */}
                               </div>
                             )
                           )}
@@ -107,6 +107,17 @@ function ProjectsSection({ ...props }) {
                       );
                     }}
                   />
+                </div>
+                <div>
+                  <TextInputField
+                    name={`projects[${index}].projectDescription`}
+                    placeholder="Type something... "
+                    multiline
+                    rows={5}
+                    label="Project description *"
+                    inputProps={{ maxLength: 300 }}
+                  />
+                  <p>{meta.value[index].projectDescription.length} / 300</p>
                 </div>
                 <div>
                   <FieldArray

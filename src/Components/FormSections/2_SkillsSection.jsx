@@ -1,9 +1,10 @@
 import React from "react";
 import { FieldArray, Field } from "formik";
-import TextInputField from "../Form/TextInputField";
+import TextInputField from "../Form/TextInputField/TextInputField";
 import { Button } from "@mui/material";
-import StarRating from "../Form/StarRating";
-import DeleteButton from "../Form/DeleteButton";
+import StarRating from "../Form/StarRating/StarRating";
+import DeleteButton from "../Form/DeleteButton/DeleteButton";
+import AddButton from "../Form/AddButton/AddButton";
 
 function SkillsSection({ ...props }) {
   // console.log("props", props);
@@ -32,29 +33,17 @@ function SkillsSection({ ...props }) {
                 <Field name={`skills[${index}].skillLevel`} as={StarRating} />
 
                 <DeleteButton
+                  deleteitem={true}
                   onClick={() => {
                     arrayHelpers.remove(index);
                     props.initialValues.skills.splice(index, 1);
                   }}
-                  label="remove skill"
                 />
-                {/* <Button
-                  type="button"
-                  variant="outlined"
-                  color="error"
-                  onClick={() => {
-                    arrayHelpers.remove(index);
-                    props.initialValues.skills.splice(index, 1);
-                  }}
-                >
-                  remove skill
-                </Button> */}
               </div>
             ))}
 
-            <Button
-              type="button"
-              variant="outlined"
+            <AddButton
+              label="Add another skill"
               onClick={() => {
                 arrayHelpers.push({ skillName: "", skillLevel: 0 });
                 props.initialValues.skills.push({
@@ -62,9 +51,7 @@ function SkillsSection({ ...props }) {
                   skillLevel: 0,
                 });
               }}
-            >
-              Add another skill
-            </Button>
+            />
           </div>
         );
       }}

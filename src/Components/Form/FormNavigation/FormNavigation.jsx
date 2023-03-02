@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@mui/material";
 
 function FormNavigation(props) {
+  // console.log("props", props);
   return (
     <div
       style={{

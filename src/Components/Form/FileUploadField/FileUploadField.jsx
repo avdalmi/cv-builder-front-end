@@ -1,11 +1,12 @@
 import React from "react";
 import { useField } from "formik";
 import { Stack, Button, InputLabel } from "@mui/material";
-import { DownloadDone, PhotoCamera, UploadFile } from "@mui/icons-material";
+import { AddAPhoto, DownloadDone, UploadFile } from "@mui/icons-material";
+import { Box } from "@mui/system";
 
 function FileUploadField({ label, ...props }) {
   const [field, meta] = useField(props);
-
+  // console.log("props", props);
   const changeFileIconStatus = () => {
     if (meta.value.length > 0) {
       return <DownloadDone />;
@@ -18,7 +19,7 @@ function FileUploadField({ label, ...props }) {
     if (meta.value.length > 0) {
       return <DownloadDone />;
     } else {
-      return <PhotoCamera />;
+      return <AddAPhoto />;
     }
   };
 
@@ -29,6 +30,19 @@ function FileUploadField({ label, ...props }) {
       return ".jpg, .jpeg, .png";
     }
   };
+
+  // const Thumb = () => {
+  //   if (meta.value.length > 0) {
+  //     return;
+  //   } else {
+  //     let reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       console.log(e.target.result);
+  //     };
+  //     // return reader.readAsDataURL(meta.value);
+  //   }
+  // };
+
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
       <InputLabel>{label}</InputLabel>
@@ -39,9 +53,9 @@ function FileUploadField({ label, ...props }) {
         accept={acceptedFileTypes()}
         multiple
         type="file"
-        id="preview"
+        id={props.name}
       />
-      <label htmlFor="preview">
+      <label htmlFor={props.name}>
         <Button
           variant="outlined"
           component="span"
@@ -54,7 +68,14 @@ function FileUploadField({ label, ...props }) {
           {meta.value.length > 0 ? "Success!" : "Upload"}
         </Button>
       </label>
+      {/* {meta.value.length > 0 && (
+        <Box mt={2} textAlign="center">
+          <div>Image preview</div>
+          <img src={meta.value} alt="profile preview" height="100px" />
+        </Box>
+      )} */}
       {meta.value.length > 0 ? <p>{meta.value}</p> : null}
+      {/* <Thumb /> */}
     </Stack>
   );
 }

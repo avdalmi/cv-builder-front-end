@@ -1,7 +1,9 @@
 import React from "react";
 import { FieldArray, Field } from "formik";
-import TextInputField from "../Form/TextInputField";
+import TextInputField from "../Form/TextInputField/TextInputField";
 import { Button } from "@mui/material";
+import AddButton from "../Form/AddButton/AddButton";
+import DeleteButton from "../Form/DeleteButton/DeleteButton";
 
 function HobbiesSection(props) {
   return (
@@ -14,36 +16,26 @@ function HobbiesSection(props) {
             {props.initialValues.hobbies.map((hob, index) => (
               <div key={index} style={{ display: "flex" }}>
                 <TextInputField
-                  name={`hobbies[${index}].hobby`}
+                  name={`hobbies[${index}]`}
                   placeholder="Ex: Football"
                   label="Hobby"
                 />
-
-                <Button
-                  type="button"
-                  variant="outlined"
-                  color="error"
+                <DeleteButton
+                  deleteitem={true}
                   onClick={() => {
                     arrayHelpers.remove(index);
                     props.initialValues.hobbies.splice(index, 1);
                   }}
-                >
-                  remove hobby
-                </Button>
+                />
               </div>
             ))}
-            <Button
-              type="button"
-              variant="outlined"
+            <AddButton
+              label="Add another hobby"
               onClick={() => {
-                arrayHelpers.push({ hobby: "" });
-                props.initialValues.hobbies.push({
-                  hobby: "",
-                });
+                arrayHelpers.push("");
+                props.initialValues.hobbies.push("");
               }}
-            >
-              Add another hobby
-            </Button>
+            />
           </div>
         );
       }}

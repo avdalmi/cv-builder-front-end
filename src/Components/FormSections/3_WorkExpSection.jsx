@@ -1,8 +1,10 @@
 import React from "react";
 import { FieldArray, Field, useField } from "formik";
-import TextInputField from "../Form/TextInputField";
+import TextInputField from "../Form/TextInputField/TextInputField";
 import { FormControl, FormLabel, Button } from "@mui/material";
-import CountrySelect from "../Form/CountrySelect";
+import CountrySelect from "../Form/CountrySelect/CountrySelect";
+import DeleteButton from "../Form/DeleteButton/DeleteButton";
+import AddButton from "../Form/AddButton/AddButton";
 
 function WorkExpSection({ ...props }) {
   const [meta, field] = useField(props);
@@ -108,27 +110,22 @@ function WorkExpSection({ ...props }) {
                       name={`workExperience[${index}].workDescription`}
                       multiline
                       rows={5}
-                      label="Write a little bit about what you did and what you have achieved... max 300 characters *"
+                      label="Write a little bit about what you did and your achievements... *"
                       inputProps={{ maxLength: 300 }}
                     />
                     <p>{meta.value[index].workDescription.length} / 300</p>
-                    <Button
-                      type="button"
-                      variant="outlined"
-                      color="error"
+                    <DeleteButton
                       onClick={() => {
-                        arrayHelpers.remove(index); //removes from the final value
-                        props.initialValues.workExperience.splice(index, 1); //removes locally, UI only
+                        arrayHelpers.remove(index);
+                        props.initialValues.workExperience.splice(index, 1);
                       }}
-                    >
-                      remove work experience
-                    </Button>
+                      label="work experience"
+                    />
                   </div>
                 );
               })}
-            <Button
-              variant="outlined"
-              type="button"
+            <AddButton
+              label="Add another work experience"
               onClick={() => {
                 arrayHelpers.push({
                   workStartDate: "",
@@ -151,9 +148,7 @@ function WorkExpSection({ ...props }) {
                   workCompanyName: "",
                 });
               }}
-            >
-              Add another work experience
-            </Button>
+            />
           </div>
         );
       }}
