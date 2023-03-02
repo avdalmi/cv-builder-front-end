@@ -1,13 +1,13 @@
 import React from "react";
 import { brainFirstOptions } from "../../Data/BrainFirstOptions";
-import TextInputField from "../Form/TextInputField";
+import TextInputField from "../FormFields/TextInputField/TextInputField";
 import FormLabel from "@mui/material/FormLabel";
-import FileUploadField from "../Form/FileUploadField";
-import SelectField from "../Form/SelectField";
-import CountrySelect from "../Form/CountrySelect";
-import RadioButtonGroup from "../Form/RadioGroup";
+import FileUploadField from "../FormFields/FileUploadField/FileUploadField";
+import SelectField from "../FormFields/SelectField/SelectField";
+import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
+import RadioButtonGroup from "../FormFields/RadioGroup/RadioGroup";
 import { Field, useField, useFormik } from "formik";
-import LinkField from "../Form/LinkField";
+import LinkField from "../FormFields/LinkField/LinkField";
 
 function ProfileSection({ ...props }) {
   const [meta, field] = useField(props);

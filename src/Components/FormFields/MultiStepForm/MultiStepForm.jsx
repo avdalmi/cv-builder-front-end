@@ -1,6 +1,6 @@
 import { Form, Formik } from "formik";
 import React, { useState } from "react";
-import FormNavigation from "./FormNavigation";
+import FormNavigation from "../../FormNavigation/NavigationButton";
 import { Stepper, Step, StepLabel } from "@mui/material";
 
 function MultiStepForm({ children, initialValues, onSubmit }) {

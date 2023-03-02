@@ -1,5 +1,7 @@
 import React from "react";
-import MultiStepForm, { FormStep } from "../../Components/Form/MultiStepForm";
+import MultiStepForm, {
+  FormStep,
+} from "../../Components/FormNavigation/MultiStepForm/MultiStepForm";
 import {
   profileValidationSchema,
   certificatesValidationSchema,
@@ -39,21 +41,21 @@ function FormPage({ mongoContext: { client, user } }) {
           console.log(JSON.stringify(values, null, 2));
         }}
       >
-        <FormStep
+        {/* <FormStep
           stepName="Personal Information"
           onSubmit={() => console.log("personal information submit")}
           validationSchema={profileValidationSchema}
         >
           <ProfileSection name="profile" initialValues={initialValues} />
-        </FormStep>
+        </FormStep> */}
 
-        {/* <FormStep
+        <FormStep
           stepName="Skills"
           onSubmit={() => console.log("skills submit")}
           validationSchema={skillsValidationSchema}
         >
           <SkillsSection initialValues={initialValues} name="skills" />
-        </FormStep> */}
+        </FormStep>
 
         {/* <FormStep
           stepName="Work experience"
@@ -66,7 +68,7 @@ function FormPage({ mongoContext: { client, user } }) {
         {/* <FormStep
           stepName="Education"
           onSubmit={() => console.log("education submit")}
-          // validationSchema={educationValidationSchema}
+          validationSchema={educationValidationSchema}
         >
           <EducationSection initialValues={initialValues} name="education" />
         </FormStep> */}
@@ -109,13 +111,13 @@ function FormPage({ mongoContext: { client, user } }) {
           />
         </FormStep> */}
 
-        {/* <FormStep
+        <FormStep
           stepName="Projects"
           onSubmit={() => console.log("projects submit")}
-          // validationSchema={projectsValidationSchema}
+          validationSchema={projectsValidationSchema}
         >
           <ProjectsSection initialValues={initialValues} name="projects" />
-        </FormStep> */}
+        </FormStep>
       </MultiStepForm>
     </div>
   );

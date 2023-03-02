@@ -1,9 +1,11 @@
 import React from "react";
 import { FieldArray, Field } from "formik";
-import TextInputField from "../Form/TextInputField";
+import TextInputField from "../FormFields/TextInputField/TextInputField";
 import { Button } from "@mui/material";
 import { languageLevelOptions } from "../../Data/LanguageLevelOptions";
-import SelectField from "../Form/SelectField";
+import SelectField from "../FormFields/SelectField/SelectField";
+import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
+import AddButton from "../FormFields/AddButton/AddButton";
 
 function LanguageSection(props) {
   return (
@@ -27,22 +29,17 @@ function LanguageSection(props) {
                   disabledtext="Select language level"
                 />
 
-                <Button
-                  type="button"
-                  variant="outlined"
-                  color="error"
+                <DeleteButton
                   onClick={() => {
                     arrayHelpers.remove(index);
                     props.initialValues.languages.splice(index, 1);
                   }}
-                >
-                  remove skill
-                </Button>
+                  label="remove skill"
+                  deleteitem={true}
+                />
               </div>
             ))}
-            <Button
-              type="button"
-              variant="outlined"
+            <AddButton
               onClick={() => {
                 arrayHelpers.push({ languageName: "", languageLevel: "" });
                 props.initialValues.languages.push({
@@ -50,9 +47,8 @@ function LanguageSection(props) {
                   languageLevel: "",
                 });
               }}
-            >
-              Add another language
-            </Button>
+              label="Add another language"
+            />
           </div>
         );
       }}

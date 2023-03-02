@@ -1,8 +1,10 @@
 import React from "react";
 import { Field, FieldArray } from "formik";
-import TextInputField from "../Form/TextInputField";
-import FileUploadField from "../Form/FileUploadField";
+import TextInputField from "../FormFields/TextInputField/TextInputField";
+import FileUploadField from "../FormFields/FileUploadField/FileUploadField";
 import { Button, FormLabel } from "@mui/material";
+import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
+import AddButton from "../FormFields/AddButton/AddButton";
 
 function CertificatesSection(props) {
   return (
@@ -43,14 +45,15 @@ function CertificatesSection(props) {
                   placeholder="Expiration date"
                   type="date"
                 />
-                <FileUploadField
+                <Field
                   name={`licensesAndCertifications[${index}].certUpload`}
-                  type="file"
+                  as={FileUploadField}
+                  label="Select a file to upload"
+                  filetype="file"
                 />
-                <Button
-                  type="button"
-                  variant="outlined"
-                  color="error"
+
+                <DeleteButton
+                  label="license or certification"
                   onClick={() => {
                     arrayHelpers.remove(index);
                     props.initialValues.licensesAndCertifications.splice(
@@ -58,14 +61,11 @@ function CertificatesSection(props) {
                       1
                     );
                   }}
-                >
-                  remove license or certification
-                </Button>
+                />
               </div>
             ))}
-            <Button
-              variant="outlined"
-              type="button"
+            <AddButton
+              label="Add another license or certificate"
               onClick={() => {
                 arrayHelpers.push({
                   certInstituteName: "",
@@ -86,9 +86,7 @@ function CertificatesSection(props) {
                   certUpload: "",
                 });
               }}
-            >
-              Add another license or certificate
-            </Button>
+            />
           </div>
         );
       }}
@@ -97,7 +95,3 @@ function CertificatesSection(props) {
 }
 
 export default CertificatesSection;
-// - Periode
-// - Instituut
-// - Opleidingsnaam
-// - Cijfer?

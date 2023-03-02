@@ -9,8 +9,8 @@ import {
 } from "@mui/material";
 import React from "react";
 import { Field, useField, useFormikContext } from "formik";
-import { drivingLicenseOptions } from "../../Data/DrivingLicenseOptions";
-import SelectField from "./SelectField";
+import { drivingLicenseOptions } from "../../../Data/DrivingLicenseOptions";
+import SelectField from "../SelectField/SelectField";
 
 function RadioButtonGroup({ label, ...props }) {
   const [field, meta] = useField(props);

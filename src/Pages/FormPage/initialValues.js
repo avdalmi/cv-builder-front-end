@@ -21,12 +21,7 @@ export const initialValues = {
     },
     introductionText: "",
   },
-  skills: [
-    {
-      skillName: "",
-      skillLevel: 0,
-    },
-  ],
+  skills: [""],
   workExperience: [
     {
       workPositionTitle: "",
@@ -77,11 +72,7 @@ export const initialValues = {
       languageLevel: "",
     },
   ],
-  hobbies: [
-    {
-      hobby: "",
-    },
-  ],
+  hobbies: [""],
   projects: [
     {
       projectTitle: "",
@@ -89,16 +80,8 @@ export const initialValues = {
       projectCity: "",
       projectCountry: "",
       projectDate: "",
-      projectLinks: [
-        {
-          projectLink: "",
-        },
-      ],
-      projectSkills: [
-        {
-          projectSkill: "",
-        },
-      ],
+      projectLinks: [""],
+      projectSkills: [""],
     },
   ],
 };
