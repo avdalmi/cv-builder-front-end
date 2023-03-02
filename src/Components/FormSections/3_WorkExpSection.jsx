@@ -1,10 +1,10 @@
 import React from "react";
 import { FieldArray, Field, useField } from "formik";
-import TextInputField from "../Form/TextInputField/TextInputField";
+import TextInputField from "../FormFields/TextInputField/TextInputField";
 import { FormControl, FormLabel, Button } from "@mui/material";
-import CountrySelect from "../Form/CountrySelect/CountrySelect";
-import DeleteButton from "../Form/DeleteButton/DeleteButton";
-import AddButton from "../Form/AddButton/AddButton";
+import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
+import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
+import AddButton from "../FormFields/AddButton/AddButton";
 
 function WorkExpSection({ ...props }) {
   const [meta, field] = useField(props);
@@ -45,7 +45,6 @@ function WorkExpSection({ ...props }) {
                     <TextInputField
                       name={`workExperience[${index}].workCity`}
                       label="City *"
-                      // value={meta.value[index].workCity}
                       placeholder="Ex: Amsterdam"
                     />
                     <CountrySelect

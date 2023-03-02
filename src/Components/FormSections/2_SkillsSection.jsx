@@ -1,10 +1,10 @@
 import React from "react";
 import { FieldArray, Field } from "formik";
-import TextInputField from "../Form/TextInputField/TextInputField";
+import TextInputField from "../FormFields/TextInputField/TextInputField";
 import { Button } from "@mui/material";
-import StarRating from "../Form/StarRating/StarRating";
-import DeleteButton from "../Form/DeleteButton/DeleteButton";
-import AddButton from "../Form/AddButton/AddButton";
+import StarRating from "../FormFields/StarRating/StarRating";
+import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
+import AddButton from "../FormFields/AddButton/AddButton";
 
 function SkillsSection({ ...props }) {
   // console.log("props", props);

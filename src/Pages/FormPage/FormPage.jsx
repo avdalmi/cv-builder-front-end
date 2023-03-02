@@ -1,7 +1,7 @@
 import React from "react";
 import MultiStepForm, {
   FormStep,
-} from "../../Components/Form/MultiStepForm/MultiStepForm";
+} from "../../Components/FormNavigation/MultiStepForm/MultiStepForm";
 import {
   profileValidationSchema,
   certificatesValidationSchema,
@@ -49,13 +49,13 @@ function FormPage({ mongoContext: { client, user } }) {
           <ProfileSection name="profile" initialValues={initialValues} />
         </FormStep> */}
 
-        {/* <FormStep
+        <FormStep
           stepName="Skills"
           onSubmit={() => console.log("skills submit")}
           validationSchema={skillsValidationSchema}
         >
           <SkillsSection initialValues={initialValues} name="skills" />
-        </FormStep> */}
+        </FormStep>
 
         {/* <FormStep
           stepName="Work experience"

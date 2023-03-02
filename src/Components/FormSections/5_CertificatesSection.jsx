@@ -1,10 +1,10 @@
 import React from "react";
 import { Field, FieldArray } from "formik";
-import TextInputField from "../Form/TextInputField/TextInputField";
-import FileUploadField from "../Form/FileUploadField/FileUploadField";
+import TextInputField from "../FormFields/TextInputField/TextInputField";
+import FileUploadField from "../FormFields/FileUploadField/FileUploadField";
 import { Button, FormLabel } from "@mui/material";
-import DeleteButton from "../Form/DeleteButton/DeleteButton";
-import AddButton from "../Form/AddButton/AddButton";
+import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
+import AddButton from "../FormFields/AddButton/AddButton";
 
 function CertificatesSection(props) {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 
-function FormNavigation(props) {
+function NavigationButton(props) {
   // console.log("props", props);
   return (
     <div
@@ -23,4 +23,4 @@ function FormNavigation(props) {
   );
 }
 
-export default FormNavigation;
+export default NavigationButton;

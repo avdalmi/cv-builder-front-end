@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { FieldArray, Field, useField, useFormikContext } from "formik";
-import { Button, FormLabel } from "@mui/material";
-import TextInputField from "../Form/TextInputField/TextInputField";
-import CountrySelect from "../Form/CountrySelect/CountrySelect";
-import LinkField from "../Form/LinkField/LinkField";
-import DeleteButton from "../Form/DeleteButton/DeleteButton";
+import {
+  Box,
+  Button,
+  Chip,
+  FormControl,
+  FormLabel,
+  InputLabel,
+  MenuItem,
+  OutlinedInput,
+  Select,
+} from "@mui/material";
+import TextInputField from "../FormFields/TextInputField/TextInputField";
+import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
+import LinkField from "../FormFields/LinkField/LinkField";
+import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
+import AddButton from "../FormFields/AddButton/AddButton";
+import ChipSelect from "../FormFields/ChipSelect/ChipSelect";
 
 function ProjectsSection({ ...props }) {
-  const { values } = useFormikContext();
   const [meta] = useField(props);
 
   return (
@@ -35,8 +46,6 @@ function ProjectsSection({ ...props }) {
                 <CountrySelect
                   name={`projects[${index}].projectCountry`}
                   label="Country *"
-                  // component="select"
-                  defaultValue=""
                 />
 
                 <div>
@@ -53,14 +62,18 @@ function ProjectsSection({ ...props }) {
                     render={(arrayHelpers) => {
                       return (
                         <div>
-                          <p>Add links to your project</p>
+                          <FormLabel>Add links to your project</FormLabel>
                           {props.initialValues.projects[index].projectLinks.map(
                             (link, index2) => (
                               <div key={index2} style={{ display: "flex" }}>
                                 <LinkField
-                                  name={`projects[${index}].projectLinks[${index2}].projectLink]`}
+                                  name={`projects[${index}].projectLinks[${index2}]`}
                                   placeholder="Ex: github.com/username/projectname"
-                                  label="Project link *"
+                                  label={
+                                    index2 >= 1
+                                      ? "Project link"
+                                      : "Project link *"
+                                  }
                                 />
                                 {index2 >= 1 && (
                                   <DeleteButton
@@ -73,36 +86,18 @@ function ProjectsSection({ ...props }) {
                                     }}
                                   />
                                 )}
-                                {/* <Button
-                                  type="button"
-                                  variant="outlined"
-                                  color="error"
-                                  onClick={() => {
-                                    arrayHelpers.remove(index2);
-                                    props.initialValues.projects[
-                                      index
-                                    ].projectLinks.splice(index2, 1);
-                                  }}
-                                >
-                                  remove link
-                                </Button> */}
                               </div>
                             )
                           )}
-                          <Button
-                            type="button"
-                            variant="outlined"
+                          <AddButton
+                            label="Add another link"
                             onClick={() => {
-                              arrayHelpers.push({ projectLink: "" });
+                              arrayHelpers.push("");
                               props.initialValues.projects[
                                 index
-                              ].projectLinks.push({
-                                projectLink: "",
-                              });
+                              ].projectLinks.push("");
                             }}
-                          >
-                            Add another link
-                          </Button>
+                          />
                         </div>
                       );
                     }}
@@ -123,63 +118,18 @@ function ProjectsSection({ ...props }) {
                   <FieldArray
                     name={`projects[${index}].projectSkills`}
                     render={(arrayHelpers) => {
-                      // console.log(arrayHelpers);
                       return (
                         <div>
-                          <p>select the skills used in the project</p>
                           {props.initialValues.projects[
                             index
                           ].projectSkills.map((skill, index2) => (
                             <div key={index2}>
-                              <Field
-                                component="select"
-                                name={`projects.[${index}].projectSkills.[${index2}].projectSkill`}
-                              >
-                                <option value="" disabled>
-                                  select skill
-                                </option>
-                                {values.skills.map((item, index3) => {
-                                  return (
-                                    <option
-                                      style={{ width: 400 }}
-                                      key={index3}
-                                      value={item.skillName}
-                                    >
-                                      {item.skillName}
-                                    </option>
-                                  );
-                                })}
-                              </Field>
-
-                              <Button
-                                type="button"
-                                variant="outlined"
-                                color="error"
-                                onClick={() => {
-                                  arrayHelpers.remove(index2);
-                                  props.initialValues.projects[
-                                    index
-                                  ].projectSkills.splice(index2, 1);
-                                }}
-                              >
-                                remove skill
-                              </Button>
+                              <ChipSelect
+                                name={`projects[${index}].projectSkills[${index2}]`}
+                                label="Chip select main"
+                              />
                             </div>
                           ))}
-                          <Button
-                            type="button"
-                            variant="outlined"
-                            onClick={() => {
-                              arrayHelpers.push({ projectSkill: "" });
-                              props.initialValues.projects[
-                                index
-                              ].projectSkills.push({
-                                projectSkill: "",
-                              });
-                            }}
-                          >
-                            Add another skill
-                          </Button>
                         </div>
                       );
                     }}
@@ -187,6 +137,29 @@ function ProjectsSection({ ...props }) {
                 </div>
               </div>
             ))}
+            <AddButton
+              label="Add another project"
+              onClick={() => {
+                arrayHelpers.push({
+                  projectTitle: "",
+                  projectDescription: "",
+                  projectCity: "",
+                  projectCountry: "",
+                  projectDate: "",
+                  projectLinks: [""],
+                  projectSkills: [""],
+                });
+                props.initialValues.projects.push({
+                  projectTitle: "",
+                  projectDescription: "",
+                  projectCity: "",
+                  projectCountry: "",
+                  projectDate: "",
+                  projectLinks: [""],
+                  projectSkills: [""],
+                });
+              }}
+            />
           </div>
         );
       }}

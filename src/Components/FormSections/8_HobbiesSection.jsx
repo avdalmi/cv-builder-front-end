@@ -1,9 +1,9 @@
 import React from "react";
 import { FieldArray, Field } from "formik";
-import TextInputField from "../Form/TextInputField/TextInputField";
+import TextInputField from "../FormFields/TextInputField/TextInputField";
 import { Button } from "@mui/material";
-import AddButton from "../Form/AddButton/AddButton";
-import DeleteButton from "../Form/DeleteButton/DeleteButton";
+import AddButton from "../FormFields/AddButton/AddButton";
+import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
 
 function HobbiesSection(props) {
   return (

@@ -1,11 +1,11 @@
 import React from "react";
 import { Field, FieldArray, useField } from "formik";
-import TextInputField from "../Form/TextInputField/TextInputField";
+import TextInputField from "../FormFields/TextInputField/TextInputField";
 import { InputLabel, Button, FormControl } from "@mui/material";
-import CountrySelect from "../Form/CountrySelect/CountrySelect";
-import FileUploadField from "../Form/FileUploadField/FileUploadField";
-import DeleteButton from "../Form/DeleteButton/DeleteButton";
-import AddButton from "../Form/AddButton/AddButton";
+import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
+import FileUploadField from "../FormFields/FileUploadField/FileUploadField";
+import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
+import AddButton from "../FormFields/AddButton/AddButton";
 
 function EducationSection({ ...props }) {
   const [meta] = useField(props);
@@ -105,34 +105,6 @@ function EducationSection({ ...props }) {
                 });
               }}
             />
-            {/* <Button
-              style={{ margin: "20px" }}
-              type="button"
-              onClick={() => {
-                arrayHelpers.push({
-                  eduSchoolName: "",
-                  eduDegreeTitle: "",
-                  eduCity: "",
-                  eduCountry: "",
-                  eduStartDate: "",
-                  eduEndDate: "",
-                  eduFile: "",
-                  eduDescription: "",
-                });
-                props.initialValues.education.push({
-                  eduSchoolName: "",
-                  eduDegreeTitle: "",
-                  eduCity: "",
-                  eduCountry: "",
-                  eduStartDate: "",
-                  eduEndDate: "",
-                  eduFile: "",
-                  eduDescription: "",
-                });
-              }}
-            >
-              Add another education
-            </Button> */}
           </div>
         );
       }}
@@ -141,6 +113,3 @@ function EducationSection({ ...props }) {
 }
 
 export default EducationSection;
-// - Periode
-// - Instituut
-// - Opleidingsnaam

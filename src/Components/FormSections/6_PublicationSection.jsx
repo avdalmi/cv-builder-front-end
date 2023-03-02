@@ -1,10 +1,12 @@
 import React from "react";
-import TextInputField from "../Form/TextInputField/TextInputField";
-import FileUploadField from "../Form/FileUploadField/FileUploadField";
+import TextInputField from "../FormFields/TextInputField/TextInputField";
+import FileUploadField from "../FormFields/FileUploadField/FileUploadField";
 import { Button, FormLabel, styled, TextField } from "@mui/material";
 import { FieldArray, useField } from "formik";
-import LinkField from "../Form/LinkField/LinkField";
+import LinkField from "../FormFields/LinkField/LinkField";
 import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
+import AddButton from "../FormFields/AddButton/AddButton";
 
 function PublicationSection({ ...props }) {
   const [meta] = useField(props);
@@ -39,31 +41,28 @@ function PublicationSection({ ...props }) {
                   placeholder="Ex: www.published.com/article-name"
                   label="Publication URL"
                 />
-                <TextInputField
-                  name={`publications[${index}].pubDescription`}
-                  label="Description"
-                  multiline
-                  rows={3}
-                  inputProps={{ maxLength: 300 }}
-                />
-                <p>{meta.value[index].pubDescription.length} / 300</p>
-                <Button
-                  type="button"
-                  variant="outlined"
-                  color="error"
-                  startIcon={<DeleteIcon />}
+                <div>
+                  {" "}
+                  <TextInputField
+                    name={`publications[${index}].pubDescription`}
+                    label="Description"
+                    multiline
+                    rows={3}
+                    inputProps={{ maxLength: 300 }}
+                  />
+                  <p>{meta.value[index].pubDescription.length} / 300</p>
+                </div>
+                <DeleteButton
+                  label="publication"
                   onClick={() => {
                     arrayHelpers.remove(index);
                     props.initialValues.publications.splice(index, 1);
                   }}
-                >
-                  remove publication
-                </Button>
+                />
               </div>
             ))}
-            <Button
-              variant="outlined"
-              type="button"
+            <AddButton
+              label="Add another publication"
               onClick={() => {
                 arrayHelpers.push({
                   pubTitle: "",
@@ -80,9 +79,7 @@ function PublicationSection({ ...props }) {
                   pubDescription: "",
                 });
               }}
-            >
-              Add another publication
-            </Button>
+            />
           </div>
         );
       }}

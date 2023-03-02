@@ -1,11 +1,11 @@
 import React from "react";
 import { FieldArray, Field } from "formik";
-import TextInputField from "../Form/TextInputField/TextInputField";
+import TextInputField from "../FormFields/TextInputField/TextInputField";
 import { Button } from "@mui/material";
 import { languageLevelOptions } from "../../Data/LanguageLevelOptions";
-import SelectField from "../Form/SelectField/SelectField";
-import DeleteButton from "../Form/DeleteButton/DeleteButton";
-import AddButton from "../Form/AddButton/AddButton";
+import SelectField from "../FormFields/SelectField/SelectField";
+import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
+import AddButton from "../FormFields/AddButton/AddButton";
 
 function LanguageSection(props) {
   return (
