@@ -7,28 +7,11 @@ import SelectField from "../Form/SelectField";
 import CountrySelect from "../Form/CountrySelect";
 import RadioButtonGroup from "../Form/RadioGroup";
 import { Field, useField, useFormik } from "formik";
-import { Link, Visibility, VisibilityOff } from "@mui/icons-material";
-import {
-  FormControl,
-  IconButton,
-  Input,
-  InputAdornment,
-  InputLabel,
-} from "@mui/material";
 import LinkField from "../Form/LinkField";
-import { drivingLicenseOptions } from "../../Data/DrivingLicenseOptions";
 
 function ProfileSection({ ...props }) {
   const [meta, field] = useField(props);
-  // console.log("meta: ", meta.value.drivingLicense);
-  // console.log("props", props);
-  const validate = props.validate;
-  // const formikProps = useFormik({
-  //   props,
-  // });
 
-  // console.log("formikprosp", formikProps);
-  const isRequired = (message) => (value) => !!value ? undefined : message;
   return (
     <div style={{ width: 500, margin: "0 auto" }}>
       <TextInputField
@@ -50,6 +33,13 @@ function ProfileSection({ ...props }) {
       <br />
       <br />
       <CountrySelect name={`profile.currentCountry`} label="Country *" />
+
+      <Field
+        name={`profile.file`}
+        as={FileUploadField}
+        label="Select a profile picture"
+        filetype="image"
+      />
 
       <br />
       <RadioButtonGroup
@@ -95,7 +85,6 @@ function ProfileSection({ ...props }) {
         <SelectField
           name="profile.brainsFirst.resultThree"
           options={brainFirstOptions}
-          // label="result"
           label="select your third result"
         />
       </div>
