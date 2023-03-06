@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { FormHelperText, Rating } from "@mui/material";
 import { useField } from "formik";
+import { RatingStyled } from "../styles/FormInputFields";
 
 const StarRating = ({ ...props }) => {
   const [field, meta] = useField(props);
 
   return (
     <div>
-      <Rating
+      <RatingStyled
         {...props}
         {...field}
         controlled="true"

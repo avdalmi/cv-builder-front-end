@@ -6,6 +6,11 @@ import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
 import FileUploadField from "../FormFields/FileUploadField/FileUploadField";
 import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
 import AddButton from "../FormFields/AddButton/AddButton";
+import {
+  CharTextStyled,
+  DeleteButtonContainer,
+  SectionContainer,
+} from "../FormFields/styles/FormInputFields";
 
 function EducationSection({ ...props }) {
   const [meta] = useField(props);
@@ -15,7 +20,7 @@ function EducationSection({ ...props }) {
       name="education"
       render={(arrayHelpers) => {
         return (
-          <div style={{ width: 500, margin: "0 auto" }}>
+          <SectionContainer>
             <h4>Add your education</h4>
             {props &&
               props.initialValues.education.map((edu, index) => (
@@ -39,7 +44,7 @@ function EducationSection({ ...props }) {
                   <CountrySelect
                     name={`education[${index}].eduCountry`}
                     label="Country *"
-                    defaultValue=""
+                    // defaultValue=""
                   />
 
                   <InputLabel>start date *</InputLabel>
@@ -69,15 +74,18 @@ function EducationSection({ ...props }) {
                     inputProps={{ maxLength: 300 }}
                     id="preview"
                   />
-                  <p>{meta.value[index].eduDescription.length} / 300</p>
-
-                  <DeleteButton
-                    onClick={() => {
-                      arrayHelpers.remove(index);
-                      props.initialValues.education.splice(index, 1);
-                    }}
-                    label="education"
-                  />
+                  <CharTextStyled>
+                    {meta.value[index].eduDescription.length} / 300
+                  </CharTextStyled>
+                  <DeleteButtonContainer>
+                    <DeleteButton
+                      onClick={() => {
+                        arrayHelpers.remove(index);
+                        props.initialValues.education.splice(index, 1);
+                      }}
+                      label="education"
+                    />
+                  </DeleteButtonContainer>
                 </div>
               ))}
             <AddButton
@@ -105,7 +113,7 @@ function EducationSection({ ...props }) {
                 });
               }}
             />
-          </div>
+          </SectionContainer>
         );
       }}
     />

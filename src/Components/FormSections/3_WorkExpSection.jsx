@@ -5,6 +5,15 @@ import { FormControl, FormLabel, Button } from "@mui/material";
 import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
 import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
 import AddButton from "../FormFields/AddButton/AddButton";
+import {
+  CharTextStyled,
+  DeleteButtonContainer,
+  FormControlStyled,
+  SectionContainer,
+  TitleTextStyled,
+  WorkContainer,
+  WorkFormControl,
+} from "../FormFields/styles/FormInputFields";
 
 function WorkExpSection({ ...props }) {
   const [meta, field] = useField(props);
@@ -24,54 +33,56 @@ function WorkExpSection({ ...props }) {
     <FieldArray
       name="workExperience"
       render={(arrayHelpers) => {
-        // console.log("helpers", arrayHelpers);
         return (
-          <div style={{ width: 500, margin: "0 auto" }}>
-            <h4>Add your work experience</h4>
+          <SectionContainer>
+            <TitleTextStyled>
+              <h4>Add your work experience</h4>
+            </TitleTextStyled>
+
             {props &&
               props.initialValues.workExperience.map((work, index) => {
                 return (
-                  <div key={index} style={{ margin: "20px" }}>
+                  <div key={index}>
                     <TextInputField
                       name={`workExperience[${index}].workPositionTitle`}
                       label="Job title *"
                       placeholder="Ex: Full Stack Developer"
                     />
+
                     <TextInputField
                       name={`workExperience[${index}].workCompanyName`}
                       label="Company name *"
                       placeholder="Ex: Building Heroes"
                     />
+
                     <TextInputField
                       name={`workExperience[${index}].workCity`}
                       label="City *"
                       placeholder="Ex: Amsterdam"
                     />
+
                     <CountrySelect
                       name={`workExperience[${index}].workCountry`}
                       label="Country *"
                       defaultValue=""
                     />
-                    <FormLabel>Start date *</FormLabel>
+
+                    <FormLabel style={{ textAlign: "left" }}>
+                      Start date *
+                    </FormLabel>
+
                     <TextInputField
                       name={`workExperience[${index}].workStartDate`}
                       type="date"
                     />
-                    <br />
-                    <br />
-                    <FormControl>
+
+                    <WorkFormControl>
                       <FormLabel
                         htmlFor={`workExperience[${index}].workCurrent`}
                       >
                         Do you currently work here?
                       </FormLabel>
-                      <div
-                        style={{
-                          display: "flex",
-                          // backgroundColor: "pink",
-                          justifyContent: "center",
-                        }}
-                      >
+                      <div>
                         <label>
                           <Field
                             type="radio"
@@ -89,8 +100,7 @@ function WorkExpSection({ ...props }) {
                           no
                         </label>
                       </div>
-                      <br />
-                    </FormControl>{" "}
+                    </WorkFormControl>
                     {meta.value[index].workCurrent === "false" ? (
                       <div>
                         <FormLabel>End date</FormLabel>
@@ -102,8 +112,6 @@ function WorkExpSection({ ...props }) {
                     ) : (
                       <div value="false"></div>
                     )}
-                    <br />
-                    <br />
                     <TextInputField
                       placeholder="type something..."
                       name={`workExperience[${index}].workDescription`}
@@ -112,19 +120,24 @@ function WorkExpSection({ ...props }) {
                       label="Write a little bit about what you did and your achievements... *"
                       inputProps={{ maxLength: 300 }}
                     />
-                    <p>{meta.value[index].workDescription.length} / 300</p>
-                    <DeleteButton
-                      onClick={() => {
-                        arrayHelpers.remove(index);
-                        props.initialValues.workExperience.splice(index, 1);
-                      }}
-                      label="work experience"
-                    />
+                    <CharTextStyled>
+                      {meta.value[index].workDescription.length} / 300
+                    </CharTextStyled>
+                    <DeleteButtonContainer>
+                      <DeleteButton
+                        onClick={() => {
+                          arrayHelpers.remove(index);
+                          props.initialValues.workExperience.splice(index, 1);
+                        }}
+                        label="work experience"
+                      />
+                    </DeleteButtonContainer>
                   </div>
                 );
               })}
             <AddButton
               label="Add another work experience"
+              style={{ textAlign: "center" }}
               onClick={() => {
                 arrayHelpers.push({
                   workStartDate: "",
@@ -148,7 +161,7 @@ function WorkExpSection({ ...props }) {
                 });
               }}
             />
-          </div>
+          </SectionContainer>
         );
       }}
     />

@@ -1,14 +1,14 @@
 import React from "react";
-import { FieldConfig, useField } from "formik";
-import { styled, TextField } from "@mui/material";
-import { Formik } from "formik";
+import { useField } from "formik";
 
+import { TextFieldStyled } from "../styles/FormInputFields";
 function TextInputField({ label, ...props }) {
   const [field, meta] = useField(props);
 
   return (
-    <TextFieldTest
+    <TextFieldStyled
       variant="standard"
+      color="primary"
       fullWidth
       label={label}
       {...field}
@@ -19,11 +19,5 @@ function TextInputField({ label, ...props }) {
     />
   );
 }
-
-const TextFieldTest = styled(TextField)(({ theme }) => ({
-  // width: 400,
-  // color: "pink",
-  // backgroundColor: "green",
-}));
 
 export default TextInputField;

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const FormContainer = styled.form``;
+export const SectionContainer = styled.div`
+  background-color: "pink";
+`;
 
 export const QuestionContainer = styled.div`
   margin: 30px;

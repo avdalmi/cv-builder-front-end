@@ -6,6 +6,10 @@ import { languageLevelOptions } from "../../Data/LanguageLevelOptions";
 import SelectField from "../FormFields/SelectField/SelectField";
 import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
 import AddButton from "../FormFields/AddButton/AddButton";
+import {
+  DeleteButtonContainer,
+  SectionContainer,
+} from "../FormFields/styles/FormInputFields";
 
 function LanguageSection(props) {
   return (
@@ -13,30 +17,43 @@ function LanguageSection(props) {
       name="languages"
       render={(arrayHelpers) => {
         return (
-          <div style={{ width: 500, margin: "0 auto" }}>
+          <SectionContainer>
             <h4>Add your relevant languages</h4>
             {props.initialValues.languages.map((language, index) => (
-              <div key={index} style={{ display: "flex" }}>
+              <div
+                key={index}
+                style={{
+                  display: "flex",
+                  alignItems: "flex-end",
+                }}
+              >
                 <TextInputField
                   name={`languages[${index}].languageName`}
                   placeholder="Ex: English"
                   label="Language"
+                  style={{
+                    width: "300px",
+                    margin: "5px",
+                    // backgroundColor: "lavender",
+                  }}
                 />
                 <SelectField
                   name={`languages.${index}.languageLevel`}
                   options={languageLevelOptions}
-                  label="Language Level"
+                  label="Level"
                   disabledtext="Select language level"
                 />
 
-                <DeleteButton
-                  onClick={() => {
-                    arrayHelpers.remove(index);
-                    props.initialValues.languages.splice(index, 1);
-                  }}
-                  label="remove skill"
-                  deleteitem={true}
-                />
+                <DeleteButtonContainer>
+                  <DeleteButton
+                    onClick={() => {
+                      arrayHelpers.remove(index);
+                      props.initialValues.languages.splice(index, 1);
+                    }}
+                    label="remove skill"
+                    deleteitem={true}
+                  />
+                </DeleteButtonContainer>
               </div>
             ))}
             <AddButton
@@ -49,7 +66,7 @@ function LanguageSection(props) {
               }}
               label="Add another language"
             />
-          </div>
+          </SectionContainer>
         );
       }}
     />
