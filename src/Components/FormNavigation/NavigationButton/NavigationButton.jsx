@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "@mui/material";
 
 function NavigationButton(props) {
-  // console.log("props", props);
   return (
     <div
       style={{

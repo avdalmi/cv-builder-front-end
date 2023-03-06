@@ -44,7 +44,17 @@ function FileUploadField({ label, ...props }) {
   // };
 
   return (
-    <Stack direction="row" alignItems="center" spacing={2}>
+    <Stack
+      direction="row"
+      alignItems="center"
+      justifyContent="space-between"
+      // spacing={2}
+      sx={{
+        // bgcolor: "pink",
+        height: "50px",
+        margin: "5px 0",
+      }}
+    >
       <InputLabel>{label}</InputLabel>
       <input
         {...field}

@@ -4,6 +4,7 @@ import TextInputField from "../FormFields/TextInputField/TextInputField";
 import { Button } from "@mui/material";
 import AddButton from "../FormFields/AddButton/AddButton";
 import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
+import { SectionContainer } from "../FormFields/styles/FormInputFields";
 
 function HobbiesSection(props) {
   return (
@@ -11,10 +12,13 @@ function HobbiesSection(props) {
       name="hobbies"
       render={(arrayHelpers) => {
         return (
-          <div style={{ width: 500, margin: "0 auto" }}>
+          <SectionContainer>
             <h4>Add your hobbies</h4>
             {props.initialValues.hobbies.map((hob, index) => (
-              <div key={index} style={{ display: "flex" }}>
+              <div
+                key={index}
+                style={{ display: "flex", alignItems: "flex-end" }}
+              >
                 <TextInputField
                   name={`hobbies[${index}]`}
                   placeholder="Ex: Football"
@@ -36,7 +40,7 @@ function HobbiesSection(props) {
                 props.initialValues.hobbies.push("");
               }}
             />
-          </div>
+          </SectionContainer>
         );
       }}
     />

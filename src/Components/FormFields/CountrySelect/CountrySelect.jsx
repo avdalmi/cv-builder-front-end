@@ -11,6 +11,10 @@ import {
 
 import { useField } from "formik";
 import axios from "axios";
+import {
+  FormControlStyled,
+  SelectFieldStyled,
+} from "../styles/FormInputFields";
 
 function CountrySelect({ label, ...props }) {
   const [field, meta] = useField(props);
@@ -41,33 +45,42 @@ function CountrySelect({ label, ...props }) {
   }, [countries]);
 
   return (
-    <FormControl fullWidth variant="standard">
+    <FormControlStyled fullWidth variant="standard">
       {meta.touched && Boolean(meta.error) ? (
-        <InputLabel error>{label}</InputLabel>
+        <InputLabel dense="true" htmlFor="country-select" error>
+          {label}
+        </InputLabel>
       ) : (
-        <InputLabel>{label}</InputLabel>
+        <InputLabel htmlFor="country-select" dense="true">
+          {label}
+        </InputLabel>
       )}
-      <Select
+      <SelectFieldStyled
+        {...field}
+        labelId="country-select"
+        {...props}
         error={meta.touched && Boolean(meta.error)}
         value={meta.value}
-        {...field}
-        {...props}
-        style={{ textAlign: "left" }}
-        defaultValue=""
+        // style={{ textAlign: "left", backgroundColor: "thistle" }}
+        MenuProps={{
+          PaperProps: {
+            style: {
+              height: 300,
+            },
+          },
+        }}
       >
-        {/* <StyledPaper> */}
         {sortCountries &&
           sortCountries.map((countryName) => (
             <MenuItem key={countryName} value={countryName}>
               {countryName}
             </MenuItem>
           ))}
-        {/* </StyledPaper> */}
-      </Select>
+      </SelectFieldStyled>
       {meta.touched && Boolean(meta.error) ? (
         <FormHelperText error>{meta.error}</FormHelperText>
       ) : null}
-    </FormControl>
+    </FormControlStyled>
   );
 }
 

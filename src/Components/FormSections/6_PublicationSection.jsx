@@ -7,6 +7,11 @@ import LinkField from "../FormFields/LinkField/LinkField";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
 import AddButton from "../FormFields/AddButton/AddButton";
+import {
+  CharTextStyled,
+  DeleteButtonContainer,
+  SectionContainer,
+} from "../FormFields/styles/FormInputFields";
 
 function PublicationSection({ ...props }) {
   const [meta] = useField(props);
@@ -15,7 +20,7 @@ function PublicationSection({ ...props }) {
       name="publications"
       render={(arrayHelpers) => {
         return (
-          <div style={{ width: 500, margin: "0 auto" }}>
+          <SectionContainer>
             <h4>Add your publications</h4>
             {props.initialValues.publications.map((pub, index) => (
               <div key={index} style={{ margin: "20px" }}>
@@ -50,15 +55,20 @@ function PublicationSection({ ...props }) {
                     rows={3}
                     inputProps={{ maxLength: 300 }}
                   />
-                  <p>{meta.value[index].pubDescription.length} / 300</p>
+                  <CharTextStyled>
+                    {meta.value[index].pubDescription.length} / 300
+                  </CharTextStyled>
                 </div>
-                <DeleteButton
-                  label="publication"
-                  onClick={() => {
-                    arrayHelpers.remove(index);
-                    props.initialValues.publications.splice(index, 1);
-                  }}
-                />
+                <DeleteButtonContainer>
+                  {" "}
+                  <DeleteButton
+                    label="publication"
+                    onClick={() => {
+                      arrayHelpers.remove(index);
+                      props.initialValues.publications.splice(index, 1);
+                    }}
+                  />
+                </DeleteButtonContainer>
               </div>
             ))}
             <AddButton
@@ -80,7 +90,7 @@ function PublicationSection({ ...props }) {
                 });
               }}
             />
-          </div>
+          </SectionContainer>
         );
       }}
     />

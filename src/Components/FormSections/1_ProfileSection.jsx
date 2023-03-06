@@ -8,12 +8,20 @@ import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
 import RadioButtonGroup from "../FormFields/RadioGroup/RadioGroup";
 import { Field, useField, useFormik } from "formik";
 import LinkField from "../FormFields/LinkField/LinkField";
+import { Typography } from "@mui/material";
+import { CharTextStyled } from "../FormFields/styles/FormInputFields";
 
 function ProfileSection({ ...props }) {
   const [meta, field] = useField(props);
 
   return (
-    <div style={{ width: 500, margin: "0 auto" }}>
+    <div
+      style={{
+        width: 500,
+        margin: "0 auto",
+        // backgroundColor: "lightgrey"
+      }}
+    >
       <TextInputField
         name="fullName"
         label="Full name *"
@@ -27,12 +35,13 @@ function ProfileSection({ ...props }) {
       />
       <TextInputField
         name="profile.currentCity"
-        label="Current city*"
+        label="Current city *"
         placeholder="Ex: Amsterdam"
       />
-      <br />
-      <br />
-      <CountrySelect name={`profile.currentCountry`} label="Country *" />
+
+      <div>
+        <CountrySelect name={`profile.currentCountry`} label="Country *" />
+      </div>
 
       <Field
         name={`profile.file`}
@@ -41,13 +50,10 @@ function ProfileSection({ ...props }) {
         filetype="image"
       />
 
-      <br />
       <RadioButtonGroup
         name="profile.drivingLicense.hasDrivingLicense"
         label="driving license"
       />
-
-      <br />
 
       <LinkField
         name={`profile.githubLink`}
@@ -65,11 +71,11 @@ function ProfileSection({ ...props }) {
         placeholder="Ex: www.portfolio.com"
         label="Portfolio link"
       />
-      <div>
-        <FormLabel htmlFor="profile.brainsFirst">
+      <div style={{ margin: "15px 0" }}>
+        <FormLabel htmlFor="profile.brainsFirst" style={{ fontWeight: 600 }}>
           Select your three BrainsFirst Results:
         </FormLabel>
-        <br />
+
         <SelectField
           name="profile.brainsFirst.resultOne"
           options={brainFirstOptions}
@@ -88,15 +94,19 @@ function ProfileSection({ ...props }) {
           label="select your third result"
         />
       </div>
-      <TextInputField
-        placeholder="type something..."
-        name="profile.introductionText"
-        multiline
-        rows={5}
-        label="Write a little bit about yourself... *"
-        inputProps={{ maxLength: 500 }}
-      />
-      <p>{meta.value.introductionText.length} / 500</p>
+      <div>
+        <TextInputField
+          placeholder="type something..."
+          name="profile.introductionText"
+          multiline
+          rows={5}
+          label="Write a little bit about yourself... *"
+          inputProps={{ maxLength: 500 }}
+        />
+        <CharTextStyled variant="caption">
+          {meta.value.introductionText.length} / 500
+        </CharTextStyled>
+      </div>
     </div>
   );
 }

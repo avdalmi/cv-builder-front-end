@@ -81,6 +81,7 @@ export const initialValues = {
       projectCountry: "",
       projectDate: "",
       projectLinks: [""],
+      // output-> [[" ", " "]]
       projectSkills: [""],
     },
   ],

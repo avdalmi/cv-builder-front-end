@@ -2,6 +2,7 @@ import { Button, IconButton } from "@mui/material";
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Cancel } from "@mui/icons-material";
+import { DeleteButtonStyled } from "../styles/FormInputFields";
 
 function DeleteButton({ label, deleteitem, ...props }) {
   return (
@@ -11,7 +12,7 @@ function DeleteButton({ label, deleteitem, ...props }) {
           <Cancel />
         </IconButton>
       ) : (
-        <Button
+        <DeleteButtonStyled
           {...props}
           type="button"
           variant="outlined"
@@ -19,7 +20,7 @@ function DeleteButton({ label, deleteitem, ...props }) {
           startIcon={<DeleteIcon />}
         >
           {label}
-        </Button>
+        </DeleteButtonStyled>
       )}
     </div>
   );

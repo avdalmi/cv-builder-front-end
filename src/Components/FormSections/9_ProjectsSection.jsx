@@ -17,6 +17,10 @@ import LinkField from "../FormFields/LinkField/LinkField";
 import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
 import AddButton from "../FormFields/AddButton/AddButton";
 import ChipSelect from "../FormFields/ChipSelect/ChipSelect";
+import {
+  CharTextStyled,
+  SectionContainer,
+} from "../FormFields/styles/FormInputFields";
 
 function ProjectsSection({ ...props }) {
   const [meta] = useField(props);
@@ -26,7 +30,7 @@ function ProjectsSection({ ...props }) {
       name="projects"
       render={(arrayHelpers) => {
         return (
-          <div style={{ width: 500, margin: "0 auto" }}>
+          <SectionContainer>
             <h4>Add your relevant projects</h4>
 
             {props.initialValues.projects.map((project, index) => (
@@ -65,7 +69,13 @@ function ProjectsSection({ ...props }) {
                           <FormLabel>Add links to your project</FormLabel>
                           {props.initialValues.projects[index].projectLinks.map(
                             (link, index2) => (
-                              <div key={index2} style={{ display: "flex" }}>
+                              <div
+                                key={index2}
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                }}
+                              >
                                 <LinkField
                                   name={`projects[${index}].projectLinks[${index2}]`}
                                   placeholder="Ex: github.com/username/projectname"
@@ -89,15 +99,17 @@ function ProjectsSection({ ...props }) {
                               </div>
                             )
                           )}
-                          <AddButton
-                            label="Add another link"
-                            onClick={() => {
-                              arrayHelpers.push("");
-                              props.initialValues.projects[
-                                index
-                              ].projectLinks.push("");
-                            }}
-                          />
+                          <div style={{ textAlign: "center" }}>
+                            <AddButton
+                              label="Add another link"
+                              onClick={() => {
+                                arrayHelpers.push("");
+                                props.initialValues.projects[
+                                  index
+                                ].projectLinks.push("");
+                              }}
+                            />
+                          </div>
                         </div>
                       );
                     }}
@@ -112,7 +124,9 @@ function ProjectsSection({ ...props }) {
                     label="Project description *"
                     inputProps={{ maxLength: 300 }}
                   />
-                  <p>{meta.value[index].projectDescription.length} / 300</p>
+                  <CharTextStyled>
+                    {meta.value[index].projectDescription.length} / 300
+                  </CharTextStyled>
                 </div>
                 <div>
                   <FieldArray
@@ -160,7 +174,7 @@ function ProjectsSection({ ...props }) {
                 });
               }}
             />
-          </div>
+          </SectionContainer>
         );
       }}
     />

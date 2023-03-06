@@ -1,11 +1,12 @@
 import { Button } from "@mui/material";
 import React from "react";
+import { AddButtonStyled } from "../styles/FormInputFields";
 
 function AddButton({ label, ...props }) {
   return (
-    <Button type="button" variant="outlined" {...props}>
+    <AddButtonStyled type="button" variant="outlined" {...props}>
       {label}
-    </Button>
+    </AddButtonStyled>
   );
 }
 

@@ -16,14 +16,23 @@ function MultiStepForm({ children, initialValues, onSubmit }) {
   const isLastStep = stepNum === totalSteps - 1;
 
   const next = (values) => {
-    setStepNum(stepNum + 1);
     setSnapShot(values);
+    setStepNum(Math.min(stepNum + 1, totalSteps - 1));
   };
 
   const previous = (values) => {
-    setStepNum(stepNum - 1);
     setSnapShot(values);
+    setStepNum(Math.max(stepNum - 1, 0));
   };
+  // const next = (values) => {
+  //   setStepNum(stepNum + 1);
+  //   setSnapShot(values);
+  // };
+
+  // const previous = (values) => {
+  //   setStepNum(stepNum - 1);
+  //   setSnapShot(values);
+  // };
 
   const handleSubmit = async (values, actions) => {
     if (step.props.onSubmit) {
@@ -44,15 +53,7 @@ function MultiStepForm({ children, initialValues, onSubmit }) {
         onSubmit={handleSubmit}
         validationSchema={step.props.validationSchema}
       >
-        {({
-          formik,
-          // values,
-          // errors,
-          // touched,
-          // handleChange,
-          // handleBlur,
-          // handleSubmit,
-        }) => (
+        {(formik) => (
           <Form>
             <Stepper activeStep={stepNum}>
               {steps.map((currentStep) => {

@@ -58,7 +58,7 @@ function ChipSelect({ label, ...props }) {
         renderValue={(selected) => {
           return (
             <Box
-              key={selected}
+              key={Math.floor(Math.random() * 400)}
               sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}
             >
               {selected.map((value) => (

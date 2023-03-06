@@ -5,6 +5,10 @@ import FileUploadField from "../FormFields/FileUploadField/FileUploadField";
 import { Button, FormLabel } from "@mui/material";
 import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
 import AddButton from "../FormFields/AddButton/AddButton";
+import {
+  DeleteButtonContainer,
+  SectionContainer,
+} from "../FormFields/styles/FormInputFields";
 
 function CertificatesSection(props) {
   return (
@@ -12,7 +16,7 @@ function CertificatesSection(props) {
       name="licensesAndCertifications"
       render={(arrayHelpers) => {
         return (
-          <div style={{ width: 500, margin: "0 auto" }}>
+          <SectionContainer>
             <h4>Add your licenses and certifications</h4>
             {props.initialValues.licensesAndCertifications.map((edu, index) => (
               <div key={index} style={{ margin: "20px" }}>
@@ -51,17 +55,18 @@ function CertificatesSection(props) {
                   label="Select a file to upload"
                   filetype="file"
                 />
-
-                <DeleteButton
-                  label="license or certification"
-                  onClick={() => {
-                    arrayHelpers.remove(index);
-                    props.initialValues.licensesAndCertifications.splice(
-                      index,
-                      1
-                    );
-                  }}
-                />
+                <DeleteButtonContainer>
+                  <DeleteButton
+                    label="license or certification"
+                    onClick={() => {
+                      arrayHelpers.remove(index);
+                      props.initialValues.licensesAndCertifications.splice(
+                        index,
+                        1
+                      );
+                    }}
+                  />
+                </DeleteButtonContainer>
               </div>
             ))}
             <AddButton
@@ -87,7 +92,7 @@ function CertificatesSection(props) {
                 });
               }}
             />
-          </div>
+          </SectionContainer>
         );
       }}
     />
