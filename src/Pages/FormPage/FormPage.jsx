@@ -24,22 +24,22 @@ import LanguageSection from "../../Components/FormSections/7_LanguageSection";
 import HobbiesSection from "../../Components/FormSections/8_HobbiesSection";
 import ProjectsSection from "../../Components/FormSections/9_ProjectsSection";
 import { MONGO_COLLECTION, MONGO_DATABASE } from "../../config/config";
-import { createTheme, styled } from "@mui/material";
+import { Box, createTheme, styled } from "@mui/material";
 
-const customTheme = createTheme({
-  palette: {
-    primary: {
-      main: "#1976d2",
-      contrastText: "white",
-    },
-  },
-});
-const MyThemeComponent = styled("div")(({ theme }) => ({
-  color: theme.palette.primary.contrastText,
-  backgroundColor: theme.palette.primary.main,
-  padding: theme.spacing(1),
-  borderRadius: theme.shape.borderRadius,
-}));
+// const customTheme = createTheme({
+//   palette: {
+//     primary: {
+//       main: "#1976d2",
+//       contrastText: "white",
+//     },
+//   },
+// });
+// const MyThemeComponent = styled("div")(({ theme }) => ({
+//   color: theme.palette.primary.contrastText,
+//   backgroundColor: theme.palette.primary.main,
+//   padding: theme.spacing(1),
+//   borderRadius: theme.shape.borderRadius,
+// }));
 
 function FormPage({ mongoContext: { client, user } }) {
   const onSubmit = async (values) => {
@@ -49,8 +49,7 @@ function FormPage({ mongoContext: { client, user } }) {
   };
 
   return (
-    <div>
-      <h1>Form Page</h1>
+    <Box sx={{ margin: "2rem" }}>
       <MultiStepForm
         initialValues={initialValues}
         onSubmit={(values) => {
@@ -135,7 +134,7 @@ function FormPage({ mongoContext: { client, user } }) {
           <ProjectsSection initialValues={initialValues} name="projects" />
         </FormStep>
       </MultiStepForm>
-    </div>
+    </Box>
   );
 }
 
