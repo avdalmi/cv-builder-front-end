@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 import FormPage from "./Pages/FormPage/FormPage";
 import * as Realm from "realm-web";
@@ -7,17 +6,16 @@ import { useState, useEffect } from "react";
 import { MONGO_APP_ID, MONGO_CLUSTER } from "./config/config";
 import MongoContext from "./Contexts/MongoContext";
 import {
-  Button,
   CssBaseline,
   ThemeProvider,
 } from "@mui/material";
 import { theme } from "./Styles/theme";
+import FinalPage from "./Pages/FinalPage/FinalPage";
 
 function App() {
   const [client, setClient] = useState(null);
   const [user, setUser] = useState(null);
   const [app, setApp] = useState(new Realm.App({ id: MONGO_APP_ID }));
-
 
   useEffect(() => {
     async function init() {
@@ -47,8 +45,6 @@ function App() {
     );
   }
 
-
-
   return (
     <div>
       <ThemeProvider theme={ theme }>
@@ -67,6 +63,7 @@ function App() {
           <Routes>
             <Route path="/" element={ renderComponent(WelcomePage) } />
             <Route path="/form" element={ renderComponent(FormPage) } />
+            <Route path="final" element={ renderComponent(FinalPage) } />
           </Routes>
         </MongoContext.Provider>
       </ThemeProvider>

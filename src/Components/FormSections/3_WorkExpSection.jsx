@@ -1,27 +1,34 @@
 import React from "react";
 import { FieldArray, Field, useField } from "formik";
-import TextInputField from "../FormFields/TextInputField/TextInputField";
-import { FormControl, FormLabel, Button, Typography } from "@mui/material";
-import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
-import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
-import AddButton from "../FormFields/AddButton/AddButton";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  Typography,
+} from "@mui/material";
+import {
+  AddButton,
+  DeleteButton,
+  CountrySelect,
+  TextInputField,
+} from "../FormFields/index";
 import {
   CharTextStyled,
   DeleteButtonContainer,
   FormControlStyled,
+  RadioFormLabelStyled,
+  RadioGroupStyled,
   SectionContainer,
   SectionSubContainer,
   SpanTitle,
   TitleTextStyled,
-  WorkContainer,
   WorkFormControl,
 } from "../FormFields/Styles/StyleSheet";
 
 function WorkExpSection({ ...props }) {
-  const [meta, field] = useField(props);
-  // console.log("props", props);
-  // console.log("meta", meta);
-  // console.log("field", field);
+  const [field, meta] = useField(props);
 
   const getName = (index, fieldTitle) => {
     if (index === 0) {
@@ -175,9 +182,3 @@ function WorkExpSection({ ...props }) {
 }
 
 export default WorkExpSection;
-// ## Werkervaring
-// - Periode
-// - Titel
-// - Tekst
-// - Logo
-// - Vaardigheden

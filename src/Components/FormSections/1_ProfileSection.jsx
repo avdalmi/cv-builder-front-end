@@ -1,14 +1,15 @@
 import React from "react";
 import { brainFirstOptions } from "../../Data/BrainFirstOptions";
-import TextInputField from "../FormFields/TextInputField/TextInputField";
-import FormLabel from "@mui/material/FormLabel";
-import FileUploadField from "../FormFields/FileUploadField/FileUploadField";
-import SelectField from "../FormFields/SelectField/SelectField";
-import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
-import RadioButtonGroup from "../FormFields/RadioGroup/RadioGroup";
-import { Field, useField, useFormik } from "formik";
-import LinkField from "../FormFields/LinkField/LinkField";
-import { Typography } from "@mui/material";
+import {
+  TextInputField,
+  FileUploadField,
+  SelectField,
+  CountrySelect,
+  RadioButtonGroup,
+  LinkField,
+} from "../FormFields/index";
+import { Field, useField } from "formik";
+import { FormLabel, Typography } from "@mui/material";
 import {
   CharTextStyled,
   SectionContainer,
@@ -18,7 +19,7 @@ import {
 } from "../FormFields/Styles/StyleSheet";
 
 function ProfileSection({ ...props }) {
-  const [meta, field] = useField(props);
+  const [field, meta] = useField(props);
 
   return (
     <SectionContainer>

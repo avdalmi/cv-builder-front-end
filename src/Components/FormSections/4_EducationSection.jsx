@@ -1,11 +1,13 @@
 import React from "react";
 import { Field, FieldArray, useField } from "formik";
-import TextInputField from "../FormFields/TextInputField/TextInputField";
-import { InputLabel, Button, FormControl, Typography } from "@mui/material";
-import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
-import FileUploadField from "../FormFields/FileUploadField/FileUploadField";
-import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
-import AddButton from "../FormFields/AddButton/AddButton";
+import { InputLabel, Typography } from "@mui/material";
+import {
+  AddButton,
+  DeleteButton,
+  FileUploadField,
+  CountrySelect,
+  TextInputField,
+} from "../FormFields/index";
 import {
   CharTextStyled,
   DeleteButtonContainer,
@@ -15,8 +17,7 @@ import {
 } from "../FormFields/Styles/StyleSheet";
 
 function EducationSection({ ...props }) {
-  const [meta] = useField(props);
-  // console.log("props", props);
+  const [field, meta] = useField(props);
   return (
     <FieldArray
       name="education"
@@ -49,7 +50,6 @@ function EducationSection({ ...props }) {
                     <CountrySelect
                       name={`education[${index}].eduCountry`}
                       label="Country *"
-                      // defaultValue=""
                     />
 
                     <InputLabel>start date *</InputLabel>
@@ -67,7 +67,7 @@ function EducationSection({ ...props }) {
                     <Field
                       name={`education[${index}].eduFile`}
                       as={FileUploadField}
-                      label="Select a file to upload"
+                      label="Select a diploma to upload"
                       filetype="file"
                     />
                     <TextInputField
@@ -94,7 +94,6 @@ function EducationSection({ ...props }) {
                   </div>
                 ))}
               <AddButton
-                // style={{ margin: "0 auto" }}
                 label="education"
                 onClick={() => {
                   arrayHelpers.push({

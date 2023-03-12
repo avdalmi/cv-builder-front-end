@@ -9,13 +9,12 @@ import {
   Select,
 } from "@mui/material";
 import { useField, useFormikContext } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: 48 * 4.5 + 8,
-      // width: 250,
     },
   },
 };

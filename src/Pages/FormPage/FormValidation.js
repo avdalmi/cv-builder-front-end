@@ -1,4 +1,3 @@
-import { useFormikContext } from "formik";
 import * as yup from "yup";
 
 export const profileValidationSchema = yup.object({
@@ -81,12 +80,10 @@ export const certificatesValidationSchema = yup.object({
   licensesAndCertifications: yup.array(
     yup.object({
       certTitle: yup
-        .string()
-        .required("please enter the title of your certification"),
+        .string(),
       certInstituteName: yup
-        .string()
-        .required("please enter the name of the institute"),
-      certIssueDate: yup.date().required("please enter a issue date"),
+        .string(),
+      certIssueDate: yup.date(),
       certExpirationDate: yup
         .date()
         .min(
@@ -151,11 +148,3 @@ export const projectsValidationSchema = yup.object({
     })
   ),
 });
-
-// phone: yup
-//   .string()
-//   .matches(/^[6-9]\d{9}$/, {
-//     message: "Please enter valid number.",
-//     excludeEmptyString: false,
-//   })
-//   .required("please enter your phone number"),

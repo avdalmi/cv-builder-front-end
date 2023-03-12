@@ -1,5 +1,4 @@
 export const initialValues = {
-  // email: "", - add
   fullName: "",
   profile: {
     jobTitle: "",

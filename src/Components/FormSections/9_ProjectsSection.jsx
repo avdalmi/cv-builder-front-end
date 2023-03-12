@@ -1,23 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { FieldArray, Field, useField, useFormikContext } from "formik";
+import React from "react";
+import { FieldArray, useField } from "formik";
+import { FormLabel, Typography } from "@mui/material";
 import {
-  Box,
-  Button,
-  Chip,
-  FormControl,
-  FormLabel,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  Typography,
-} from "@mui/material";
-import TextInputField from "../FormFields/TextInputField/TextInputField";
-import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
-import LinkField from "../FormFields/LinkField/LinkField";
-import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
-import AddButton from "../FormFields/AddButton/AddButton";
-import ChipSelect from "../FormFields/ChipSelect/ChipSelect";
+  ChipSelect,
+  AddButton,
+  DeleteButton,
+  LinkField,
+  CountrySelect,
+  TextInputField,
+} from "../FormFields/index";
 import {
   CharTextStyled,
   SectionContainer,
@@ -26,7 +17,7 @@ import {
 } from "../FormFields/Styles/StyleSheet";
 
 function ProjectsSection({ ...props }) {
-  const [meta] = useField(props);
+  const [field, meta] = useField(props);
 
   return (
     <FieldArray

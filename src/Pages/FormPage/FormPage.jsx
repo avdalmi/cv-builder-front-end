@@ -13,18 +13,21 @@ import {
   hobbiesValidationSchema,
   projectsValidationSchema,
 } from "./FormValidation";
-import ProfileSection from "../../Components/FormSections/1_ProfileSection";
-import SkillsSection from "../../Components/FormSections/2_SkillsSection";
-import WorkExpSection from "../../Components/FormSections/3_WorkExpSection";
+import {
+  ProfileSection,
+  SkillsSection,
+  WorkExpSection,
+  EducationSection,
+  CertificatesSection,
+  PublicationSection,
+  LanguageSection,
+  HobbiesSection,
+  ProjectsSection,
+} from "../../Components/FormSections/index";
 import { initialValues } from "./initialValues";
-import EducationSection from "../../Components/FormSections/4_EducationSection";
-import CertificatesSection from "../../Components/FormSections/5_CertificatesSection";
-import PublicationSection from "../../Components/FormSections/6_PublicationSection";
-import LanguageSection from "../../Components/FormSections/7_LanguageSection";
-import HobbiesSection from "../../Components/FormSections/8_HobbiesSection";
-import ProjectsSection from "../../Components/FormSections/9_ProjectsSection";
 import { MONGO_COLLECTION, MONGO_DATABASE } from "../../config/config";
-import { Box, createTheme, styled } from "@mui/material";
+import { Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function FormPage({ mongoContext: { client, user } }) {
   const onSubmit = async (values) => {
@@ -33,58 +36,47 @@ function FormPage({ mongoContext: { client, user } }) {
     console.log(reponse);
   };
 
+  const navigate = useNavigate();
+
   return (
-    <Box sx={{ margin: "2rem" }}>
+    <Box sx={{ m: "2rem" }}>
       <MultiStepForm
         initialValues={initialValues}
-        onSubmit={(values) => {
-          console.log(JSON.stringify(values, null, 2));
+        onSubmit={async (values) => {
+          await new Promise((resolve) => setTimeout(resolve, 500));
+          // console.log(JSON.stringify(values, null, 2));
+          navigate("/final", { state: { values } });
         }}
       >
-        <FormStep
-          stepName="Profile"
-          onSubmit={() => console.log("personal information submit")}
-          // validationSchema={profileValidationSchema}
-        >
+        <FormStep stepName="Profile" validationSchema={profileValidationSchema}>
           <ProfileSection name="profile" initialValues={initialValues} />
         </FormStep>
 
-        <FormStep
-          stepName="Skills"
-          onSubmit={() => console.log("skills submit")}
-          // validationSchema={skillsValidationSchema}
-        >
+        <FormStep stepName="Skills" validationSchema={skillsValidationSchema}>
           <SkillsSection initialValues={initialValues} name="skills" />
         </FormStep>
 
-        <FormStep
-          stepName="Work"
-          onSubmit={() => console.log("work experience submit")}
-          // validationSchema={workValidationSchema}
-        >
+        <FormStep stepName="Work" validationSchema={workValidationSchema}>
           <WorkExpSection initialValues={initialValues} name="workExperience" />
         </FormStep>
 
         <FormStep
           stepName="Education"
-          onSubmit={() => console.log("education submit")}
-          // validationSchema={educationValidationSchema}
+          validationSchema={educationValidationSchema}
         >
           <EducationSection initialValues={initialValues} name="education" />
         </FormStep>
 
         <FormStep
           stepName="Certificates"
-          onSubmit={() => console.log("certificates submit")}
-          // validationSchema={certificatesValidationSchema}
+          validationSchema={certificatesValidationSchema}
         >
           <CertificatesSection initialValues={initialValues} />
         </FormStep>
 
         <FormStep
           stepName="Publications"
-          onSubmit={() => console.log("certificates submit")}
-          // validationSchema={publicationsValidationSchema}
+          validationSchema={publicationsValidationSchema}
         >
           <PublicationSection
             initialValues={initialValues}
@@ -94,27 +86,18 @@ function FormPage({ mongoContext: { client, user } }) {
 
         <FormStep
           stepName="Languages"
-          onSubmit={() => console.log("languages submit")}
-          // validationSchema={languagesValidationSchema}
+          validationSchema={languagesValidationSchema}
         >
           <LanguageSection initialValues={initialValues} />
         </FormStep>
 
-        <FormStep
-          stepName="Hobbies"
-          onSubmit={() => console.log("hobbies submit")}
-          // validationSchema={hobbiesValidationSchema}
-        >
-          <HobbiesSection
-            initialValues={initialValues}
-            style={{ width: 500, margin: "0 auto" }}
-          />
+        <FormStep stepName="Hobbies" validationSchema={hobbiesValidationSchema}>
+          <HobbiesSection initialValues={initialValues} />
         </FormStep>
 
         <FormStep
           stepName="Projects"
-          onSubmit={() => console.log("projects submit")}
-          // validationSchema={projectsValidationSchema}
+          validationSchema={projectsValidationSchema}
         >
           <ProjectsSection initialValues={initialValues} name="projects" />
         </FormStep>

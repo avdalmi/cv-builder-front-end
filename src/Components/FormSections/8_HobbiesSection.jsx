@@ -1,9 +1,7 @@
 import React from "react";
-import { FieldArray, Field } from "formik";
-import TextInputField from "../FormFields/TextInputField/TextInputField";
-import { Button, Typography } from "@mui/material";
-import AddButton from "../FormFields/AddButton/AddButton";
-import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
+import { FieldArray } from "formik";
+import { Typography } from "@mui/material";
+import { AddButton, DeleteButton, TextInputField } from "../FormFields/index";
 import {
   SectionContainer,
   SectionSubContainer,
@@ -56,4 +54,3 @@ function HobbiesSection(props) {
 }
 
 export default HobbiesSection;
-// - Vrije tekst

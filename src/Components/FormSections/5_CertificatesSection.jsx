@@ -1,10 +1,12 @@
 import React from "react";
 import { Field, FieldArray } from "formik";
-import TextInputField from "../FormFields/TextInputField/TextInputField";
-import FileUploadField from "../FormFields/FileUploadField/FileUploadField";
-import { Button, FormLabel, Typography } from "@mui/material";
-import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
-import AddButton from "../FormFields/AddButton/AddButton";
+import { FormLabel, Typography } from "@mui/material";
+import {
+  AddButton,
+  DeleteButton,
+  FileUploadField,
+  TextInputField,
+} from "../FormFields/index";
 import {
   DeleteButtonContainer,
   SectionContainer,
@@ -29,12 +31,12 @@ function CertificatesSection(props) {
                     <TextInputField
                       name={`licensesAndCertifications[${index}].certInstituteName`}
                       placeholder="Ex: Techmongers"
-                      label="Issuing organisation *"
+                      label="Issuing organisation"
                     />
                     <TextInputField
                       name={`licensesAndCertifications[${index}].certTitle`}
                       placeholder="Ex: JavaScript Full Stack Developer"
-                      label="Title *"
+                      label="Title"
                     />
                     <TextInputField
                       name={`licensesAndCertifications[${index}].certCredentialID`}
@@ -44,7 +46,7 @@ function CertificatesSection(props) {
                       name={`licensesAndCertifications[${index}].certCredentialURL`}
                       label="Certification credential URL"
                     />
-                    <FormLabel>Issue date *</FormLabel>
+                    <FormLabel>Issue date</FormLabel>
                     <TextInputField
                       name={`licensesAndCertifications[${index}].certIssueDate`}
                       type="date"

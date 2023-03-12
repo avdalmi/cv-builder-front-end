@@ -1,14 +1,7 @@
 import { useField } from "formik";
 import React from "react";
-import {
-  TextField,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Select,
-  FormHelperText,
-} from "@mui/material";
-import { FormControlStyled, SelectFieldStyled } from "../Styles/StyleSheet";
+import { MenuItem, InputLabel, Select, FormHelperText } from "@mui/material";
+import { FormControlStyled } from "../Styles/StyleSheet";
 
 function SelectField({ label, disabled, required, ...props }) {
   const [field, meta] = useField(props);

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FormHelperText, Rating } from "@mui/material";
+import React from "react";
+import { FormHelperText } from "@mui/material";
 import { useField } from "formik";
 import { RatingStyled } from "../Styles/StyleSheet";
 

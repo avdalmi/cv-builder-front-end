@@ -1,14 +1,6 @@
-import {
-  FormControl,
-  FormControlLabel,
-  FormHelperText,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  TextField,
-} from "@mui/material";
+import { FormControlLabel, Radio } from "@mui/material";
 import React from "react";
-import { Field, useField, useFormikContext } from "formik";
+import { useField } from "formik";
 import { drivingLicenseOptions } from "../../../Data/DrivingLicenseOptions";
 import SelectField from "../SelectField/SelectField";
 import {
@@ -22,12 +14,7 @@ function RadioButtonGroup({ label, ...props }) {
   const [field, meta] = useField(props);
 
   return (
-    <FormControlStyled
-      fullWidth
-      // style={{
-      //   backgroundColor: "yellow",
-      // }}
-    >
+    <FormControlStyled fullWidth>
       <RadioBoxStyled>
         <RadioFormLabelStyled htmlFor="radioGroupLabel">
           Do you have a driving license?

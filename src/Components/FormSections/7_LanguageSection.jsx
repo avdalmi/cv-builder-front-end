@@ -1,11 +1,13 @@
 import React from "react";
-import { FieldArray, Field } from "formik";
-import TextInputField from "../FormFields/TextInputField/TextInputField";
-import { Button, Typography } from "@mui/material";
+import { FieldArray } from "formik";
+import { Typography } from "@mui/material";
 import { languageLevelOptions } from "../../Data/LanguageLevelOptions";
-import SelectField from "../FormFields/SelectField/SelectField";
-import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
-import AddButton from "../FormFields/AddButton/AddButton";
+import {
+  AddButton,
+  DeleteButton,
+  SelectField,
+  TextInputField,
+} from "../FormFields/index";
 import {
   DeleteButtonContainer,
   SectionContainer,
@@ -30,6 +32,7 @@ function LanguageSection(props) {
                   style={{
                     display: "flex",
                     alignItems: "flex-end",
+                    // justifyContent: "flex-start",
                   }}
                 >
                   <TextInputField
@@ -37,12 +40,12 @@ function LanguageSection(props) {
                     placeholder="Ex: English"
                     label="Language"
                     style={{
-                      width: "300px",
+                      width: "200px",
                       margin: "5px",
-                      // backgroundColor: "lavender",
                     }}
                   />
                   <SelectField
+                    sx={{ maxWidth: "200px" }}
                     name={`languages.${index}.languageLevel`}
                     options={languageLevelOptions}
                     label="Level"

@@ -1,19 +1,20 @@
 import React from "react";
 import { FieldArray, Field } from "formik";
-import TextInputField from "../FormFields/TextInputField/TextInputField";
-import { Button, Typography } from "@mui/material";
-import StarRating from "../FormFields/StarRating/StarRating";
-import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
-import AddButton from "../FormFields/AddButton/AddButton";
+import { Typography } from "@mui/material";
 import {
   SectionSubContainer,
   SkillsContainer,
   SpanTitle,
   TitleTextStyled,
 } from "../FormFields/Styles/StyleSheet";
+import {
+  AddButton,
+  DeleteButton,
+  StarRating,
+  TextInputField,
+} from "../FormFields/index";
 
 function SkillsSection({ ...props }) {
-  // console.log("props", props);
   return (
     <div>
       <FieldArray
@@ -33,10 +34,8 @@ function SkillsSection({ ...props }) {
                     key={index}
                     style={{
                       display: "flex",
-                      // backgroundColor: "yellow",
                       alignContent: "center",
                       alignItems: "center",
-                      // justifyContent: "center",
                     }}
                   >
                     <TextInputField

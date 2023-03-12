@@ -3,8 +3,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-export const theme = createTheme({
 
+export const theme = createTheme({
     palette: {
         primary: {
             main: "#1c1c1c",
@@ -88,5 +88,4 @@ export const theme = createTheme({
         }
     },
 }
-
 );

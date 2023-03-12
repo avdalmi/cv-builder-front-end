@@ -17,14 +17,12 @@ import styled from "@emotion/styled";
 
 function MultiStepForm({ children, initialValues, onSubmit }) {
   const [stepNum, setStepNum] = useState(0);
-  const steps = React.Children.toArray(children);
-
   const [snapshot, setSnapShot] = useState(initialValues);
 
+  const steps = React.Children.toArray(children);
   const step = steps[stepNum];
 
   const totalSteps = steps.length;
-
   const isLastStep = stepNum === totalSteps - 1;
 
   const next = (values) => {
@@ -91,7 +89,6 @@ function MultiStepForm({ children, initialValues, onSubmit }) {
           <Form>
             <Stepper alternativeLabel activeStep={stepNum}>
               {steps.map((currentStep) => {
-                const label = currentStep.props.stepName;
                 return (
                   <Step key={currentStep.key}>
                     <StepLabel StepIconComponent={StepIcon}></StepLabel>

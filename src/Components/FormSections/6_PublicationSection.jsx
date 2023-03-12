@@ -1,18 +1,12 @@
 import React from "react";
-import TextInputField from "../FormFields/TextInputField/TextInputField";
-import FileUploadField from "../FormFields/FileUploadField/FileUploadField";
-import {
-  Button,
-  FormLabel,
-  styled,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { FormLabel, Typography } from "@mui/material";
 import { FieldArray, useField } from "formik";
-import LinkField from "../FormFields/LinkField/LinkField";
-import DeleteIcon from "@mui/icons-material/Delete";
-import DeleteButton from "../FormFields/DeleteButton/DeleteButton";
-import AddButton from "../FormFields/AddButton/AddButton";
+import {
+  TextInputField,
+  LinkField,
+  DeleteButton,
+  AddButton,
+} from "../FormFields/index";
 import {
   CharTextStyled,
   DeleteButtonContainer,
@@ -22,7 +16,7 @@ import {
 } from "../FormFields/Styles/StyleSheet";
 
 function PublicationSection({ ...props }) {
-  const [meta] = useField(props);
+  const [field, meta] = useField(props);
   return (
     <FieldArray
       name="publications"
