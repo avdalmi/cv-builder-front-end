@@ -158,7 +158,7 @@ function ProjectsSection({ ...props }) {
                 </div>
               ))}
               <AddButton
-                label="Add another project"
+                label="project"
                 onClick={() => {
                   arrayHelpers.push({
                     projectTitle: "",

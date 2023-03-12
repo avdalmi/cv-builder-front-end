@@ -69,7 +69,7 @@ function LanguageSection(props) {
                     languageLevel: "",
                   });
                 }}
-                label="Add another language"
+                label="language"
               />
             </SectionSubContainer>
           </SectionContainer>

@@ -1,5 +1,4 @@
 import { createTheme } from "@mui/material";
-import { amber, deepOrange, grey } from "@mui/material/colors";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -55,8 +54,10 @@ export const theme = createTheme({
         MuiButton: {
             variants: [
                 {
-                    props: { variant: "outlined", color: "error" },
+                    props: { variant: "filled" },
                     style: {
+                        border: "1px solid #95aacc",
+                        color: "#ef5350",
                         borderColor: "#EF5350",
                         "&:hover": {
                             color: "#e6e6e6"
@@ -73,6 +74,9 @@ export const theme = createTheme({
                 {
                     props: { variant: "outlined" },
                     style: {
+                        backgroundColor: "#95aacc",
+                        border: "1px solid #95aacc",
+                        color: "white",
                         "&:hover": {
                             backgroundColor: "#cc5500",
                             border: "1px solid #cc5500",

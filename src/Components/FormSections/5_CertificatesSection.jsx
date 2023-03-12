@@ -77,7 +77,7 @@ function CertificatesSection(props) {
                 )
               )}
               <AddButton
-                label="Add another license or certificate"
+                label="license or certificate"
                 onClick={() => {
                   arrayHelpers.push({
                     certInstituteName: "",

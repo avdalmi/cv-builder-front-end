@@ -8,14 +8,14 @@ function DeleteButton({ label, deleteitem, ...props }) {
   return (
     <div>
       {deleteitem ? (
-        <IconButton {...props} type="button" variant="outlined" color="error">
+        <IconButton {...props} type="button" variant="filled" color="error">
           <Cancel />
         </IconButton>
       ) : (
         <DeleteButtonStyled
           {...props}
           type="button"
-          variant="outlined"
+          variant="filled"
           color="error"
           startIcon={<DeleteIcon />}
         >

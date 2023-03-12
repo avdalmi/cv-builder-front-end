@@ -62,7 +62,7 @@ function SkillsSection({ ...props }) {
                 ))}
 
                 <AddButton
-                  label="Add another skill"
+                  label="skill"
                   onClick={() => {
                     arrayHelpers.push({ skillName: "", skillLevel: 0 });
                     props.initialValues.skills.push({

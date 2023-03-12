@@ -83,7 +83,7 @@ function PublicationSection({ ...props }) {
                 </div>
               ))}
               <AddButton
-                label="Add another publication"
+                label="publication"
                 onClick={() => {
                   arrayHelpers.push({
                     pubTitle: "",

@@ -141,7 +141,7 @@ function WorkExpSection({ ...props }) {
                   );
                 })}
               <AddButton
-                label="Add another work experience"
+                label="work experience"
                 style={{ textAlign: "center" }}
                 onClick={() => {
                   arrayHelpers.push({

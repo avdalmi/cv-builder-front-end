@@ -41,7 +41,7 @@ function HobbiesSection(props) {
                 </div>
               ))}
               <AddButton
-                label="Add another hobby"
+                label="hobby"
                 onClick={() => {
                   arrayHelpers.push("");
                   props.initialValues.hobbies.push("");

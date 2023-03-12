@@ -95,7 +95,7 @@ function EducationSection({ ...props }) {
                 ))}
               <AddButton
                 // style={{ margin: "0 auto" }}
-                label="Add another education"
+                label="education"
                 onClick={() => {
                   arrayHelpers.push({
                     eduSchoolName: "",
