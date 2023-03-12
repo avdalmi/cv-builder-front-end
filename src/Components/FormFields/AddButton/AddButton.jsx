@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
-import { AddButtonStyled } from "../styles/FormInputFields";
+import { AddButtonStyled } from "../Styles/StyleSheet";
 
 function AddButton({ label, ...props }) {
   return (

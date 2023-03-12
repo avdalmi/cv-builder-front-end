@@ -10,6 +10,7 @@ import {
   MenuItem,
   OutlinedInput,
   Select,
+  Typography,
 } from "@mui/material";
 import TextInputField from "../FormFields/TextInputField/TextInputField";
 import CountrySelect from "../FormFields/CountrySelect/CountrySelect";
@@ -20,7 +21,9 @@ import ChipSelect from "../FormFields/ChipSelect/ChipSelect";
 import {
   CharTextStyled,
   SectionContainer,
-} from "../FormFields/styles/FormInputFields";
+  SectionSubContainer,
+  SpanTitle,
+} from "../FormFields/Styles/StyleSheet";
 
 function ProjectsSection({ ...props }) {
   const [meta] = useField(props);
@@ -31,44 +34,48 @@ function ProjectsSection({ ...props }) {
       render={(arrayHelpers) => {
         return (
           <SectionContainer>
-            <h4>Add your relevant projects</h4>
+            <SectionSubContainer>
+              <Typography variant="h4">
+                <SpanTitle>Projects</SpanTitle>
+              </Typography>
 
-            {props.initialValues.projects.map((project, index) => (
-              <div key={index}>
-                <TextInputField
-                  name={`projects[${index}].projectTitle`}
-                  placeholder="Ex: Project X"
-                  label="Project title *"
-                />
-
-                <TextInputField
-                  name={`projects[${index}].projectCity`}
-                  placeholder="Ex: Amsterdam"
-                  label="City *"
-                />
-
-                <CountrySelect
-                  name={`projects[${index}].projectCountry`}
-                  label="Country *"
-                />
-
-                <div>
-                  <FormLabel>Completion date *</FormLabel>
+              {props.initialValues.projects.map((project, index) => (
+                <div key={index}>
                   <TextInputField
-                    name={`projects[${index}].projectDate`}
-                    type="date"
+                    name={`projects[${index}].projectTitle`}
+                    placeholder="Ex: Project X"
+                    label="Project title *"
                   />
-                </div>
 
-                <div>
-                  <FieldArray
-                    name={`projects[${index}].projectLinks`}
-                    render={(arrayHelpers) => {
-                      return (
-                        <div>
-                          <FormLabel>Add links to your project</FormLabel>
-                          {props.initialValues.projects[index].projectLinks.map(
-                            (link, index2) => (
+                  <TextInputField
+                    name={`projects[${index}].projectCity`}
+                    placeholder="Ex: Amsterdam"
+                    label="City *"
+                  />
+
+                  <CountrySelect
+                    name={`projects[${index}].projectCountry`}
+                    label="Country *"
+                  />
+
+                  <div>
+                    <FormLabel>Completion date *</FormLabel>
+                    <TextInputField
+                      name={`projects[${index}].projectDate`}
+                      type="date"
+                    />
+                  </div>
+
+                  <div>
+                    <FieldArray
+                      name={`projects[${index}].projectLinks`}
+                      render={(arrayHelpers) => {
+                        return (
+                          <div>
+                            <FormLabel>Add links to your project</FormLabel>
+                            {props.initialValues.projects[
+                              index
+                            ].projectLinks.map((link, index2) => (
                               <div
                                 key={index2}
                                 style={{
@@ -97,83 +104,83 @@ function ProjectsSection({ ...props }) {
                                   />
                                 )}
                               </div>
-                            )
-                          )}
-                          <div style={{ textAlign: "center" }}>
-                            <AddButton
-                              label="Add another link"
-                              onClick={() => {
-                                arrayHelpers.push("");
-                                props.initialValues.projects[
-                                  index
-                                ].projectLinks.push("");
-                              }}
-                            />
-                          </div>
-                        </div>
-                      );
-                    }}
-                  />
-                </div>
-                <div>
-                  <TextInputField
-                    name={`projects[${index}].projectDescription`}
-                    placeholder="Type something... "
-                    multiline
-                    rows={5}
-                    label="Project description *"
-                    inputProps={{ maxLength: 300 }}
-                  />
-                  <CharTextStyled>
-                    {meta.value[index].projectDescription.length} / 300
-                  </CharTextStyled>
-                </div>
-                <div>
-                  <FieldArray
-                    name={`projects[${index}].projectSkills`}
-                    render={(arrayHelpers) => {
-                      return (
-                        <div>
-                          {props.initialValues.projects[
-                            index
-                          ].projectSkills.map((skill, index2) => (
-                            <div key={index2}>
-                              <ChipSelect
-                                name={`projects[${index}].projectSkills[${index2}]`}
-                                label="Chip select main"
+                            ))}
+                            <div style={{ textAlign: "center" }}>
+                              <AddButton
+                                label="Add another link"
+                                onClick={() => {
+                                  arrayHelpers.push("");
+                                  props.initialValues.projects[
+                                    index
+                                  ].projectLinks.push("");
+                                }}
                               />
                             </div>
-                          ))}
-                        </div>
-                      );
-                    }}
-                  />
+                          </div>
+                        );
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <TextInputField
+                      name={`projects[${index}].projectDescription`}
+                      placeholder="Type something... "
+                      multiline
+                      rows={5}
+                      label="Project description *"
+                      inputProps={{ maxLength: 300 }}
+                    />
+                    <CharTextStyled>
+                      {meta.value[index].projectDescription.length} / 300
+                    </CharTextStyled>
+                  </div>
+                  <div>
+                    <FieldArray
+                      name={`projects[${index}].projectSkills`}
+                      render={(arrayHelpers) => {
+                        return (
+                          <div>
+                            {props.initialValues.projects[
+                              index
+                            ].projectSkills.map((skill, index2) => (
+                              <div key={index2}>
+                                <ChipSelect
+                                  name={`projects[${index}].projectSkills[${index2}]`}
+                                  label="Chip select main"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        );
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
-            <AddButton
-              label="Add another project"
-              onClick={() => {
-                arrayHelpers.push({
-                  projectTitle: "",
-                  projectDescription: "",
-                  projectCity: "",
-                  projectCountry: "",
-                  projectDate: "",
-                  projectLinks: [""],
-                  projectSkills: [""],
-                });
-                props.initialValues.projects.push({
-                  projectTitle: "",
-                  projectDescription: "",
-                  projectCity: "",
-                  projectCountry: "",
-                  projectDate: "",
-                  projectLinks: [""],
-                  projectSkills: [""],
-                });
-              }}
-            />
+              ))}
+              <AddButton
+                label="Add another project"
+                onClick={() => {
+                  arrayHelpers.push({
+                    projectTitle: "",
+                    projectDescription: "",
+                    projectCity: "",
+                    projectCountry: "",
+                    projectDate: "",
+                    projectLinks: [""],
+                    projectSkills: [""],
+                  });
+                  props.initialValues.projects.push({
+                    projectTitle: "",
+                    projectDescription: "",
+                    projectCity: "",
+                    projectCountry: "",
+                    projectDate: "",
+                    projectLinks: [""],
+                    projectSkills: [""],
+                  });
+                }}
+              />
+            </SectionSubContainer>
           </SectionContainer>
         );
       }}

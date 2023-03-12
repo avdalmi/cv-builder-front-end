@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FormHelperText, Rating } from "@mui/material";
 import { useField } from "formik";
-import { RatingStyled } from "../styles/FormInputFields";
+import { RatingStyled } from "../Styles/StyleSheet";
 
 const StarRating = ({ ...props }) => {
   const [field, meta] = useField(props);

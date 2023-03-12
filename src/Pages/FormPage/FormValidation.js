@@ -13,23 +13,12 @@ export const profileValidationSchema = yup.object({
     drivingLicense: yup.object({
       hasDrivingLicense: yup.string().required("hello"),
       drivingLicenseType: yup.string(),
-      // .required("please select the license type"),
-      // .allow(" "),
-      // .when("profile.drivingLicense.hasDrivingLicense", {
-      //   is: "true",
-      //   then: yup.string().required("please select the license type"),
-      // otherwise: yup.string(),
-      // }),
     }),
     brainsFirst: yup.object({
       resultOne: yup.string(),
       resultTwo: yup.string(),
       resultThree: yup.string(),
     }),
-    // email: yup
-    //   .string()
-    //   .email("please enter a valid email")
-    //   .required("please enter your email"),
     introductionText: yup
       .string()
       .required("please write a little bit about yourself")

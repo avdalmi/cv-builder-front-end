@@ -8,10 +8,7 @@ import {
   Select,
   FormHelperText,
 } from "@mui/material";
-import {
-  FormControlStyled,
-  SelectFieldStyled,
-} from "../styles/FormInputFields";
+import { FormControlStyled, SelectFieldStyled } from "../Styles/StyleSheet";
 
 function SelectField({ label, disabled, required, ...props }) {
   const [field, meta] = useField(props);

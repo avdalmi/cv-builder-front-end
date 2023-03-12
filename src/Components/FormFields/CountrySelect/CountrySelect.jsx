@@ -11,10 +11,7 @@ import {
 
 import { useField } from "formik";
 import axios from "axios";
-import {
-  FormControlStyled,
-  SelectFieldStyled,
-} from "../styles/FormInputFields";
+import { FormControlStyled, SelectFieldStyled } from "../Styles/StyleSheet";
 
 function CountrySelect({ label, ...props }) {
   const [field, meta] = useField(props);

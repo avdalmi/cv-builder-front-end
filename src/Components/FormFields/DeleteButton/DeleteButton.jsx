@@ -2,7 +2,7 @@ import { Button, IconButton } from "@mui/material";
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Cancel } from "@mui/icons-material";
-import { DeleteButtonStyled } from "../styles/FormInputFields";
+import { DeleteButtonStyled } from "../Styles/StyleSheet";
 
 function DeleteButton({ label, deleteitem, ...props }) {
   return (

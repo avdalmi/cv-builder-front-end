@@ -2,12 +2,8 @@ import { Form, Formik } from "formik";
 import React, { useState } from "react";
 import FormNavigation from "../NavigationButton/NavigationButton";
 import { Stepper, Step, StepLabel } from "@mui/material";
-import StepConnector, {
-  stepConnectorClasses,
-} from "@mui/material/StepConnector";
 import {
   AccountBox,
-  History,
   HistoryEdu,
   IntegrationInstructions,
   Language,
@@ -53,32 +49,7 @@ function MultiStepForm({ children, initialValues, onSubmit }) {
     }
   };
 
-  const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
-    [`&.${stepConnectorClasses.alternativeLabel}`]: {
-      top: 22,
-    },
-    [`&.${stepConnectorClasses.active}`]: {
-      [`& .${stepConnectorClasses.line}`]: {
-        backgroundImage:
-          "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
-      },
-    },
-    [`&.${stepConnectorClasses.completed}`]: {
-      [`& .${stepConnectorClasses.line}`]: {
-        backgroundImage:
-          "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
-      },
-    },
-    [`& .${stepConnectorClasses.line}`]: {
-      height: 3,
-      border: 0,
-      backgroundColor:
-        theme.palette.mode === "dark" ? theme.palette.grey[800] : "#eaeaf0",
-      borderRadius: 1,
-    },
-  }));
-
-  const ColorLibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
+  const StepIconRoot = styled("div")(({ theme, ownerState }) => ({
     color: "#1c1c1c",
     ...(ownerState.active && {
       color: "#cc5500",
@@ -87,7 +58,8 @@ function MultiStepForm({ children, initialValues, onSubmit }) {
       color: "#888a89",
     }),
   }));
-  const ColorLibStepIcon = (props) => {
+
+  const StepIcon = (props) => {
     const { active, completed, className } = props;
     const icons = {
       1: <AccountBox />,
@@ -102,12 +74,9 @@ function MultiStepForm({ children, initialValues, onSubmit }) {
     };
 
     return (
-      <ColorLibStepIconRoot
-        ownerState={{ completed, active }}
-        className={className}
-      >
+      <StepIconRoot ownerState={{ completed, active }} className={className}>
         {icons[String(props.icon)]}
-      </ColorLibStepIconRoot>
+      </StepIconRoot>
     );
   };
 
@@ -120,18 +89,12 @@ function MultiStepForm({ children, initialValues, onSubmit }) {
       >
         {(formik) => (
           <Form>
-            <Stepper
-              alternativeLabel
-              activeStep={stepNum}
-              connector={<ColorlibConnector />}
-            >
+            <Stepper alternativeLabel activeStep={stepNum}>
               {steps.map((currentStep) => {
                 const label = currentStep.props.stepName;
                 return (
                   <Step key={currentStep.key}>
-                    <StepLabel StepIconComponent={ColorLibStepIcon}>
-                      {/* {label} */}
-                    </StepLabel>
+                    <StepLabel StepIconComponent={StepIcon}></StepLabel>
                   </Step>
                 );
               })}

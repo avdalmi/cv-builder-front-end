@@ -1,6 +1,9 @@
 import { createTheme } from "@mui/material";
 import { amber, deepOrange, grey } from "@mui/material/colors";
-
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 export const theme = createTheme({
 
     palette: {
@@ -40,6 +43,12 @@ export const theme = createTheme({
             fontFamily: "Open Sans",
             fontSize: "0.8rem",
             lineHeight: 1.3,
+        },
+        h4: {
+            fontFamily: "Roboto",
+            fontSize: "1.5rem",
+            marginTop: "-15px",
+            textAlign: "center",
         }
     },
     components: {
@@ -48,7 +57,10 @@ export const theme = createTheme({
                 {
                     props: { variant: "outlined", color: "error" },
                     style: {
-                        borderColor: "#EF5350"
+                        borderColor: "#EF5350",
+                        "&:hover": {
+                            color: "#e6e6e6"
+                        }
                     }
                 },
                 {
@@ -62,7 +74,9 @@ export const theme = createTheme({
                     props: { variant: "outlined" },
                     style: {
                         "&:hover": {
-                            backgroundColor: "#cc5500"
+                            backgroundColor: "#cc5500",
+                            border: "1px solid #cc5500",
+                            color: "#e6e6e6"
                         }
                     }
                 }
