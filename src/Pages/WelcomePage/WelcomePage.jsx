@@ -34,7 +34,7 @@ function WelcomePage() {
         efficiently generate a standardized CV that accurately reflects the
         skills and qualifications of their employees.
       </Typography>
-      <Button href="/form" variant="secondary">
+      <Button href="/form" variant="outlined">
         Go to form
       </Button>
     </Box>

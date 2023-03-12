@@ -6,22 +6,27 @@ export const theme = createTheme({
     palette: {
         primary: {
             main: "#1c1c1c",
-            light: "#f13e98",
-            dark: "#2f6d51",
-            contrastText: "#de1e1e",
+            light: "#5a5959",
+            dark: "#cc5500",
+            contrastText: "#1c1c1c",
         },
         secondary: {
-            main: '#f50057',
+            main: "#5a5959",
         },
         divider: "#1c1c1c",
         background: {
             default: "#e6e6e6",
-            paper: deepOrange[900],
+            paper: "#fff",
         },
         text: {
             primary: "#1c1c1c",
             secondary: "#333333",
         },
+        error: {
+            main: "#EF5350",
+            light: "#EF5350",
+            dark: "#EF5350"
+        }
     },
     typography: {
         h1: {
@@ -39,12 +44,29 @@ export const theme = createTheme({
     },
     components: {
         MuiButton: {
-            styleOverrides: {
-                root: {
-                    backgroundColor: "#5a5959",
-                    color: "#e6e6e6",
+            variants: [
+                {
+                    props: { variant: "outlined", color: "error" },
+                    style: {
+                        borderColor: "#EF5350"
+                    }
+                },
+                {
+                    props: { variant: "contained" },
+                    style: {
+                        backgroundColor: "#5a5959",
+                        color: "#e6e6e6",
+                    }
+                },
+                {
+                    props: { variant: "outlined" },
+                    style: {
+                        "&:hover": {
+                            backgroundColor: "#cc5500"
+                        }
+                    }
                 }
-            }
+            ],
         }
     },
 }

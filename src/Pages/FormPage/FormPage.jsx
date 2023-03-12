@@ -26,21 +26,6 @@ import ProjectsSection from "../../Components/FormSections/9_ProjectsSection";
 import { MONGO_COLLECTION, MONGO_DATABASE } from "../../config/config";
 import { Box, createTheme, styled } from "@mui/material";
 
-// const customTheme = createTheme({
-//   palette: {
-//     primary: {
-//       main: "#1976d2",
-//       contrastText: "white",
-//     },
-//   },
-// });
-// const MyThemeComponent = styled("div")(({ theme }) => ({
-//   color: theme.palette.primary.contrastText,
-//   backgroundColor: theme.palette.primary.main,
-//   padding: theme.spacing(1),
-//   borderRadius: theme.shape.borderRadius,
-// }));
-
 function FormPage({ mongoContext: { client, user } }) {
   const onSubmit = async (values) => {
     const collection = client.db(MONGO_DATABASE).collection(MONGO_COLLECTION);
