@@ -22,15 +22,15 @@ const MenuProps = {
 function ChipSelect({ label, ...props }) {
   const [field, meta] = useField(props);
   const { values, setFieldValue } = useFormikContext();
-  const [skillName, setSkillName] = useState([]);
+  const [name, setname] = useState([]);
 
-  const skillNames = [];
+  const names = [];
   const skillsToArray = values.skills.map((skill) => {
-    skillNames.push(skill.skillName);
+    names.push(skill.name);
   });
 
   const handleChange = (event) => {
-    setSkillName(event.target.value);
+    setname(event.target.value);
     setFieldValue(`${props.name}`, event.target.value);
   };
 
@@ -43,7 +43,7 @@ function ChipSelect({ label, ...props }) {
         labelId="demo-multiple-chip-label"
         id="demo-multiple-chip"
         multiple
-        value={skillName}
+        value={name}
         onChange={handleChange}
         name={props.name}
         error={meta.touched && Boolean(meta.error)}
@@ -69,7 +69,7 @@ function ChipSelect({ label, ...props }) {
         //controls the height of the dropdown
         MenuProps={MenuProps}
       >
-        {skillNames.map((skill) => (
+        {names.map((skill) => (
           <MenuItem key={skill} value={skill}>
             {skill}
           </MenuItem>

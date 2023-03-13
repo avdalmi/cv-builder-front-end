@@ -28,8 +28,8 @@ export const profileValidationSchema = yup.object({
 export const skillsValidationSchema = yup.object({
   skills: yup.array(
     yup.object({
-      skillName: yup.string().required("please enter a skill name"),
-      skillLevel: yup.number().min(0.5).required("please select skill level"),
+      name: yup.string().required("please enter a skill name"),
+      level: yup.number().min(0.5).required("please select skill level"),
     })
   ),
 });

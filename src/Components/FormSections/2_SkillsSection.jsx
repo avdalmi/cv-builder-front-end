@@ -39,16 +39,13 @@ function SkillsSection({ ...props }) {
                     }}
                   >
                     <TextInputField
-                      name={`skills[${index}].skillName`}
+                      name={`skills[${index}].name`}
                       placeholder="Ex: React"
                       label="Skill"
                       style={{ maxWidth: 100, marginRight: 20 }}
                     />
 
-                    <Field
-                      name={`skills[${index}].skillLevel`}
-                      as={StarRating}
-                    />
+                    <Field name={`skills[${index}].level`} as={StarRating} />
 
                     <DeleteButton
                       deleteitem={true}
@@ -63,10 +60,10 @@ function SkillsSection({ ...props }) {
                 <AddButton
                   label="skill"
                   onClick={() => {
-                    arrayHelpers.push({ skillName: "", skillLevel: 0 });
+                    arrayHelpers.push({ name: "", level: 0 });
                     props.initialValues.skills.push({
-                      skillName: "",
-                      skillLevel: 0,
+                      name: "",
+                      level: 0,
                     });
                   }}
                 />
