@@ -13,8 +13,8 @@ const StarRating = ({ ...props }) => {
         {...field}
         controlled="true"
         precision={0.5}
-        defaultValue={0}
-        value={parseInt(meta.value)}
+        defaultValue={0.5}
+        value={parseFloat(meta.value)}
       />
       {meta.touched && Boolean(meta.error) ? (
         <FormHelperText error>
